@@ -30,8 +30,15 @@ const nextConfig = {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
   images: {
-    domains: ['example.com', 'your-supabase-domain.supabase.co'],
-    formats: ['image/webp'],
+    domains: ['images.ctfassets.net'], // Add Contentful's domain
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   webpack: (config, { isServer }) => {
     config.plugins.push(new VeliteWebpackPlugin());

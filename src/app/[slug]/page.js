@@ -1,117 +1,200 @@
+// app/blog/[slug]/page.js
 import RenderMdx from "@/src/components/Blog/RenderMdx"
 import siteMetadata from "@/src/utils/siteMetaData"
 import { blogs } from "@/.velite/generated"
+import { getBlogPosts } from "@/lib/contentful"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 
 export async function generateStaticParams() {
-  return blogs.map((blog) => ({ slug: blog.slug }))
+  // Get all MDX blog slugs
+  const mdxSlugs = blogs.map((blog) => ({ slug: blog.slug }))
+  
+  // Get all Contentful blog slugs
+  const contentfulPosts = await getBlogPosts()
+  const contentfulSlugs = contentfulPosts.map((post) => ({ 
+    slug: post.fields.slug 
+  }))
+  
+  // Combine both sets of slugs
+  return [...mdxSlugs, ...contentfulSlugs]
 }
 
 export async function generateMetadata({ params }) {
-  const { slug } = await params
-  const blog = blogs.find((blog) => blog.slug === slug)
-  if (!blog) {
-    return
+  const { slug } = params
+  
+  // Check MDX blogs first
+  const mdxBlog = blogs.find((blog) => blog.slug === slug)
+  if (mdxBlog) {
+    const publishedAt = new Date(mdxBlog.publishedAt).toISOString()
+    let imageList = [siteMetadata.socialBanner]
+    if (mdxBlog.image) {
+      imageList = typeof mdxBlog.image.src === "string"
+        ? [siteMetadata.siteUrl + mdxBlog.image.src]
+        : mdxBlog.image
+    }
+    const ogImages = imageList.map((img) => ({
+      url: img.includes("http") ? img : siteMetadata.siteUrl + img
+    }))
+    const authors = mdxBlog?.author ? [mdxBlog.author] : siteMetadata.author
+    
+    return {
+      title: mdxBlog.title,
+      description: mdxBlog.description,
+      openGraph: {
+        title: mdxBlog.title,
+        description: mdxBlog.description,
+        url: siteMetadata.siteUrl + mdxBlog.slug,
+        siteName: siteMetadata.title,
+        locale: "en_US",
+        type: "article",
+        publishedTime: publishedAt,
+        images: ogImages,
+        authors: authors.length > 0 ? authors : [siteMetadata.author],
+      },
+    }
   }
-
-  const publishedAt = new Date(blog.publishedAt).toISOString()
-
-  let imageList = [siteMetadata.socialBanner]
-  if (blog.image) {
-    imageList =
-      typeof blog.image.src === "string"
-        ? [siteMetadata.siteUrl + blog.image.src]
-        : blog.image
+  
+  // If not MDX, check Contentful
+  const contentfulPosts = await getBlogPosts()
+  const contentfulBlog = contentfulPosts.find(
+    (post) => post.fields.slug === slug
+  )
+  
+  if (contentfulBlog) {
+    return {
+      title: contentfulBlog.fields.title,
+      description: contentfulBlog.fields.description || contentfulBlog.fields.title,
+      openGraph: {
+        title: contentfulBlog.fields.title,
+        description: contentfulBlog.fields.description || contentfulBlog.fields.title,
+        url: siteMetadata.siteUrl + contentfulBlog.fields.slug,
+        siteName: siteMetadata.title,
+        locale: "en_US",
+        type: "article",
+      },
+    }
   }
-  const ogImages = imageList.map((img) => {
-    return { url: img.includes("http") ? img : siteMetadata.siteUrl + img }
-  })
-
-  const authors = blog?.author ? [blog.author] : siteMetadata.author
-
-  return {
-    title: blog.title,
-    description: blog.description,
-    openGraph: {
-      title: blog.title,
-      description: blog.description,
-      url: siteMetadata.siteUrl + blog,
-      siteName: siteMetadata.title,
-      locale: "en_US",
-      type: "article",
-      publishedTime: publishedAt,
-      images: ogImages,
-      authors: authors.length > 0 ? authors : [siteMetadata.author],
-    },
-  }
+  
+  return null
 }
 
 export default async function BlogPage({ params }) {
-  const { slug } = await params
-  const blog = blogs.find((blog) => blog.slug === slug)
-
-  if (!blog) {
-    notFound()
-  }
-
-  let imageList = [siteMetadata.socialBanner]
-  if (blog.image) {
-    imageList =
-      typeof blog.image.src === "string"
-        ? [siteMetadata.siteUrl + blog.image.src]
-        : blog.image
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    headline: blog.title,
-    description: blog.description,
-    image: imageList,
-    datePublished: new Date(blog.publishedAt).toISOString(),
-    dateModified: new Date(blog.updatedAt || blog.publishedAt).toISOString(),
-    author: [
-      {
-        "@type": "Person",
-        name: blog?.author ? [blog.author] : siteMetadata.author,
-      },
-    ],
-  }
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <article>
-        <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
-          <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <h1 className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6">
-              {blog.title}
-            </h1>
+  const { slug } = params
+  
+  // Try to find MDX blog first
+  const mdxBlog = blogs.find((blog) => blog.slug === slug)
+  if (mdxBlog) {
+    let imageList = [siteMetadata.socialBanner]
+    if (mdxBlog.image) {
+      imageList = typeof mdxBlog.image.src === "string"
+        ? [siteMetadata.siteUrl + mdxBlog.image.src]
+        : mdxBlog.image
+    }
+    
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      headline: mdxBlog.title,
+      description: mdxBlog.description,
+      image: imageList,
+      datePublished: new Date(mdxBlog.publishedAt).toISOString(),
+      dateModified: new Date(mdxBlog.updatedAt || mdxBlog.publishedAt).toISOString(),
+      author: [
+        {
+          "@type": "Person",
+          name: mdxBlog?.author ? [mdxBlog.author] : siteMetadata.author,
+        },
+      ],
+    }
+    
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <article>
+          <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
+            <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <h1 className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6">
+                {mdxBlog.title}
+              </h1>
+            </div>
+            <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
+            <Image
+              src={mdxBlog.image.src}
+              placeholder="blur"
+              blurDataURL={mdxBlog.image.blurDataURL}
+              alt={mdxBlog.title}
+              width={mdxBlog.image.width}
+              height={mdxBlog.image.height}
+              className="aspect-square w-full h-full object-cover object-center"
+              priority
+              sizes="100vw"
+            />
           </div>
-          <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
-          <Image
-            src={blog.image.src}
-            placeholder="blur"
-            blurDataURL={blog.image.blurDataURL}
-            alt={blog.title}
-            width={blog.image.width}
-            height={blog.image.height}
-            className="aspect-square w-full h-full object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-        </div>
-        {/* Centered Blog Content */}
-        <div className="flex items-center justify-center px-5 md:px-10">
-          <div className="max-w-4xl w-full">
-            <RenderMdx blog={blog} />
+          <div className="flex items-center justify-center px-5 md:px-10">
+            <div className="max-w-4xl w-full">
+              <RenderMdx blog={mdxBlog} />
+            </div>
           </div>
-        </div>
-      </article>
-    </>
+        </article>
+      </>
+    )
+  }
+  
+  // If not MDX, try to find Contentful blog
+  const contentfulPosts = await getBlogPosts()
+  const contentfulBlog = contentfulPosts.find(
+    (post) => post.fields.slug === slug
   )
+  
+  if (contentfulBlog) {
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      headline: contentfulBlog.fields.title,
+      description: contentfulBlog.fields.description || contentfulBlog.fields.title,
+      datePublished: new Date(contentfulBlog.sys.createdAt).toISOString(),
+      dateModified: new Date(contentfulBlog.sys.updatedAt).toISOString(),
+      author: [
+        {
+          "@type": "Person",
+          name: siteMetadata.author,
+        },
+      ],
+    }
+    
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <article>
+          <div className="mb-8 text-center relative w-full">
+            <h1 className="text-4xl font-bold mb-4">{contentfulBlog.fields.title}</h1>
+            {contentfulBlog.fields.description && (
+              <p className="text-xl text-gray-600 dark:text-gray-300">
+                {contentfulBlog.fields.description}
+              </p>
+            )}
+          </div>
+          <div className="flex items-center justify-center px-5 md:px-10">
+            <div className="max-w-4xl w-full prose dark:prose-dark">
+              {contentfulBlog.fields.body ? (
+                documentToReactComponents(contentfulBlog.fields.body)
+              ) : (
+                <p>No content available</p>
+              )}
+            </div>
+          </div>
+        </article>
+      </>
+    )
+  }
+  
+  return notFound()
 }
