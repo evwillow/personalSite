@@ -1,6 +1,6 @@
-import { cx } from "@/src/utils";
-import Link from "next/link";
-import React from "react";
+import { cx } from "@/src/utils"
+import Link from "next/link"
+import React from "react"
 
 const Tag = ({ link = "#", name, ...props }) => {
   return (
@@ -13,7 +13,7 @@ const Tag = ({ link = "#", name, ...props }) => {
     >
       {name}
     </Link>
-  );
-};
+  )
+}
 
-export default Tag;
+export default Tag

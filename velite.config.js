@@ -29,12 +29,12 @@ const blog = s
   .transform(data => {
     return {
       ...data,
-      url: `/blogs/${data.slug}`,
+      url: `/${data.slug}`,
       readingTime: readingTime(data.body),
     //   toc: headings,
       image: {
         ...data.image,
-        src: data.image.src.replace("/static", "/blogs"),
+        src: data.image.src.replace("/static", ""),
       },
     }
   })
@@ -50,7 +50,7 @@ export default defineConfig({
   },
   output: {
     data: '.velite/generated',
-    assets: 'public/blogs',
+    assets: 'public/',
     clean: true,
   },
   // Add MDX plugins

@@ -1,27 +1,43 @@
-import { sortBlogs } from "@/src/utils";
-import React from "react";
-import BlogLayoutOne from "../Blog/BlogLayoutOne";
-import BlogLayoutTwo from "../Blog/BlogLayoutTwo";
+import { sortBlogs } from "@/src/utils"
+import React from "react"
+import BlogLayoutOne from "../Blog/BlogLayoutOne"
+import BlogLayoutTwo from "../Blog/BlogLayoutTwo"
 
 const FeaturedPosts = ({ blogs }) => {
-  const sortedBlogs = sortBlogs(blogs);
-  return <section className="w-full mt-16 sm:mt-24  md:mt-32 px-5 sm:px-10 md:px-24  sxl:px-32 flex flex-col items-center justify-center">
-    <h2 className="w-full inline-block font-bold capitalize text-2xl md:text-4xl text-dark dark:text-light">Featured Posts</h2>
+  const sortedBlogs = sortBlogs(blogs)
 
-    <div className="grid grid-cols-2 grid-rows-2 gap-6  mt-10 sm:mt-16">
-      <article className=" col-span-2  sxl:col-span-1 row-span-2 relative">
-        <BlogLayoutOne blog={sortedBlogs[1]} />
-      </article>
-      <article className=" col-span-2 sm:col-span-1 row-span-1 relative">
-                <BlogLayoutTwo blog={sortedBlogs[2]} />
+  return (
+    <section className="w-full mt-8 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32">
+      <div
+        className="
+          grid 
+          grid-cols-1 
+          sm:grid-cols-[1fr_1fr] 
+          lg:grid-cols-[2fr_1fr_1fr] 
+          auto-rows-auto 
+          gap-4 
+          md:gap-6 
+          max-w-7xl 
+          mx-auto"
+      >
+        {sortedBlogs[1] && (
+          <article
+            className="row-span-2 col-span-1 lg:col-span-1 sm:col-span-2"
+          >
+            <BlogLayoutOne blog={sortedBlogs[1]} />
+          </article>
+        )}
+        {sortedBlogs.slice(2, 6).map((blog, index) => (
+          <article
+            key={index}
+            className="col-span-1 row-span-1"
+          >
+            <BlogLayoutTwo blog={blog} />
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
 
-      </article>
-      <article className="col-span-2 sm:col-span-1 row-span-1 relative">
-                <BlogLayoutTwo blog={sortedBlogs[3]} />
-
-      </article>
-    </div>
-  </section>;
-};
-
-export default FeaturedPosts;
+export default FeaturedPosts
