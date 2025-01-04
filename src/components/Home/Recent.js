@@ -18,15 +18,15 @@ const RecentPosts = ({ posts }) => {
 
   // Helper function to ensure absolute URLs
   const getAbsoluteImageUrl = (url) => {
-    if (!url) return '/default-image.jpg'
-    if (url.startsWith('//')) return `https:${url}`
-    if (url.startsWith('/')) return `https:/${url}`
-    if (!url.startsWith('http')) return `https://${url}`
+    if (!url) return "/default-image.jpg"
+    if (url.startsWith("//")) return `https:${url}`
+    if (url.startsWith("/")) return `https:/${url}`
+    if (!url.startsWith("http")) return `https://${url}`
     return url
   }
 
   // Transform Contentful posts to exactly match the blog format expected by BlogLayoutThree
-  const transformedPosts = recentPosts.map(post => {
+  const transformedPosts = recentPosts.map((post) => {
     const imageUrl = post.fields.image?.fields?.file?.url
     const absoluteImageUrl = getAbsoluteImageUrl(imageUrl)
 
@@ -39,12 +39,12 @@ const RecentPosts = ({ posts }) => {
         blurDataURL: absoluteImageUrl,
         width: post.fields.image?.fields?.file?.details?.image?.width || 800,
         height: post.fields.image?.fields?.file?.details?.image?.height || 600,
-      }
+      },
     }
   })
 
   return (
-    <section className="w-full mb-16 sm:mt-24 md:mt-32 px-5 sm:px-10 md:px-24 sxl:px-32 flex flex-col items-center justify-center">
+    <section className="w-full mb-16 mt-14 px-5 sm:px-10 md:px-24 sxl:px-32 flex flex-col items-center justify-center">
       <div className="w-full flex justify-between">
         <h2 className="w-fit inline-block font-bold capitalize text-2xl md:text-4xl text-dark dark:text-light">
           Recent

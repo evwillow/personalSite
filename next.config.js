@@ -43,7 +43,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  swcMinify: true,
   experimental: {
     optimizeCss: true,
     forceSwcTransforms: true,

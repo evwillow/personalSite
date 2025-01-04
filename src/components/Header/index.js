@@ -1,10 +1,8 @@
 "use client"
 
-import Link from "next/link"
 import Image from "next/image"
 import Logo from "./Logo"
 import instagram from "./instagram.png"
-import siteMetadata from "@/src/utils/siteMetaData"
 import { useState } from "react"
 
 const Header = () => {
@@ -45,16 +43,15 @@ const Header = () => {
           href="//instagram.com/evwillow"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden sm:flex items-center text-lg rounded-xl mx-1 font-light font-inter text-black dark:text-light whitespace-nowrap"
+          className="flex items-center text-lg rounded-xl mx-1 font-light font-inter text-black dark:text-light whitespace-nowrap"
           aria-label="Follow me on Instagram"
         >
           <Image
             src={instagram}
             alt="Instagram Logo"
-            className="w-12 h-12"
+            className="w-8 h-8 sm:w-12 sm:h-12"
           />
-          <span className="mx-1">
-            {" "}
+          <span className="mx-1 text-sm sm:text-base">
             follow <b className="font-medium">@evwillow</b>
           </span>
         </a>

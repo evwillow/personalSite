@@ -17,17 +17,19 @@ const Featured = ({ posts }) => {
     .slice(0, 5)
 
   // Transform Contentful posts to match the blog format expected by BlogLayout components
-  const transformedPosts = sortedPosts.map(post => ({
+  const transformedPosts = sortedPosts.map((post) => ({
     title: post.fields.title,
-    description: post.fields.description || '',
+    description: post.fields.description || "",
     publishedAt: post.fields.publishedAt || post.sys.firstPublishedAt,
     url: `/${post.fields.slug}`,
-    image: post.fields.image?.fields?.file?.url ? {
-      src: `https:${post.fields.image.fields.file.url}`,
-      blurDataURL: `https:${post.fields.image.fields.file.url}`,
-      width: post.fields.image.fields.file.details.image.width,
-      height: post.fields.image.fields.file.details.image.height
-    } : null
+    image: post.fields.image?.fields?.file?.url
+      ? {
+          src: `https:${post.fields.image.fields.file.url}`,
+          blurDataURL: `https:${post.fields.image.fields.file.url}`,
+          width: post.fields.image.fields.file.details.image.width,
+          height: post.fields.image.fields.file.details.image.height,
+        }
+      : null,
   }))
 
   return (
@@ -44,18 +46,13 @@ const Featured = ({ posts }) => {
           max-w-7xl 
           mx-auto"
       >
-        {transformedPosts[1] && (
-          <article
-            className="row-span-2 col-span-1 lg:col-span-1 sm:col-span-2"
-          >
-            <BlogLayoutOne blog={transformedPosts[1]} />
+        {transformedPosts[0] && (
+          <article className="row-span-2 col-span-1 lg:col-span-1 sm:col-span-2">
+            <BlogLayoutOne blog={transformedPosts[0]} />
           </article>
         )}
-        {transformedPosts.slice(2, 6).map((blog, index) => (
-          <article
-            key={index}
-            className="col-span-1 row-span-1"
-          >
+        {transformedPosts.slice(1, 7).map((blog, index) => (
+          <article key={index} className="col-span-1 row-span-1">
             <BlogLayoutTwo blog={blog} />
           </article>
         ))}

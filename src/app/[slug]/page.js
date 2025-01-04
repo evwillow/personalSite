@@ -9,7 +9,9 @@ import { notFound } from "next/navigation"
 export async function generateStaticParams() {
   const mdxSlugs = blogs.map((blog) => ({ slug: blog.slug }))
   const contentfulPosts = await getBlogPosts()
-  const contentfulSlugs = contentfulPosts.map((post) => ({ slug: post.fields.slug }))
+  const contentfulSlugs = contentfulPosts.map((post) => ({
+    slug: post.fields.slug,
+  }))
   return [...mdxSlugs, ...contentfulSlugs]
 }
 
@@ -20,12 +22,13 @@ export async function generateMetadata({ params }) {
     const publishedAt = new Date(mdxBlog.publishedAt).toISOString()
     let imageList = [siteMetadata.socialBanner]
     if (mdxBlog.image) {
-      imageList = typeof mdxBlog.image.src === "string"
-        ? [siteMetadata.siteUrl + mdxBlog.image.src]
-        : mdxBlog.image
+      imageList =
+        typeof mdxBlog.image.src === "string"
+          ? [siteMetadata.siteUrl + mdxBlog.image.src]
+          : mdxBlog.image
     }
     const ogImages = imageList.map((img) => ({
-      url: img.includes("http") ? img : siteMetadata.siteUrl + img
+      url: img.includes("http") ? img : siteMetadata.siteUrl + img,
     }))
     const authors = mdxBlog?.author ? [mdxBlog.author] : siteMetadata.author
     return {
@@ -46,14 +49,18 @@ export async function generateMetadata({ params }) {
   }
 
   const contentfulPosts = await getBlogPosts()
-  const contentfulBlog = contentfulPosts.find((post) => post.fields.slug === slug)
+  const contentfulBlog = contentfulPosts.find(
+    (post) => post.fields.slug === slug
+  )
   if (contentfulBlog) {
     return {
       title: contentfulBlog.fields.title,
-      description: contentfulBlog.fields.description || contentfulBlog.fields.title,
+      description:
+        contentfulBlog.fields.description || contentfulBlog.fields.title,
       openGraph: {
         title: contentfulBlog.fields.title,
-        description: contentfulBlog.fields.description || contentfulBlog.fields.title,
+        description:
+          contentfulBlog.fields.description || contentfulBlog.fields.title,
         url: siteMetadata.siteUrl + contentfulBlog.fields.slug,
         siteName: siteMetadata.title,
         locale: "en_US",
@@ -67,15 +74,16 @@ export async function generateMetadata({ params }) {
 export default async function BlogPage({ params }) {
   const { slug } = params
   const mdxBlog = blogs.find((blog) => blog.slug === slug)
-  
+
   if (mdxBlog) {
     let imageList = [siteMetadata.socialBanner]
     if (mdxBlog.image) {
-      imageList = typeof mdxBlog.image.src === "string"
-        ? [siteMetadata.siteUrl + mdxBlog.image.src]
-        : mdxBlog.image
+      imageList =
+        typeof mdxBlog.image.src === "string"
+          ? [siteMetadata.siteUrl + mdxBlog.image.src]
+          : mdxBlog.image
     }
-    
+
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
@@ -83,16 +91,23 @@ export default async function BlogPage({ params }) {
       description: mdxBlog.description,
       image: imageList,
       datePublished: new Date(mdxBlog.publishedAt).toISOString(),
-      dateModified: new Date(mdxBlog.updatedAt || mdxBlog.publishedAt).toISOString(),
-      author: [{
-        "@type": "Person",
-        name: mdxBlog?.author ? [mdxBlog.author] : siteMetadata.author,
-      }],
+      dateModified: new Date(
+        mdxBlog.updatedAt || mdxBlog.publishedAt
+      ).toISOString(),
+      author: [
+        {
+          "@type": "Person",
+          name: mdxBlog?.author ? [mdxBlog.author] : siteMetadata.author,
+        },
+      ],
     }
-    
+
     return (
       <>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <article>
           <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
             <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -124,25 +139,33 @@ export default async function BlogPage({ params }) {
   }
 
   const contentfulPosts = await getBlogPosts()
-  const contentfulBlog = contentfulPosts.find((post) => post.fields.slug === slug)
-  
+  const contentfulBlog = contentfulPosts.find(
+    (post) => post.fields.slug === slug
+  )
+
   if (contentfulBlog) {
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
       headline: contentfulBlog.fields.title,
-      description: contentfulBlog.fields.description || contentfulBlog.fields.title,
+      description:
+        contentfulBlog.fields.description || contentfulBlog.fields.title,
       datePublished: new Date(contentfulBlog.sys.createdAt).toISOString(),
       dateModified: new Date(contentfulBlog.sys.updatedAt).toISOString(),
-      author: [{
-        "@type": "Person",
-        name: siteMetadata.author,
-      }],
+      author: [
+        {
+          "@type": "Person",
+          name: siteMetadata.author,
+        },
+      ],
     }
-    
+
     return (
       <>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <article>
           <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
             <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -154,9 +177,16 @@ export default async function BlogPage({ params }) {
             {contentfulBlog.fields.image && (
               <Image
                 src={`https:${contentfulBlog.fields.image.fields.file.url}`}
-                alt={contentfulBlog.fields.image.fields.title || contentfulBlog.fields.title}
-                width={contentfulBlog.fields.image.fields.file.details.image.width}
-                height={contentfulBlog.fields.image.fields.file.details.image.height}
+                alt={
+                  contentfulBlog.fields.image.fields.title ||
+                  contentfulBlog.fields.title
+                }
+                width={
+                  contentfulBlog.fields.image.fields.file.details.image.width
+                }
+                height={
+                  contentfulBlog.fields.image.fields.file.details.image.height
+                }
                 className="aspect-square w-full h-full object-cover object-center"
                 priority
                 sizes="100vw"
@@ -176,6 +206,6 @@ export default async function BlogPage({ params }) {
       </>
     )
   }
-  
+
   return notFound()
 }
