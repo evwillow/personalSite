@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Logo from "./Logo"
 import instagram from "./instagram.png"
+import X from "./x.png"
 import { useState } from "react"
 
 const Header = () => {
@@ -39,22 +40,28 @@ const Header = () => {
 
       <div className="container mx-auto px-8 sm:px-12 py-6 flex items-center justify-between">
         <Logo />
-        <a
-          href="//instagram.com/evwillow"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center text-lg rounded-xl mx-1 font-light font-inter text-black dark:text-light whitespace-nowrap"
-          aria-label="Follow me on Instagram"
-        >
-          <Image
-            src={instagram}
-            alt="Instagram Logo"
-            className="w-8 h-8 sm:w-12 sm:h-12"
-          />
-          <span className="mx-1 text-sm sm:text-base">
-            follow <b className="font-medium">@evwillow</b>
-          </span>
-        </a>
+        <div className="flex items-center space-x-3 justify-start">
+          <a
+            href="//x.com/evanwillowmoss"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow me on X"
+          >
+            <Image src={X} alt="X Logo" className="w-8 h-8 sm:w-12 sm:h-12" />
+          </a>
+          <a
+            href="//instagram.com/evwillow"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Follow me on Instagram"
+          >
+            <Image
+              src={instagram}
+              alt="Instagram Logo"
+              className="w-8 h-8 sm:w-12 sm:h-12"
+            />
+          </a>
+        </div>
       </div>
     </header>
   )
