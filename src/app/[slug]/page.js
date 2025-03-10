@@ -29,11 +29,22 @@ export async function generateMetadata({ params }) {
     }
     const ogImages = imageList.map((img) => ({
       url: img.includes("http") ? img : siteMetadata.siteUrl + img,
+      width: 1200,
+      height: 630,
+      alt: mdxBlog.title,
     }))
     const authors = mdxBlog?.author ? [mdxBlog.author] : siteMetadata.author
+    
+    // Extract keywords from tags or use default keywords
+    const keywords = mdxBlog.tags 
+      ? [...mdxBlog.tags, ...siteMetadata.keywords]
+      : siteMetadata.keywords
+    
     return {
       title: mdxBlog.title,
       description: mdxBlog.description,
+      keywords: keywords,
+      authors: [{ name: authors }],
       openGraph: {
         title: mdxBlog.title,
         description: mdxBlog.description,
@@ -42,8 +53,19 @@ export async function generateMetadata({ params }) {
         locale: "en_US",
         type: "article",
         publishedTime: publishedAt,
+        modifiedTime: new Date(mdxBlog.updatedAt || mdxBlog.publishedAt).toISOString(),
         images: ogImages,
         authors: authors.length > 0 ? authors : [siteMetadata.author],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: mdxBlog.title,
+        description: mdxBlog.description,
+        images: ogImages,
+        creator: "@evanwillowmoss",
+      },
+      alternates: {
+        canonical: `${siteMetadata.siteUrl}/${mdxBlog.slug}`,
       },
     }
   }
@@ -53,10 +75,34 @@ export async function generateMetadata({ params }) {
     (post) => post.fields.slug === slug
   )
   if (contentfulBlog) {
+    // Extract keywords from tags or use default keywords
+    const keywords = contentfulBlog.fields.tags 
+      ? [...contentfulBlog.fields.tags, ...siteMetadata.keywords]
+      : siteMetadata.keywords
+      
+    // Get image for social sharing
+    let ogImages = [{ 
+      url: siteMetadata.socialBanner,
+      width: 1200,
+      height: 630,
+      alt: contentfulBlog.fields.title
+    }]
+    
+    if (contentfulBlog.fields.featuredImage) {
+      ogImages = [{
+        url: `https:${contentfulBlog.fields.featuredImage.fields.file.url}`,
+        width: contentfulBlog.fields.featuredImage.fields.file.details.image.width,
+        height: contentfulBlog.fields.featuredImage.fields.file.details.image.height,
+        alt: contentfulBlog.fields.title
+      }]
+    }
+    
     return {
       title: contentfulBlog.fields.title,
       description:
         contentfulBlog.fields.description || contentfulBlog.fields.title,
+      keywords: keywords,
+      authors: [{ name: contentfulBlog.fields.author || siteMetadata.author }],
       openGraph: {
         title: contentfulBlog.fields.title,
         description:
@@ -65,6 +111,20 @@ export async function generateMetadata({ params }) {
         siteName: siteMetadata.title,
         locale: "en_US",
         type: "article",
+        publishedTime: new Date(contentfulBlog.sys.createdAt).toISOString(),
+        modifiedTime: new Date(contentfulBlog.sys.updatedAt).toISOString(),
+        images: ogImages,
+        authors: [contentfulBlog.fields.author || siteMetadata.author],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: contentfulBlog.fields.title,
+        description: contentfulBlog.fields.description || contentfulBlog.fields.title,
+        images: ogImages,
+        creator: "@evanwillowmoss",
+      },
+      alternates: {
+        canonical: `${siteMetadata.siteUrl}/${contentfulBlog.fields.slug}`,
       },
     }
   }
@@ -86,20 +146,40 @@ export default async function BlogPage({ params }) {
 
     const jsonLd = {
       "@context": "https://schema.org",
-      "@type": "NewsArticle",
+      "@type": "BlogPosting",
       headline: mdxBlog.title,
       description: mdxBlog.description,
       image: imageList,
       datePublished: new Date(mdxBlog.publishedAt).toISOString(),
-      dateModified: new Date(
-        mdxBlog.updatedAt || mdxBlog.publishedAt
-      ).toISOString(),
-      author: [
-        {
-          "@type": "Person",
-          name: mdxBlog?.author ? [mdxBlog.author] : siteMetadata.author,
-        },
-      ],
+      dateModified: new Date(mdxBlog.updatedAt || mdxBlog.publishedAt).toISOString(),
+      author: {
+        "@type": "Person",
+        name: mdxBlog?.author ? mdxBlog.author : siteMetadata.author,
+        url: siteMetadata.siteUrl,
+        sameAs: [
+          siteMetadata.twitter,
+          siteMetadata.instagram
+        ]
+      },
+      publisher: {
+        "@type": "Person",
+        name: siteMetadata.author,
+        url: siteMetadata.siteUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+        }
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${siteMetadata.siteUrl}/${mdxBlog.slug}`
+      },
+      keywords: mdxBlog.tags ? mdxBlog.tags.join(", ") : siteMetadata.keywords.join(", "),
+      articleBody: mdxBlog.content,
+      wordCount: mdxBlog.content ? mdxBlog.content.split(/\s+/).length : 0,
+      url: `${siteMetadata.siteUrl}/${mdxBlog.slug}`,
+      isAccessibleForFree: true,
+      inLanguage: siteMetadata.language
     }
 
     return (
@@ -146,18 +226,53 @@ export default async function BlogPage({ params }) {
   if (contentfulBlog) {
     const jsonLd = {
       "@context": "https://schema.org",
-      "@type": "NewsArticle",
+      "@type": "BlogPosting",
       headline: contentfulBlog.fields.title,
-      description:
-        contentfulBlog.fields.description || contentfulBlog.fields.title,
+      description: contentfulBlog.fields.description || contentfulBlog.fields.title,
+      image: contentfulBlog.fields.featuredImage ? 
+        [`https:${contentfulBlog.fields.featuredImage.fields.file.url}`] : 
+        [`${siteMetadata.siteUrl}${siteMetadata.socialBanner}`],
       datePublished: new Date(contentfulBlog.sys.createdAt).toISOString(),
       dateModified: new Date(contentfulBlog.sys.updatedAt).toISOString(),
-      author: [
-        {
-          "@type": "Person",
-          name: siteMetadata.author,
-        },
-      ],
+      author: {
+        "@type": "Person",
+        name: contentfulBlog.fields.author || siteMetadata.author,
+        url: siteMetadata.siteUrl,
+        sameAs: [
+          siteMetadata.twitter,
+          siteMetadata.instagram
+        ]
+      },
+      publisher: {
+        "@type": "Person",
+        name: siteMetadata.author,
+        url: siteMetadata.siteUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+        }
+      },
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `${siteMetadata.siteUrl}/${contentfulBlog.fields.slug}`
+      },
+      keywords: contentfulBlog.fields.tags ? 
+        contentfulBlog.fields.tags.join(", ") : 
+        siteMetadata.keywords.join(", "),
+      articleBody: contentfulBlog.fields.body ? 
+        contentfulBlog.fields.body.content
+          .map(item => item.content?.[0]?.value || "")
+          .join(" ") : 
+        "",
+      wordCount: contentfulBlog.fields.body ? 
+        contentfulBlog.fields.body.content
+          .map(item => item.content?.[0]?.value || "")
+          .join(" ")
+          .split(/\s+/).length : 
+        0,
+      url: `${siteMetadata.siteUrl}/${contentfulBlog.fields.slug}`,
+      isAccessibleForFree: true,
+      inLanguage: siteMetadata.language
     }
 
     return (

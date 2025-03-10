@@ -2,13 +2,121 @@ import { blogs } from "@/.velite/generated"
 import { getBlogPosts } from "@/lib/contentful"
 import Featured from "@/src/components/Home/Featured"
 import Recent from "@/src/components/Home/Recent"
+import siteMetadata from "@/src/utils/siteMetaData"
+import Script from "next/script"
+
+export const metadata = {
+  title: siteMetadata.title,
+  description: siteMetadata.description,
+  keywords: siteMetadata.keywords,
+  alternates: {
+    canonical: siteMetadata.siteUrl,
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+  },
+}
 
 export default async function Home() {
   try {
     const posts = await getBlogPosts()
+    const allPosts = [...blogs, ...posts]
+
+    const websiteSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      url: siteMetadata.siteUrl,
+      name: siteMetadata.title,
+      description: siteMetadata.description,
+      author: {
+        "@type": "Person",
+        name: siteMetadata.author,
+        url: siteMetadata.siteUrl,
+        sameAs: [
+          siteMetadata.instagram,
+          siteMetadata.twitter
+        ]
+      },
+      publisher: {
+        "@type": "Person",
+        name: siteMetadata.author,
+        url: siteMetadata.siteUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+        }
+      },
+      inLanguage: siteMetadata.language,
+      copyrightYear: new Date().getFullYear(),
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${siteMetadata.siteUrl}/search?q={search_term_string}`
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+
+    const blogSchema = {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      url: siteMetadata.siteUrl,
+      name: siteMetadata.title,
+      description: siteMetadata.description,
+      author: {
+        "@type": "Person",
+        name: siteMetadata.author,
+        url: siteMetadata.siteUrl,
+        sameAs: [
+          siteMetadata.instagram,
+          siteMetadata.twitter
+        ]
+      },
+      blogPost: allPosts.map(post => ({
+        "@type": "BlogPosting",
+        headline: post.title || post.fields?.title,
+        description: post.description || post.fields?.description,
+        url: `${siteMetadata.siteUrl}/${post.slug || post.fields?.slug}`,
+        datePublished: new Date(post.publishedAt || post.sys?.createdAt).toISOString(),
+        dateModified: new Date(post.updatedAt || post.sys?.updatedAt).toISOString(),
+        author: {
+          "@type": "Person",
+          name: post.author || post.fields?.author || siteMetadata.author
+        },
+        isAccessibleForFree: true
+      }))
+    }
+
+    const personSchema = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: siteMetadata.author,
+      url: siteMetadata.siteUrl,
+      sameAs: [
+        siteMetadata.instagram,
+        siteMetadata.twitter
+      ],
+      jobTitle: "Blogger",
+      worksFor: {
+        "@type": "Organization",
+        name: siteMetadata.title
+      },
+      image: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+      description: `Author of ${siteMetadata.title}`
+    }
 
     return (
       <main className="flex flex-col items-center justify-center">
+        <Script id="schema-website" type="application/ld+json">
+          {JSON.stringify(websiteSchema)}
+        </Script>
+        <Script id="schema-blog" type="application/ld+json">
+          {JSON.stringify(blogSchema)}
+        </Script>
+        <Script id="schema-person" type="application/ld+json">
+          {JSON.stringify(personSchema)}
+        </Script>
         <Featured posts={posts} />
         <Recent posts={posts} />
       </main>

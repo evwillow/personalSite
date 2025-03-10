@@ -1,0 +1,23 @@
+{
+  "name": "Evan Willow Moss | Personal Blog",
+  "short_name": "Evan's Blog",
+  "description": "Personal blog by Evan Willow Moss sharing insights, experiences, and thoughts on various topics.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4a90e2",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+} 
