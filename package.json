@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev -H 0.0.0.0 -p 3000",
+    "prebuild": "node scripts/preserve-files.js backup",
     "build": "next build",
-    "postbuild": "next-sitemap",
+    "postbuild": "node scripts/preserve-files.js restore && next-sitemap",
     "start": "next start -p 3001",
     "lint": "next lint",
     "content": "velite --clean"

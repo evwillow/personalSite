@@ -10,7 +10,7 @@ class VeliteWebpackPlugin {
       const { build } = await import('velite');
       await build({
         watch: dev,
-        clean: !dev,
+        clean: false, // Don't clean the entire public directory
         outputPath: 'public/velite',
       });
     });
