@@ -41,9 +41,19 @@ const Header = () => {
       </div>
 
       <div className="container mx-auto px-8 sm:px-12 py-6 flex items-center justify-between">
-        <Link href="/" aria-label="Go to homepage">
-          <Logo />
-        </Link>
+        <div className="flex items-center space-x-12">
+          <Link href="/" aria-label="Go to homepage">
+            <Logo />
+          </Link>
+          <nav aria-label="Main navigation">
+            <Link
+              href="/resume"
+              className="text-dark dark:text-light hover:text-primary dark:hover:text-primary transition-colors duration-200 font-medium"
+            >
+              Resume
+            </Link>
+          </nav>
+        </div>
         <nav aria-label="Social media links">
           <ul className="flex items-center space-x-3 justify-start">
             <li>

@@ -22,6 +22,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/resume" className="hover:underline focus:underline">
+                  Resume
+                </Link>
+              </li>
+              <li>
                 <a 
                   href={siteMetadata.instagram} 
                   target="_blank" 
