@@ -1,17 +1,14 @@
 import siteMetadata from "@/src/utils/siteMetaData"
 
-export const metadata = {
-  title: `Resume | ${siteMetadata.title}`,
-  description: "Evan Willow Moss - Resume and professional experience",
-  keywords: "resume, CV, professional experience, skills, portfolio",
-  alternates: {
-    canonical: `${siteMetadata.siteUrl}/resume`
-  }
-}
-
 export default function ResumePage() {
   return (
     <>
+      <head>
+        <title>Resume | {siteMetadata.title}</title>
+        <meta name="description" content="Evan Willow Moss - Resume and professional experience" />
+        <meta name="keywords" content="resume, CV, professional experience, skills, portfolio" />
+        <link rel="canonical" href={`${siteMetadata.siteUrl}/resume`} />
+      </head>
       <main className="min-h-screen bg-light dark:bg-dark">
         <div className="container mx-auto px-4 py-8 max-w-6xl">
           <div className="flex items-end justify-center mb-8">
@@ -50,7 +47,6 @@ export default function ResumePage() {
               title="Resume PDF"
               loading="eager"
               allow="fullscreen"
-              sandbox="allow-same-origin allow-scripts allow-forms"
             />
             
             {/* Fallback for browsers that don't support PDF embedding */}
