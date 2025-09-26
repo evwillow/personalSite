@@ -44,7 +44,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   experimental: {
-    optimizeCss: true,
+    optimizeCss: false, // Disable to avoid critters dependency issue
     forceSwcTransforms: true,
   },
   webpack: (config, { isServer }) => {
