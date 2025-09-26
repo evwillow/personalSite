@@ -44,7 +44,7 @@ export default function ResumePage() {
           {/* PDF Container */}
           <div className="w-full max-w-4xl mx-auto h-[85vh] bg-white dark:bg-gray-900 rounded-lg shadow-xl overflow-hidden relative">
             <iframe
-              src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=1&view=FitH&zoom=100"
+              src="/resume.pdf"
               className="w-full h-full border-0"
               title="Resume PDF"
               loading="eager"
