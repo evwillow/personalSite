@@ -1,7 +1,7 @@
 const siteMetadata = require("./src/utils/siteMetaData");
 
 module.exports = {
-  siteUrl: siteMetadata.siteUrl,
+  siteUrl: siteMetadata.siteUrl || "https://blog.evwillow.com",
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
