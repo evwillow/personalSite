@@ -42,9 +42,7 @@ const Header = () => {
 
       <div className="container mx-auto px-8 sm:px-12 py-6 flex items-center justify-between">
         <div className="flex items-center space-x-12">
-          <Link href="/" aria-label="Go to homepage">
-            <Logo />
-          </Link>
+          <Logo />
           <nav aria-label="Main navigation">
             <Link
               href="/resume"

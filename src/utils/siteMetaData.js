@@ -14,4 +14,4 @@ const siteMetadata = {
   keywords: ["blog", "Evan Willow Moss", "personal blog", "writing", "thoughts", "insights"],
 }
 
-module.exports = siteMetadata
+export default siteMetadata
