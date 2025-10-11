@@ -33,7 +33,7 @@ export default async function Home() {
         name: siteMetadata.author,
         url: siteMetadata.siteUrl,
         sameAs: [
-          siteMetadata.instagram,
+          siteMetadata.linkedin,
           siteMetadata.twitter
         ]
       },
@@ -69,7 +69,7 @@ export default async function Home() {
         name: siteMetadata.author,
         url: siteMetadata.siteUrl,
         sameAs: [
-          siteMetadata.instagram,
+          siteMetadata.linkedin,
           siteMetadata.twitter
         ]
       },
@@ -94,7 +94,7 @@ export default async function Home() {
       name: siteMetadata.author,
       url: siteMetadata.siteUrl,
       sameAs: [
-        siteMetadata.instagram,
+        siteMetadata.linkedin,
         siteMetadata.twitter
       ],
       jobTitle: "Blogger",

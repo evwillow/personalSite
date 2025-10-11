@@ -28,13 +28,13 @@ const Footer = () => {
               </li>
               <li>
                 <a 
-                  href={siteMetadata.instagram} 
+                  href={siteMetadata.linkedin} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:underline focus:underline"
-                  aria-label="Instagram profile"
+                  aria-label="LinkedIn profile"
                 >
-                  Instagram
+                  LinkedIn
                 </a>
               </li>
               <li>

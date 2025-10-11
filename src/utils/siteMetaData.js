@@ -1,17 +1,17 @@
 const siteMetadata = {
-  title: "Evan Willow Moss | Personal Blog",
-  author: "Evan Willow Moss",
-  headerTitle: "Evan Willow Moss Blog",
-  description: "Personal blog by Evan Willow Moss sharing insights, experiences, and thoughts on various topics.",
+  title: "Evan Willow Maus | Personal Blog",
+  author: "Evan Willow Maus",
+  headerTitle: "Evan Willow Maus Blog",
+  description: "Personal blog by Evan Willow Maus sharing insights, experiences, and thoughts on various topics.",
   language: "en-us",
   theme: "system",
   siteUrl: "https://evwillow.com",
   siteLogo: "/logo.png",
   socialBanner: "/social-banner.png",
-  instagram: "https://instagram.com/evwillow",
+  linkedin: "https://linkedin.com/in/evwillow",
   twitter: "https://x.com/evanwillowmoss",
   locale: "en-US",
-  keywords: ["blog", "Evan Willow Moss", "personal blog", "writing", "thoughts", "insights"],
+  keywords: ["blog", "Evan Willow Maus", "personal blog", "writing", "thoughts", "insights"],
 }
 
 export default siteMetadata

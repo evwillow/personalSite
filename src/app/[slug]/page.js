@@ -158,7 +158,7 @@ export default async function BlogPage({ params }) {
         url: siteMetadata.siteUrl,
         sameAs: [
           siteMetadata.twitter,
-          siteMetadata.instagram
+          siteMetadata.linkedin
         ]
       },
       publisher: {
@@ -240,7 +240,7 @@ export default async function BlogPage({ params }) {
         url: siteMetadata.siteUrl,
         sameAs: [
           siteMetadata.twitter,
-          siteMetadata.instagram
+          siteMetadata.linkedin
         ]
       },
       publisher: {

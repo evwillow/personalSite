@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Logo from "./Logo"
-import instagram from "./instagram.png"
+import LinkedInIcon from "./LinkedInIcon"
 import X from "./x.png"
 import { useState } from "react"
 import Link from "next/link"
@@ -67,17 +67,13 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="//instagram.com/evwillow"
+                href="//linkedin.com/in/evwillow"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow me on Instagram"
+                aria-label="Connect with me on LinkedIn"
                 className="transition-transform hover:scale-110 focus:scale-110"
               >
-                <Image
-                  src={instagram}
-                  alt="Instagram Logo"
-                  className="w-8 h-8 sm:w-12 sm:h-12"
-                />
+                <LinkedInIcon className="w-8 h-8 sm:w-12 sm:h-12" />
               </a>
             </li>
           </ul>

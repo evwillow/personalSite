@@ -2,7 +2,7 @@ import siteMetadata from "@/src/utils/siteMetaData"
 
 export const metadata = {
   title: `Resume | ${siteMetadata.title}`,
-  description: "Evan Willow Moss - Resume and professional experience",
+  description: "Evan Willow Maus - Resume and professional experience",
   keywords: "resume, CV, professional experience, skills, portfolio",
   alternates: {
     canonical: `${siteMetadata.siteUrl}/resume`
