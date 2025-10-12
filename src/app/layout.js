@@ -49,7 +49,6 @@ export const metadata = {
   manifest: "/manifest.json",
   icons: {
     icon: [
-      { url: "/favicon.ico" },
       { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
       { url: "/icon-512x512.png", sizes: "512x512", type: "image/png" },
     ],
@@ -78,7 +77,7 @@ export const metadata = {
     title: siteMetadata.title,
     description: siteMetadata.description,
     images: [siteMetadata.socialBanner],
-    creator: "@evanwillowmoss",
+    creator: "@evwillow1",
   },
   robots: {
     index: true,
@@ -106,7 +105,6 @@ export default function RootLayout({ children }) {
       className="scroll-smooth"
     >
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#ffffff" />
@@ -122,7 +120,7 @@ export default function RootLayout({ children }) {
         className={cx(
           inter.variable,
           manrope.variable,
-          "font-mr bg-light dark:bg-dark"
+          "font-mr bg-light dark:bg-dark min-h-screen flex flex-col"
         )}
       >
         <Script
@@ -142,7 +140,9 @@ export default function RootLayout({ children }) {
           `}
         </Script>
         <Header />
-        {children}
+        <div className="flex-grow">
+          {children}
+        </div>
         <Footer />
       </body>
     </html>

@@ -4,7 +4,11 @@ import BlogLayoutTwo from "../Blog/BlogLayoutTwo"
 
 const Featured = ({ posts }) => {
   if (!posts || posts.length === 0) {
-    return <p className="text-center text-gray-600">No blog posts available.</p>
+    return (
+      <div className="w-full mt-16 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 flex items-center justify-center min-h-[400px]">
+        <p className="text-center text-gray-600 dark:text-gray-400 text-lg">No blog posts available.</p>
+      </div>
+    )
   }
 
   // Sort posts by publishedAt date and get the oldest 5

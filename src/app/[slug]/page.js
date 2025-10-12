@@ -2,6 +2,7 @@ import RenderMdx from "@/src/components/Blog/RenderMdx"
 import siteMetadata from "@/src/utils/siteMetaData"
 import { blogs } from "@/.velite/generated"
 import { getBlogPosts } from "@/lib/contentful"
+import { samplePosts } from "@/lib/samplePosts"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -12,7 +13,13 @@ export async function generateStaticParams() {
   const contentfulSlugs = contentfulPosts.map((post) => ({
     slug: post.fields.slug,
   }))
-  return [...mdxSlugs, ...contentfulSlugs]
+  
+  // Include sample posts in development mode
+  const sampleSlugs = process.env.NODE_ENV === 'development'
+    ? samplePosts.map((post) => ({ slug: post.fields.slug }))
+    : []
+  
+  return [...mdxSlugs, ...contentfulSlugs, ...sampleSlugs]
 }
 
 export async function generateMetadata({ params }) {
@@ -62,7 +69,7 @@ export async function generateMetadata({ params }) {
         title: mdxBlog.title,
         description: mdxBlog.description,
         images: ogImages,
-        creator: "@evanwillowmoss",
+        creator: "@evwillow1",
       },
       alternates: {
         canonical: `${siteMetadata.siteUrl}/${mdxBlog.slug}`,
@@ -121,7 +128,7 @@ export async function generateMetadata({ params }) {
         title: contentfulBlog.fields.title,
         description: contentfulBlog.fields.description || contentfulBlog.fields.title,
         images: ogImages,
-        creator: "@evanwillowmoss",
+        creator: "@evwillow1",
       },
       alternates: {
         canonical: `${siteMetadata.siteUrl}/${contentfulBlog.fields.slug}`,
@@ -320,6 +327,91 @@ export default async function BlogPage({ params }) {
         </article>
       </>
     )
+  }
+
+  // Check for sample posts in development mode
+  if (process.env.NODE_ENV === 'development') {
+    const samplePost = samplePosts.find(post => post.fields.slug === slug)
+    
+    if (samplePost) {
+      return (
+        <>
+          <article>
+            <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
+              <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <h1 className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6">
+                  {samplePost.fields.title}
+                </h1>
+              </div>
+              <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
+              {samplePost.fields.image?.fields?.file?.url && (
+                <Image
+                  src={`https:${samplePost.fields.image.fields.file.url}`}
+                  alt={samplePost.fields.title}
+                  width={samplePost.fields.image.fields.file.details.image.width}
+                  height={samplePost.fields.image.fields.file.details.image.height}
+                  className="aspect-square w-full h-full object-cover object-center"
+                  priority
+                  sizes="100vw"
+                />
+              )}
+            </div>
+            <div className="flex items-center justify-center px-5 md:px-10">
+              <div className="max-w-4xl w-full prose dark:prose-dark">
+                <div className="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-6 mb-8 not-prose">
+                  <p className="text-blue-800 dark:text-blue-200 font-medium">
+                    📝 This is a sample blog post for local development. 
+                    Create real content in your CMS to replace this placeholder.
+                  </p>
+                </div>
+                
+                <p className="lead">
+                  {samplePost.fields.description}
+                </p>
+                
+                <p>
+                  This is a sample blog post to demonstrate how your blog will look. 
+                  Replace this content by creating actual blog posts in your content management system.
+                </p>
+                
+                <h2>Getting Started</h2>
+                <p>
+                  To add your own blog posts, you can:
+                </p>
+                <ul>
+                  <li>Create content in your Contentful CMS</li>
+                  <li>Add MDX files to your content directory</li>
+                  <li>Configure your content sources</li>
+                </ul>
+                
+                <h2>Sample Content</h2>
+                <p>
+                  This placeholder demonstrates the layout and styling of your blog posts.
+                  Your actual content will appear here once you publish it. The layout matches
+                  exactly what you'll see with real blog posts from your CMS.
+                </p>
+                
+                <h3>Key Features</h3>
+                <p>
+                  Your blog posts will support rich content including:
+                </p>
+                <ul>
+                  <li>Beautiful typography with the prose classes</li>
+                  <li>Featured images displayed as hero sections</li>
+                  <li>Responsive design that looks great on all devices</li>
+                  <li>Dark mode support</li>
+                </ul>
+                
+                <p>
+                  Once you add real content, it will seamlessly integrate with this layout,
+                  providing a professional and polished reading experience for your visitors.
+                </p>
+              </div>
+            </div>
+          </article>
+        </>
+      )
+    }
   }
 
   return notFound()

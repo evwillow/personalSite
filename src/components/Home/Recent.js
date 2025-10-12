@@ -2,6 +2,11 @@ import React from "react"
 import BlogLayoutThree from "../Blog/BlogLayoutThree"
 
 const RecentPosts = ({ posts }) => {
+  // Return null if no posts at all
+  if (!posts || posts.length === 0) {
+    return null
+  }
+
   // Sort posts by date (newest first)
   const sortedPosts = [...posts].sort((a, b) => {
     const dateA = new Date(a.fields.publishedAt || a.sys.firstPublishedAt)
@@ -9,8 +14,8 @@ const RecentPosts = ({ posts }) => {
     return dateB - dateA
   })
 
-  // Skip the 5 oldest posts
-  const recentPosts = sortedPosts.slice(0, -5)
+  // Skip the 5 oldest posts, but show all if we have 5 or fewer
+  const recentPosts = sortedPosts.length > 5 ? sortedPosts.slice(0, -5) : []
 
   if (recentPosts.length === 0) {
     return null

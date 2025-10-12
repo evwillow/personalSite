@@ -1,5 +1,6 @@
 import { blogs } from "@/.velite/generated"
 import { getBlogPosts } from "@/lib/contentful"
+import { samplePosts } from "@/lib/samplePosts"
 import Featured from "@/src/components/Home/Featured"
 import Recent from "@/src/components/Home/Recent"
 import siteMetadata from "@/src/utils/siteMetaData"
@@ -20,7 +21,12 @@ export const metadata = {
 export default async function Home() {
   try {
     const posts = await getBlogPosts()
-    const allPosts = [...blogs, ...posts]
+    
+    // Use sample posts only in development (localhost) when no real posts exist
+    const isLocalhost = process.env.NODE_ENV === 'development'
+    const postsToDisplay = (posts.length === 0 && isLocalhost) ? samplePosts : posts
+    
+    const allPosts = [...blogs, ...postsToDisplay]
 
     const websiteSchema = {
       "@context": "https://schema.org",
@@ -117,8 +123,8 @@ export default async function Home() {
         <Script id="schema-person" type="application/ld+json">
           {JSON.stringify(personSchema)}
         </Script>
-        <Featured posts={posts} />
-        <Recent posts={posts} />
+        <Featured posts={postsToDisplay} />
+        <Recent posts={postsToDisplay} />
       </main>
     )
   } catch (error) {
