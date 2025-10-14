@@ -10,34 +10,32 @@ export const metadata = {
 export default function Experience() {
   const professionalExperiences = [
     {
-      title: "Fullstack Developer",
+      title: "Full stack developer (Freelance)",
       company: "Independent",
       location: "Remote",
       period: "January 2024 - Present",
-      description: "Building high-performance web applications with measurable business impact and leading full product lifecycle from design to deployment.",
+      description: "Shipped three client projects end-to-end using Next.js with TypeScript; worked directly with stakeholders from scope to launch.",
       achievements: [
-        "Built high-performance websites with Next.js and Supabase, integrating market APIs and advanced data visualizations",
-        "Implemented optimized database queries and scalable backend logic",
-        "Tripled client traffic (200-300% growth)—an outcome most startups fail to achieve even with entire web teams",
-        "Led client engagement from design to deployment, owning the full product lifecycle",
-        "Delivered reliable, production-grade backend systems with measurable business impact"
+        "Shipped three client projects end-to-end using Next.js with TypeScript; worked directly with stakeholders from scope to launch",
+        "Implemented authentication where needed and integrated analytics APIs to monitor usage and guide content updates",
+        "Optimized for performance, accessibility, and reliability; containerized with Docker and deployed/maintained on DigitalOcean with GitHub for source control",
+        "Delivered real outcomes: built and launched a paid site for an environmental nonprofit that now actively serves community visitors (example: northcentralohiopollinatorpathway.org)"
       ],
-      technologies: ["Next.js", "React", "Supabase", "JavaScript", "TypeScript", "Node.js", "Tailwind CSS", "APIs"]
+      technologies: ["Next.js", "TypeScript", "Docker", "DigitalOcean", "GitHub", "Authentication", "Analytics APIs"]
     },
     {
       title: "Intern",
-      company: "necoTECH - Sustainable Materials Venture",
-      location: "Remote",
+      company: "necoTECH",
+      location: "Delaware, OH",
       period: "May 2023 - September 2023",
-      description: "Drove operational efficiency through automation and data analysis, delivering returns far exceeding internship costs.",
+      description: "Delivered a repeatable, company-wide process for consistent outreach and timely proposal prep, helping the team identify and pursue government contracts and partnerships.",
       achievements: [
-        "Automated federal contract discovery with Python/Pandas, cutting 200+ staff hours and $5,000 in annual costs",
-        "Produced a return far greater than the cost of the internship itself",
-        "Partnered with executives to convert 1,000+ raw leads into a ranked pipeline",
-        "Presented findings in strategy sessions that influenced key launch decisions",
-        "Demonstrated ability to deliver immediate, measurable business value"
+        "Tracker: Centralized contract/lead management in a single Google Sheets/Excel pipeline; defined stages & ownership; added Apps Script dedupe/status nudges",
+        "Strategy + mentorship: Co-developed the initial marketing playbook (social, networking, outreach templates) with founders and two mentors, including an experienced entrepreneur who coached me on startup ops, cash flow, and go-to-market",
+        "Gov contracts: Built Python (pandas) scripts to surface/structure government procurement opportunities; cleaned/tagged opportunities and fed prioritized leads into the tracker",
+        "Outcome: Delivered a repeatable, company-wide process for consistent outreach and timely proposal prep, helping the team identify and pursue government contracts and partnerships"
       ],
-      technologies: ["Python", "Pandas", "Data Analysis", "Automation"]
+      technologies: ["Python", "Pandas", "Google Sheets", "Apps Script", "Data Analysis"]
     },
     {
       title: "Gallery Attendant",
@@ -56,30 +54,28 @@ export default function Experience() {
 
   const leadershipExperiences = [
     {
-      title: "Founder & President",
-      company: "Student Climate Action Team",
-      location: "Columbus, OH",
+      title: "Founder and President",
+      company: "Student Climate Action Team (SCAT)",
+      location: "Delaware, OH",
       period: "January 2023 - August 2024",
-      description: "Founded and scaled environmental advocacy organization driving measurable climate impact through community partnerships.",
+      description: "Founded and led a 10-person team; organized ~30 policy-focused events (~30 attendees on average).",
       achievements: [
-        "Founded and scaled organization to 15 members with 10 active volunteers, mobilizing 50-100+ participants per event",
-        "Forged partnerships with NGOs, city council, and university groups to launch renewable energy program",
-        "Cut household CO₂ emissions ~10% across 10,000 homes (~70k tons over 10 years)",
-        "Built and managed team website, centralizing resources and expanding outreach",
-        "Recognized by city council and invited to present projects influencing renewable energy policy"
+        "Founded and led a 10-person team; organized ~30 policy-focused events (~30 attendees on average)",
+        "Partnered with Sustainable Delaware Ohio and campus groups to support outreach for a city policy projected to reach ~10,000 households (per city/NGO estimates)",
+        "Built and maintained a lightweight React website to centralize resources and sign-ups",
+        "Presented initiatives to City Council; work received local media coverage"
       ],
-      technologies: ["Web Development", "Community Organizing", "Policy Advocacy"]
+      technologies: ["React", "Web Development", "Community Organizing", "Policy Advocacy"]
     },
     {
-      title: "Eagle Scout Project Lead",
-      company: "Boy Scouts of America",
-      location: "Columbus, OH",
-      period: "May 2023 - October 2023",
-      description: "Directed large-scale volunteer project to construct environmental education infrastructure.",
+      title: "Eagle Scout",
+      company: "Schultz Elementary Environmental Project",
+      location: "Delaware, OH",
+      period: "October 2023",
+      description: "Coordinated ~100 participants to extend woodland/trail access with signage and trail markers; managed ~$1,000 materials budget and stakeholder approvals (Board of Education, community partners).",
       achievements: [
-        "Managed 50 volunteers over 5 months to construct a 20-acre environmental education park",
-        "Designed and implemented 2 miles of nature trails",
-        "Coordinated project logistics, budgeting, and volunteer scheduling",
+        "Coordinated ~100 participants to extend woodland/trail access with signage and trail markers",
+        "Managed ~$1,000 materials budget and stakeholder approvals (Board of Education, community partners)",
         "Demonstrated leadership, project management, and community service"
       ],
       technologies: [],

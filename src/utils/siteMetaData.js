@@ -1,8 +1,8 @@
 const siteMetadata = {
-  title: "Evan W Maus | Economics, Data Science & AI",
-  author: "Evan W Maus",
-  headerTitle: "Evan W Maus",
-  description: "UC Berkeley student majoring in Economics & Data Science with a minor in Computer Science. Building solutions at the intersection of AI, finance, and sustainability. Fullstack developer, quantitative trader, and researcher.",
+  title: "Evan Maus | Economics, Data Science & AI",
+  author: "Evan Maus",
+  headerTitle: "Evan Maus",
+  description: "UC Berkeley student pursuing a Bachelor of Arts in Economics and Data Science with a minor in Computer Science. Building solutions at the intersection of AI, finance, and sustainability. Fullstack developer, quantitative researcher, and entrepreneur.",
   language: "en-us",
   theme: "system",
   siteUrl: "https://evwillow.com",
@@ -12,7 +12,7 @@ const siteMetadata = {
   github: "https://github.com/evwillow",
   linkedin: "https://linkedin.com/in/evwillow",
   twitter: "https://x.com/evwillow1",
-  location: "San Francisco, CA",
+  location: "Berkeley, CA",
   university: "UC Berkeley",
   graduation: "May 2027",
   locale: "en-US",
@@ -29,7 +29,9 @@ const siteMetadata = {
     "Next.js",
     "Python",
     "Finance",
-    "Sustainability"
+    "Sustainability",
+    "PyTorch",
+    "TensorFlow"
   ],
 }
 

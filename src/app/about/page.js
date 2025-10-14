@@ -19,7 +19,7 @@ export default function About() {
               </h1>
               <div className="h-1 w-20 bg-accent mb-8"></div>
               <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 md:mb-0">
-                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley majoring in Economics and Data Science with a minor in Computer Science. I'm passionate about building solutions at the intersection of AI, finance, and sustainability.
+                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a Bachelor of Arts in Economics and Data Science with a minor in Computer Science. I'm passionate about building solutions at the intersection of AI, finance, and sustainability, with hands-on experience in fullstack development and quantitative research.
               </p>
             </div>
             <div className="flex-shrink-0 mx-auto md:mx-0">
@@ -63,19 +63,22 @@ export default function About() {
                 Relevant Coursework
               </h4>
               <ul className="list-disc list-inside text-dark/80 dark:text-light/80 space-y-2">
+                <li>Structure and Interpretation of Computer Programs</li>
+                <li>Introduction to Probability and Statistics</li>
+                <li>Principles and Techniques of Data Science</li>
                 <li>Data Structures (CS61B)</li>
+                <li>Macroeconomics & Microeconomics</li>
                 <li>Econometrics</li>
-                <li>Probability & Statistical Modeling</li>
-                <li>Planned: AI, Game Theory, Upper-Division CS/DS</li>
+                <li>Linear Algebra</li>
               </ul>
             </div>
 
             <div className="mt-6">
               <h4 className="text-xl font-semibold text-dark dark:text-light mb-3">
-                Research
+                Research & Projects
               </h4>
               <p className="text-dark/80 dark:text-light/80">
-                ML-based trading research focusing on returns forecasting, factor models, and portfolio optimization using market and alternative data.
+                ML-based trading research focusing on returns forecasting, factor models, and portfolio optimization using market and alternative data. Currently developing a breakout pattern analysis tool processing 10,000+ tickers across multiple timeframes.
               </p>
             </div>
 
@@ -99,10 +102,10 @@ export default function About() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white dark:bg-dark shadow-lg rounded-2xl p-6 border-2 border-gray-100 dark:border-accentDark/50">
-              <h3 className="text-xl font-semibold text-dark dark:text-light mb-4">Expert</h3>
+              <h3 className="text-xl font-semibold text-dark dark:text-light mb-4">Languages</h3>
               <div className="flex flex-wrap gap-2">
-                {["Python", "JavaScript", "SQL", "C++", "Next.js", "Node.js", "React", "Tailwind", "Git/GitHub"].map((skill) => {
-                  const keySkills = ["Python", "JavaScript", "Next.js", "React"];
+                {["Python", "Java", "C", "JavaScript", "SQL", "HTML/CSS"].map((skill) => {
+                  const keySkills = ["Python", "JavaScript", "Java"];
                   const isKeySkill = keySkills.includes(skill);
                   return (
                     <span
@@ -119,10 +122,10 @@ export default function About() {
             </div>
 
             <div className="bg-white dark:bg-dark shadow-lg rounded-2xl p-6 border-2 border-gray-100 dark:border-accentDark/50">
-              <h3 className="text-xl font-semibold text-dark dark:text-light mb-4">Data & ML</h3>
+              <h3 className="text-xl font-semibold text-dark dark:text-light mb-4">Frameworks & Libraries</h3>
               <div className="flex flex-wrap gap-2">
-                {["Pandas", "NumPy", "Matplotlib", "Seaborn", "JUnit", "Optimization", "Machine Learning", "Data Analysis"].map((skill) => {
-                  const keySkills = ["Machine Learning", "Data Analysis", "Pandas"];
+                {["React", "Next.js", "Node.js", "Tailwind CSS", "FastAPI", "pandas", "NumPy", "TensorFlow", "PyTorch", "Recharts", "JUnit"].map((skill) => {
+                  const keySkills = ["React", "Next.js", "pandas", "NumPy", "TensorFlow", "PyTorch"];
                   const isKeySkill = keySkills.includes(skill);
                   return (
                     <span
@@ -139,9 +142,9 @@ export default function About() {
             </div>
 
             <div className="bg-white dark:bg-dark shadow-lg rounded-2xl p-6 border-2 border-gray-100 dark:border-accentDark/50">
-              <h3 className="text-xl font-semibold text-dark dark:text-light mb-4">Working Knowledge</h3>
+              <h3 className="text-xl font-semibold text-dark dark:text-light mb-4">Tools & Platforms</h3>
               <div className="flex flex-wrap gap-2">
-                {["Docker", "Linux", "Scipy"].map((skill) => (
+                {["Linux", "Docker", "Git & GitHub", "GitHub Actions", "SSH", "DigitalOcean", "Supabase", "PostgreSQL", "Python venv"].map((skill) => (
                   <span
                     key={skill}
                     className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-dark dark:text-light rounded-lg text-sm font-semibold border border-gray-200 dark:border-gray-700"
@@ -155,9 +158,9 @@ export default function About() {
             <div className="bg-white dark:bg-dark shadow-lg rounded-2xl p-6 border-2 border-gray-100 dark:border-accentDark/50">
               <h3 className="text-xl font-semibold text-dark dark:text-light mb-4">Languages</h3>
               <ul className="space-y-2 text-dark/80 dark:text-light/80">
-                <li><span className="font-semibold text-dark dark:text-light">English:</span> Native proficiency</li>
-                <li><span className="font-semibold text-dark dark:text-light">Spanish:</span> Near-fluent</li>
-                <li><span className="font-semibold text-dark dark:text-light">Chinese:</span> Conversational</li>
+                <li><span className="font-semibold text-dark dark:text-light">English:</span> Native</li>
+                <li><span className="font-semibold text-dark dark:text-light">Spanish:</span> Advanced (near-fluent) — speaking, reading, writing</li>
+                <li><span className="font-semibold text-dark dark:text-light">Chinese:</span> Conversational; actively studying for professional use</li>
               </ul>
             </div>
           </div>
@@ -180,11 +183,10 @@ export default function About() {
                 </span>
               </div>
               <ul className="list-disc list-inside text-dark/80 dark:text-light/80 space-y-2">
-                <li>Founded and scaled a 15-member organization with 10 active volunteers</li>
-                <li>Mobilized 50-100+ participants per event</li>
-                <li>Partnered with NGOs, city council, and universities to launch renewable program cutting household CO₂ emissions ~10% across 10,000 homes</li>
-                <li>Built and managed team website to expand outreach</li>
-                <li>Recognized by city council and invited to present projects influencing renewable energy policy</li>
+                <li>Founded and led a 10-person team; organized ~30 policy-focused events (~30 attendees on average)</li>
+                <li>Partnered with Sustainable Delaware Ohio and campus groups to support outreach for a city policy projected to reach ~10,000 households (per city/NGO estimates)</li>
+                <li>Built and maintained a lightweight React website to centralize resources and sign-ups</li>
+                <li>Presented initiatives to City Council; work received local media coverage</li>
               </ul>
             </div>
 
@@ -198,7 +200,7 @@ export default function About() {
                 </span>
               </div>
               <p className="text-dark/80 dark:text-light/80">
-                Directed 50 volunteers over 5 months to construct a 20-acre environmental education park with 2 miles of trails.
+                Coordinated ~100 participants to extend woodland/trail access with signage and trail markers; managed ~$1,000 materials budget and stakeholder approvals (Board of Education, community partners).
               </p>
             </div>
 
@@ -212,7 +214,7 @@ export default function About() {
                 </span>
               </div>
               <p className="text-dark/80 dark:text-light/80">
-                Columbus Council on World Affairs capstone-based global competency program with seminars and final project in international affairs and economics.
+                Completed seminars and a capstone on environmental policy/economics.
               </p>
             </div>
           </div>
@@ -224,7 +226,7 @@ export default function About() {
             My Mission
           </h2>
           <p className="text-lg md:text-xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 max-w-4xl mx-auto">
-            I am building a career at the intersection of AI, finance, and sustainability, leveraging data-driven methods to create scalable solutions with global impact. My interests span technology, finance, climate, entrepreneurship, and data—not as hobbies, but as domains I'm actively shaping.
+            I am building a career at the intersection of AI, finance, and sustainability, leveraging data-driven methods to create scalable solutions with global impact. My interests span full-stack engineering, data pipelines, applied ML (PyTorch/TensorFlow), market-data tools, climate software, and product-led entrepreneurship.
           </p>
           <a
             href="/resume.pdf"

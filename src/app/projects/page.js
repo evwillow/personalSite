@@ -10,77 +10,79 @@ export const metadata = {
 export default function Projects() {
   const projects = [
     {
-      title: "Quantitative Trading System",
-      subtitle: "Next.js, TypeScript, Reinforcement Learning",
-      description: "Engineered a breakout pattern analysis tool that processed and analyzed 100,000+ samples across multiple timeframes. Applied reinforcement learning to outperform benchmarks, delivering 40%+ simulated returns on 20 years of backtests—performance rivaling hedge-fund quant systems.",
+      title: "Breakout Study Tool",
+      subtitle: "Next.js, TypeScript, yfinance, Supabase",
+      description: "Built a web app for studying breakout patterns across ~10,000 tickers using yfinance + pandas, with a Next.js/TypeScript front end. Scans multiple timeframes (intraday 1/5/15 min & 1h, plus daily/weekly), adds chart overlays, notes, and simple up/down classifications.",
       highlights: [
-        "Processed 100,000+ market samples across multiple timeframes",
-        "Applied reinforcement learning for pattern recognition",
-        "Achieved 40%+ simulated returns on 20-year backtests",
-        "Led peer collaboration on GitHub with code reviews and mentoring",
-        "Demonstrated performance comparable to institutional systems"
+        "Scans multiple timeframes (intraday 1/5/15 min & 1h, plus daily/weekly)",
+        "Processes ~10,000 tickers using yfinance + pandas",
+        "Deployed on DigitalOcean with Supabase Auth (admin/user) and storage via Google Drive/Supabase",
+        "Used daily by me and my dad for pattern practice",
+        "Built with Next.js/TypeScript front end"
       ],
       link: "https://trade.evwillow.com",
       linkText: "View Live Demo",
-      tags: ["Next.js", "TypeScript", "ML", "Finance", "Trading"]
+      tags: ["Next.js", "TypeScript", "yfinance", "pandas", "Supabase", "DigitalOcean"]
     },
     {
-      title: "Quantitative Risk Analysis Model",
-      subtitle: "Python, LSTM, Wharton Research Data Services",
-      description: "Built an LSTM-based stock prediction model integrating Value-at-Risk (VaR) and volatility metrics on a 10,000-stock dataset. Engineered advanced indicators and stress-testing tools that produce professional-grade risk-adjusted scanners.",
+      title: "Live Intraday Scanner",
+      subtitle: "Thinkorswim + JavaScript",
+      description: "Wrote a JS pipeline that feeds custom scans into Thinkorswim watchlists for real-time candidates; notably surfaced CLSK ahead of a breakout for discretionary review.",
       highlights: [
-        "LSTM neural network for stock prediction",
-        "Integrated Value-at-Risk (VaR) and volatility metrics",
-        "Analyzed 10,000-stock dataset",
-        "Developed stress-testing tools with WRDS data",
-        "Published full pipeline and documentation on GitHub"
+        "JavaScript pipeline for real-time market scanning",
+        "Custom scans into Thinkorswim watchlists",
+        "Notably surfaced CLSK ahead of a breakout for discretionary review",
+        "Real-time candidate identification"
       ],
       link: siteMetadata.github,
       linkText: "View on GitHub",
-      tags: ["Python", "LSTM", "Risk Analysis", "VaR", "Finance"]
+      tags: ["JavaScript", "Thinkorswim", "Trading", "Real-time"]
     },
     {
-      title: "Client Web Applications",
-      subtitle: "Next.js, Supabase, Market APIs",
-      description: "Built high-performance websites with Next.js and Supabase, integrating market APIs and advanced data visualizations. Implemented optimized database queries and scalable backend logic that tripled client traffic (200-300% growth).",
+      title: "Job-Opportunity Scraper",
+      subtitle: "Python, LinkedIn, Greenhouse, Indeed",
+      description: "Aggregates roles from LinkedIn, Greenhouse, and Indeed into CSV for targeted applications; handles 'thousands' of U.S. postings with filters/keywords to speed search and triage.",
       highlights: [
-        "Fullstack development with Next.js and Supabase",
-        "Integrated real-time market APIs",
-        "Advanced data visualizations with interactive charts",
-        "Optimized database queries for performance",
-        "Tripled client traffic (200-300% growth)",
-        "Led projects from design to deployment"
-      ],
-      image: "/PollinatorPathways.gif",
-      tags: ["Next.js", "Supabase", "APIs", "Fullstack", "Performance"]
-    },
-    {
-      title: "Productivity Optimization Tool",
-      subtitle: "Java, Google APIs, Automation",
-      description: "Designed and deployed a Java-based tool integrating Google Sheets and Google Calendar for automated task ranking and prioritization. Increased efficiency by ~20% and was adopted by peers for workflow optimization.",
-      highlights: [
-        "Automated task ranking and prioritization",
-        "Google Sheets and Calendar integration",
-        "Increased efficiency by ~20%",
-        "Adopted by peers for workflow optimization",
-        "Demonstrated practical impact on productivity"
+        "Aggregates roles from LinkedIn, Greenhouse, and Indeed into CSV",
+        "Handles 'thousands' of U.S. postings with filters/keywords",
+        "Speeds search and triage for targeted applications",
+        "Automated job opportunity discovery"
       ],
       link: siteMetadata.github,
       linkText: "View on GitHub",
-      tags: ["Java", "Automation", "APIs", "Productivity"]
+      tags: ["Python", "Web Scraping", "LinkedIn", "Greenhouse", "Indeed"]
+    },
+    {
+      title: "Cat-vs-Dog Classifier",
+      subtitle: "TensorFlow, Local GPU",
+      description: "Collaboratively trained a CNN on a local GPU to classify images with solid accuracy; managed compute usage (batch sizing/runtime) to run reliably on limited VRAM—giving hands-on experience with GPU workflow basics.",
+      highlights: [
+        "Collaboratively trained a CNN on a local GPU",
+        "Classified images with solid accuracy",
+        "Managed compute usage (batch sizing/runtime) to run reliably on limited VRAM",
+        "Hands-on experience with GPU workflow basics"
+      ],
+      link: siteMetadata.github,
+      linkText: "View on GitHub",
+      tags: ["TensorFlow", "CNN", "GPU", "Machine Learning", "Computer Vision"]
     }
   ]
 
   const academicProjects = [
     {
       title: "CS 61B Data Structures",
-      description: "Engineered advanced data structures and graph algorithms in Java that outperform typical coursework, directly applicable to high-frequency trading system design and order-book management.",
-      tags: ["Java", "Algorithms", "Data Structures"]
+      description: "Implemented ArrayDeque and LinkedListDeque (circular sentinel), BSTMap, and project features (iterators, equals, toString, resizing). Wrote JUnit tests and analyzed runtime; explored how maps/queues can model basic order-book mechanics.",
+      tags: ["Java", "Algorithms", "Data Structures", "JUnit"]
     },
     {
-      title: "Self-Directed Learning",
-      description: "Mastered Python, backend systems, and data structures through online courses, while self-directing into stochastic processes, numerical optimization, and quantitative finance at a professional level.",
-      tags: ["Python", "Backend", "Optimization", "Finance"]
+      title: "Self-Directed AI/ML Coursework",
+      description: "Completed practical courses covering tensors & autograd, nn.Module, DataLoaders, training/evaluation loops, overfitting control (regularization/early stopping), and basic model types (MLP/CNN); used NumPy/Pandas for preprocessing and small applied exercises.",
+      tags: ["PyTorch", "TensorFlow", "NumPy", "Pandas", "Machine Learning"]
+    },
+    {
+      title: "Supplemental Online Study",
+      description: "Python & backend fundamentals, plus quantitative topics (stochastic processes, numerical optimization, introductory quantitative finance) with small practice projects.",
+      tags: ["Python", "Backend", "Optimization", "Finance", "Stochastic Processes"]
     }
   ]
 
