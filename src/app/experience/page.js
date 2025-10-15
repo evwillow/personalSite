@@ -102,7 +102,7 @@ export default function Experience() {
   ]
 
   return (
-    <main className="flex flex-col items-center justify-center px-5 sm:px-10 md:px-24 lg:px-32 py-12">
+    <main className="flex flex-col items-center justify-center px-5 sm:px-10 md:px-24 lg:px-32 my-12">
       <div className="max-w-6xl w-full">
         {/* Hero Section */}
         <section className="mb-16">

@@ -75,7 +75,7 @@ body {
     overflow: hidden;
     animation: gridPulse 14s ease-in-out infinite;
     pointer-events: none; /* Overlay itself ignores clicks */
-    z-index: 0; /* Below all content */
+    z-index: 1; /* Base layer for hexagons */
     min-height: 100vh;
     border: none; /* Ensure no visible outlines */
     outline: none; /* Remove any focus outlines */
@@ -96,7 +96,8 @@ body {
 /* Content wrapper styles */
 .content-wrapper {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    pointer-events: none !important; /* FORCE no blocking of interactions */
 }
 
 /* Ensure content blocks are above the hex overlay */
@@ -106,23 +107,32 @@ section,
 .grid > *,
 .container > * {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    pointer-events: none !important; /* FORCE no blocking of interactions */
 }
 
 /* Only elevate individual cards above hex background, not gaps */
 .hex-card {
     position: relative;
-    z-index: 2; /* above .hex-overlay (0), but allows gaps to be hoverable */
-    pointer-events: none; /* Don't block interactions by default */
+    z-index: 2; /* Same level as content wrapper */
+    pointer-events: none !important; /* FORCE no blocking of interactions */
     background: transparent !important; /* Completely transparent to show hexagon pattern */
     border-radius: 0.75rem; /* Add rounded corners */
 }
 
-/* Make card content clickable */
-.hex-card > * {
-    pointer-events: auto; /* Card content is clickable */
+/* Make ALL content clickable - FORCE it */
+.hex-card > *,
+.hex-card a,
+.hex-card button,
+.hex-card input,
+.hex-card textarea,
+.hex-card select,
+.hex-card img,
+.hex-card video,
+.hex-card iframe {
+    pointer-events: auto !important; /* FORCE clickable */
     position: relative;
-    z-index: 4; /* Above hex tiles to remain clickable */
+    z-index: 6; /* Above hex tiles to remain clickable */
 }
 
 /* Dark mode support for hex cards */
@@ -140,18 +150,34 @@ section,
 .post-card,
 .page-main article {
     position: relative;
-    z-index: 2;
-    pointer-events: none; /* Don't block interactions by default */
+    z-index: 2; /* Same level as content wrapper */
+    pointer-events: none !important; /* FORCE no blocking of interactions */
     background-color: transparent; /* Completely transparent to show hexagon pattern */
     border-radius: 0.75rem; /* Add rounded corners */
 }
 
-/* Make post card content clickable */
+/* Make ALL post card content clickable - FORCE it */
 .post-card > *,
-.page-main article > * {
-    pointer-events: auto; /* Card content is clickable */
+.post-card a,
+.post-card button,
+.post-card input,
+.post-card textarea,
+.post-card select,
+.post-card img,
+.post-card video,
+.post-card iframe,
+.page-main article > *,
+.page-main article a,
+.page-main article button,
+.page-main article input,
+.page-main article textarea,
+.page-main article select,
+.page-main article img,
+.page-main article video,
+.page-main article iframe {
+    pointer-events: auto !important; /* FORCE clickable */
     position: relative;
-    z-index: 4; /* Above hex tiles to remain clickable */
+    z-index: 6; /* Above hex tiles to remain clickable */
 }
 
 /* Remove gradient overlays from post cards to show hexagon background */
@@ -170,7 +196,7 @@ section,
 /* Footer sits above the hex overlay */
 footer[role="contentinfo"] {
     position: relative;
-    z-index: 3; /* footer above hex overlay */
+    z-index: 7; /* footer above everything including hex tiles */
     pointer-events: auto;
 }
 
@@ -178,7 +204,7 @@ footer[role="contentinfo"] {
 footer[role="contentinfo"].bg-dark,
 footer[role="contentinfo"] .bg-dark {
     position: relative;
-    z-index: 3; /* footer content above overlay */
+    z-index: 7; /* footer content above everything including hex tiles */
 }
 
 .hex-row {
@@ -243,19 +269,6 @@ footer[role="contentinfo"] .bg-dark {
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
-/* Allow hovering tiles while overlay itself ignores events */
-.hex-overlay .hex-tile { 
-    pointer-events: auto;
-    z-index: 1; /* Above the overlay background but below content */
-}
-
-/* Universal pointer events for hex tiles */
-.hex-overlay .hex-tile {
-    pointer-events: auto;
-    touch-action: manipulation; /* Optimize touch interactions */
-    z-index: 1; /* Above the overlay background but below content */
-}
-
 /* Ensure hex tiles are hoverable in gaps between cards */
 .hex-overlay {
     pointer-events: none; /* Overlay container ignores events */
@@ -263,7 +276,8 @@ footer[role="contentinfo"] .bg-dark {
 
 .hex-overlay .hex-tile {
     pointer-events: auto !important; /* Individual tiles are hoverable */
-    z-index: 3 !important; /* Above cards to be selectable in gaps */
+    z-index: 5 !important; /* Above all content to be always hoverable */
+    touch-action: manipulation; /* Optimize touch interactions */
 }
 
 
@@ -313,6 +327,13 @@ footer[role="contentinfo"] .bg-dark {
         width: 52px;
         height: 57px;
     }
+}
+
+/* FORCE ALL interactive elements to be clickable */
+a, button, input, textarea, select, img, video, iframe, [role="button"], [onclick] {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 6 !important;
 }
 
 /* Remove global z-index overrides to keep header/footer unaffected */

@@ -18,7 +18,7 @@ const Header = () => {
     <>
       <header className={`relative z-30 w-full bg-white dark:bg-dark shadow-xl ${isOpen ? 'sticky top-0 z-50 md:relative' : ''}`} role="banner">
 
-        <div className="container mx-auto px-4 sm:px-8 md:px-12 py-4 flex items-center justify-between">
+        <div className="container mx-auto px-4 sm:px-8 md:px-12 my-4 flex items-center justify-between">
           <div className="flex items-center space-x-4 sm:space-x-8 md:space-x-12">
             <Logo />
             {/* Desktop navigation */}

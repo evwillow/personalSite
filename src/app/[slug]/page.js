@@ -197,7 +197,7 @@ export default async function BlogPage({ params }) {
         />
         <article itemScope itemType="https://schema.org/BlogPosting">
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="px-5 md:px-10 py-4">
+          <nav aria-label="Breadcrumb" className="px-5 md:px-10 my-4">
             <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
                 <a href="/" className="hover:text-accent transition-colors">
@@ -345,7 +345,7 @@ export default async function BlogPage({ params }) {
         />
         <article itemScope itemType="https://schema.org/BlogPosting">
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="px-5 md:px-10 py-4">
+          <nav aria-label="Breadcrumb" className="px-5 md:px-10 my-4">
             <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
               <li>
                 <a href="/" className="hover:text-accent transition-colors">

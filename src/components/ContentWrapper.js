@@ -5,17 +5,17 @@ import Footer from './Footer';
 
 const ContentWrapper = ({ children }) => {
   return (
-    <div className="relative min-h-screen">
+    <div className="relative" style={{ pointerEvents: 'none' }}>
       {/* Hex overlay covers the entire page */}
       <HexagonOverlay />
       
       {/* Content sits above the hex overlay */}
-      <div className="relative z-1">
+      <div className="relative" style={{ zIndex: 2, pointerEvents: 'none' }}>
         {children}
       </div>
       
       {/* Footer sits above the hex overlay */}
-      <div className="relative z-3">
+      <div className="relative" style={{ zIndex: 7, pointerEvents: 'auto' }}>
         <Footer />
       </div>
     </div>

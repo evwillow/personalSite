@@ -89,7 +89,7 @@ export default async function BlogPage() {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
         />
         
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-4 my-8">
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="mb-8">
             <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
@@ -205,7 +205,7 @@ export default async function BlogPage() {
               })}
             </div>
           ) : (
-            <div className="text-center py-12">
+            <div className="text-center my-12">
               <p className="text-gray-600 dark:text-gray-400 text-lg">
                 No blog posts available yet. Check back soon for new content!
               </p>
@@ -217,8 +217,8 @@ export default async function BlogPage() {
   } catch (error) {
     console.error("Error fetching blog posts:", error)
     return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center py-12">
+      <div className="container mx-auto px-4 my-8">
+        <div className="text-center my-12">
           <p className="text-red-600 dark:text-red-400 text-lg">
             Unable to load blog posts. Please try again later.
           </p>
