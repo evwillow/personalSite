@@ -67,7 +67,7 @@ body {
 
 /* Hexagon Pattern Effect */
 .hex-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -75,7 +75,7 @@ body {
     overflow: hidden;
     animation: gridPulse 14s ease-in-out infinite;
     pointer-events: none; /* Overlay itself ignores clicks */
-    z-index: 0; /* Above background, below content */
+    z-index: 0; /* Below all content */
     min-height: 100vh;
     border: none; /* Ensure no visible outlines */
     outline: none; /* Remove any focus outlines */
@@ -85,8 +85,8 @@ body {
 /* Hex overlay remains invisible - only individual tiles show on hover */
 
 @keyframes gridPulse {
-    0%, 100% { opacity: 0.15; }
-    50% { opacity: 0.25; }
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.35; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -96,7 +96,7 @@ body {
 /* Content wrapper styles */
 .content-wrapper {
     position: relative;
-    z-index: 10;
+    z-index: 1;
 }
 
 /* Ensure content blocks are above the hex overlay */
@@ -112,39 +112,65 @@ section,
 /* Only elevate individual cards above hex background, not gaps */
 .hex-card {
     position: relative;
-    z-index: 10; /* well above .hex-overlay (0), blocks hex interaction beneath */
-    pointer-events: auto; /* cards are clickable */
-    background: transparent !important; /* Force transparency to show hex pattern */
+    z-index: 2; /* above .hex-overlay (0), but allows gaps to be hoverable */
+    pointer-events: none; /* Don't block interactions by default */
+    background: transparent !important; /* Completely transparent to show hexagon pattern */
+    border-radius: 0.75rem; /* Add rounded corners */
 }
 
-/* Ensure all child elements of hex-card are also transparent */
-.hex-card * {
+/* Make card content clickable */
+.hex-card > * {
+    pointer-events: auto; /* Card content is clickable */
+    position: relative;
+    z-index: 4; /* Above hex tiles to remain clickable */
+}
+
+/* Dark mode support for hex cards */
+.dark .hex-card {
+    background: transparent !important; /* Completely transparent in dark mode too */
+}
+
+/* Remove gradient overlays to show hexagon background behind text */
+.hex-card .bg-gradient-to-b {
     background: transparent !important;
 }
 
-/* Exception: allow gradient overlays for text readability */
-.hex-card .bg-gradient-to-b {
-    background: inherit !important;
-}
 
 /* Post cards and articles should also block the overlay */
 .post-card,
 .page-main article {
     position: relative;
-    z-index: 10;
-    background-color: transparent; /* Let hex pattern show through */
+    z-index: 2;
+    pointer-events: none; /* Don't block interactions by default */
+    background-color: transparent; /* Completely transparent to show hexagon pattern */
+    border-radius: 0.75rem; /* Add rounded corners */
 }
+
+/* Make post card content clickable */
+.post-card > *,
+.page-main article > * {
+    pointer-events: auto; /* Card content is clickable */
+    position: relative;
+    z-index: 4; /* Above hex tiles to remain clickable */
+}
+
+/* Remove gradient overlays from post cards to show hexagon background */
+.post-card .bg-gradient-to-b,
+.page-main article .bg-gradient-to-b {
+    background: transparent !important;
+}
+
 
 .dark .post-card,
 .dark .page-main article {
-    background-color: transparent; /* Let hex pattern show through */
+    background-color: transparent; /* Completely transparent in dark mode too */
 }
 
 
 /* Footer sits above the hex overlay */
 footer[role="contentinfo"] {
     position: relative;
-    z-index: 10; /* footer above hex overlay */
+    z-index: 3; /* footer above hex overlay */
     pointer-events: auto;
 }
 
@@ -152,7 +178,7 @@ footer[role="contentinfo"] {
 footer[role="contentinfo"].bg-dark,
 footer[role="contentinfo"] .bg-dark {
     position: relative;
-    z-index: 10; /* footer content above overlay */
+    z-index: 3; /* footer content above overlay */
 }
 
 .hex-row {
@@ -170,7 +196,7 @@ footer[role="contentinfo"] .bg-dark {
     position: relative;
     height: 88px;
     width: 80px;
-    background: transparent;
+    background: rgba(255,255,255,0.03);
     margin: 1px;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     transition: 2s;
@@ -178,20 +204,20 @@ footer[role="contentinfo"] .bg-dark {
     outline: none; /* Remove any focus outlines */
 }
 
-/* Hex tiles are invisible by default, only individual tiles show on hover */
+/* Hex tiles are slightly visible by default, more visible on hover */
 .hex-tile {
-    opacity: 0;
+    opacity: 0.08;
     transition: opacity 0.3s ease-in-out;
 }
 
 /* Only the specific hex tile being hovered becomes visible */
 .hex-tile:hover {
     opacity: 1;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.2);
     transition: 0s;
 }
 
-.hex-tile.is-hovered { background: rgba(255,255,255,0.12); transition: 0s; }
+.hex-tile.is-hovered { background: rgba(255,255,255,0.2); transition: 0s; }
 
 .hex-tile:before {
     content: '';
@@ -220,12 +246,24 @@ footer[role="contentinfo"] .bg-dark {
 /* Allow hovering tiles while overlay itself ignores events */
 .hex-overlay .hex-tile { 
     pointer-events: auto;
+    z-index: 1; /* Above the overlay background but below content */
 }
 
 /* Universal pointer events for hex tiles */
 .hex-overlay .hex-tile {
     pointer-events: auto;
     touch-action: manipulation; /* Optimize touch interactions */
+    z-index: 1; /* Above the overlay background but below content */
+}
+
+/* Ensure hex tiles are hoverable in gaps between cards */
+.hex-overlay {
+    pointer-events: none; /* Overlay container ignores events */
+}
+
+.hex-overlay .hex-tile {
+    pointer-events: auto !important; /* Individual tiles are hoverable */
+    z-index: 3 !important; /* Above cards to be selectable in gaps */
 }
 
 
@@ -235,14 +273,14 @@ footer[role="contentinfo"] .bg-dark {
 /* Individual hex tile hover effects */
 .hex-tile:hover {
     opacity: 1;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.2);
     transition: 0s;
     cursor: alias;
 }
 
 .hex-tile.is-hovered {
     opacity: 1;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.2);
     transition: 0s;
 }
 

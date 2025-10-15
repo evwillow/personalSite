@@ -10,12 +10,12 @@ const ContentWrapper = ({ children }) => {
       <HexagonOverlay />
       
       {/* Content sits above the hex overlay */}
-      <div className="relative z-10">
+      <div className="relative z-1">
         {children}
       </div>
       
       {/* Footer sits above the hex overlay */}
-      <div className="relative z-10">
+      <div className="relative z-3">
         <Footer />
       </div>
     </div>
