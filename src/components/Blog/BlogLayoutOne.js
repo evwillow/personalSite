@@ -18,7 +18,7 @@ const BlogLayoutOne = ({ blog, zIndexClass = "blog-above-hex" }) => {
       />
       <div className={`absolute bottom-0 p-6 w-full ${zIndexClass}`}>
         <Link href={blog.url} className="w-full">
-          <h2 className="font-bold text-xl md:text-2xl text-light">
+          <h2 className="font-bold text-sm sm:text-base md:text-lg text-light">
             <span className="bg-gradient-to-r from-accent to-accent bg-[length:0px_6px] dark:from-accentDark/50 dark:to-accentDark/50 group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500">
               {blog.title}
             </span>
