@@ -113,7 +113,7 @@ export default async function Home() {
     }
 
     return (
-      <main className="flex flex-col items-center justify-center">
+      <main className="flex flex-col items-center">
         <Script id="schema-website" type="application/ld+json">
           {JSON.stringify(websiteSchema)}
         </Script>
@@ -130,7 +130,7 @@ export default async function Home() {
   } catch (error) {
     console.error("Error fetching blog posts in Home component:", error)
     return (
-      <main className="flex flex-col items-center justify-center">
+      <main className="flex flex-col items-center">
         <p>Unable to fetch blog posts. Please try again later.</p>
       </main>
     )

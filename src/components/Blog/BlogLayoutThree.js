@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const BlogLayoutThree = ({ blog }) => {
+const BlogLayoutThree = ({ blog, zIndexClass = "blog-above-hex" }) => {
   return (
     <div className="group hex-card flex flex-col items-center text-dark dark:text-light">
-      <Link href={blog.url} className="h-full rounded-xl overflow-hidden">
+      <Link href={blog.url} className={`h-full rounded-xl overflow-hidden ${zIndexClass}`}>
         <Image
           src={blog.image.src}
           placeholder="blur"

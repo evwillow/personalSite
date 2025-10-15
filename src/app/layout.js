@@ -2,8 +2,7 @@ import "./globals.css"
 import { cx } from "@/src/utils"
 import { Inter, Manrope } from "next/font/google"
 import Header from "@/src/components/Header"
-import Footer from "../components/Footer"
-import HexagonOverlay from "../components/HexagonOverlay"
+import ContentWrapper from "../components/ContentWrapper"
 import siteMetadata from "../utils/siteMetaData"
 import Script from "next/script"
 
@@ -121,7 +120,7 @@ export default function RootLayout({ children }) {
         className={cx(
           inter.variable,
           manrope.variable,
-          "font-mr bg-gradient-to-b from-white to-[#7fb3d3] dark:bg-dark min-h-screen flex flex-col relative"
+          "font-mr dark:bg-dark min-h-screen flex flex-col relative"
         )}
       >
         <Script
@@ -140,12 +139,12 @@ export default function RootLayout({ children }) {
             });
           `}
         </Script>
-        <HexagonOverlay />
         <Header />
-        <div className="flex-grow page-main">
-          {children}
+        <div className="flex-grow">
+          <ContentWrapper>
+            {children}
+          </ContentWrapper>
         </div>
-        <Footer />
       </body>
     </html>
   )

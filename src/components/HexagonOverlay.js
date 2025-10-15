@@ -22,6 +22,7 @@ const HexagonOverlay = () => {
     }
 
     const rows = [];
+    // Generate hexagons for the full page height
     const documentHeight = Math.max(
       document.documentElement.scrollHeight,
       document.documentElement.offsetHeight,
@@ -30,7 +31,7 @@ const HexagonOverlay = () => {
     );
     const hexagonHeight = 110;
     const rowSpacing = 32;
-    const numRows = Math.ceil(documentHeight / (hexagonHeight - rowSpacing)) + 10;
+    const numRows = Math.ceil(documentHeight / (hexagonHeight - rowSpacing)) + 5;
     
     for (let i = 0; i < numRows; i++) {
       const hexagons = [];

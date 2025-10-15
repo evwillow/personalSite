@@ -1,6 +1,8 @@
+/* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* stylelint-enable at-rule-no-unknown */
 
 html{
     scroll-behavior: smooth;
@@ -19,7 +21,7 @@ body {
 
 /* Hexagon Pattern Effect */
 .hex-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -27,57 +29,79 @@ body {
     overflow: hidden;
     animation: gridPulse 14s ease-in-out infinite;
     pointer-events: none; /* Overlay itself ignores clicks */
-    z-index: 1; /* sits behind content blocks, above page background */
+    z-index: 0;
+    min-height: 100vh;
 }
 
 @keyframes gridPulse {
-    0%, 100% { opacity: 0.08; }
-    50% { opacity: 0.14; }
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.25; }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .hex-overlay { animation: none; }
 }
 
-.page-main {
+/* Content wrapper styles */
+.content-wrapper {
     position: relative;
+    z-index: 10;
 }
 
-/* Raise individual blocks inside main above the hex overlay (but not main itself) */
-.page-main > * {
+/* Ensure content blocks are above the hex overlay */
+.prose,
+article,
+section,
+.grid > *,
+.container > * {
     position: relative;
-    z-index: 0; /* above overlay */
-}
-
-/* Ensure common content blocks within main are above the background */
-.page-main .prose,
-.page-main article,
-.page-main section,
-.page-main .grid > *,
-.page-main .container > * {
-    position: relative;
-    z-index: 5;
+    z-index: 1;
 }
 
 /* Only elevate individual cards above hex background, not gaps */
 .hex-card {
     position: relative;
-    z-index: 10; /* well above .hex-overlay (1), blocks hex interaction beneath */
+    z-index: 10; /* well above .hex-overlay (0), blocks hex interaction beneath */
     pointer-events: auto; /* cards are clickable */
-    background: inherit; /* ensure card has a background to block hexagons */
+    background: transparent !important; /* Force transparency to show hex pattern */
 }
 
-/* Only the footer panel sits above the background overlay */
+/* Ensure all child elements of hex-card are also transparent */
+.hex-card * {
+    background: transparent !important;
+}
+
+/* Exception: allow gradient overlays for text readability */
+.hex-card .bg-gradient-to-b {
+    background: inherit !important;
+}
+
+/* Post cards and articles should also block the overlay */
+.post-card,
+.page-main article {
+    position: relative;
+    z-index: 10;
+    background-color: transparent; /* Let hex pattern show through */
+}
+
+.dark .post-card,
+.dark .page-main article {
+    background-color: transparent; /* Let hex pattern show through */
+}
+
+
+/* Footer sits above the hex overlay */
 footer[role="contentinfo"] {
     position: relative;
-    z-index: 1; /* base footer wrapper */
+    z-index: 10; /* footer above hex overlay */
+    pointer-events: auto;
 }
 
-/* Lift only the dark panel inside the footer above the background */
+/* Ensure footer content is above overlay */
 footer[role="contentinfo"].bg-dark,
 footer[role="contentinfo"] .bg-dark {
     position: relative;
-    z-index: 2; /* dark panel always above overlay and content */
+    z-index: 10; /* footer content above overlay */
 }
 
 .hex-row {
@@ -111,7 +135,7 @@ footer[role="contentinfo"] .bg-dark {
     width: 50%;
     height: 100%;
     pointer-events: none;
-    background: linear-gradient(to right, rgba(255,255,255,0.22), rgba(255,255,255,0));
+    background: linear-gradient(to right, rgba(255,255,255,0.4), rgba(255,255,255,0));
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
@@ -123,7 +147,7 @@ footer[role="contentinfo"] .bg-dark {
     width: 50%;
     height: 100%;
     pointer-events: none;
-    background: linear-gradient(to left, rgba(255,255,255,0.22), rgba(255,255,255,0));
+    background: linear-gradient(to left, rgba(255,255,255,0.4), rgba(255,255,255,0));
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
@@ -134,9 +158,6 @@ footer[role="contentinfo"] .bg-dark {
 
 
 /* allow overlay hover even between posts without blocking interactions */
-.page-main {
-    position: relative;
-}
 /* no overlay shim over content; keep all content clickable */
 
 .hex-tile:hover {
