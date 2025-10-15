@@ -8,20 +8,66 @@ html{
     scroll-behavior: smooth;
 }
 
-/* Gradient background for light mode (modern desaturated blue-gray) */
+/* Ensure gradient scrolls with content */
+html, body {
+    background-repeat: no-repeat;
+    background-size: 100% 120%; /* Make gradient taller */
+}
+
+/* Exponential gradient background for light mode (x^4 curve to blue) */
 body {
-    background: linear-gradient(180deg, #ffffff 0%, #f3f7fc 60%, #e6eef8 100%);
+    background: 
+        linear-gradient(180deg, 
+            #ffffff 0%, 
+            #f0f8ff 25vh, 
+            #e8f4ff 40vh, 
+            #d8ecff 55vh, 
+            #d0e8ff 70vh, 
+            #c0e0ff 85vh, 
+            #b0d8ff 100vh, 
+            #a0d0ff calc(100% - 95.4vh), 
+            #90c8ff calc(100% - 80.4vh), 
+            #80c0ff calc(100% - 79.2vh), 
+            #70b8ff calc(100% - 66vh), 
+            #60b0ff calc(100% - 54.6vh), 
+            #50a8ff calc(100% - 53.4vh), 
+            #40a0ff calc(100% - 43.8vh), 
+            #3098ff calc(100% - 42.6vh), 
+            #2088ff calc(100% - 34.8vh), 
+            #1078ff calc(100% - 33.6vh), 
+            #0068ff calc(100% - 27vh), 
+            #0058ff calc(100% - 25.8vh), 
+            #0048ff calc(100% - 20.4vh), 
+            #0038ff calc(100% - 19.2vh), 
+            #0028ff calc(100% - 15vh), 
+            #0018ff calc(100% - 13.8vh), 
+            #0008ff calc(100% - 10.2vh), 
+            #0000ff calc(100% - 9vh), 
+            #0000ef calc(100% - 6vh), 
+            #00cffd 100%
+        );
     min-height: 100vh;
 }
 
-/* Override for dark mode */
+/* Exponential gradient background for dark mode (x^4 curve to dark blue) */
 .dark body {
-    background: #1b1b1b;
+    background: 
+        linear-gradient(180deg, 
+            #1b1b1b 0%, 
+            #191f3b 50%, 
+            #13234b 80%, 
+            #0a274b 90%, 
+            #002b4b 95%, 
+            #002f4b 97%, 
+            #00334b 98.5%, 
+            #00374b 99.2%, 
+            #00cffd 100%
+        );
 }
 
 /* Hexagon Pattern Effect */
 .hex-overlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -29,9 +75,14 @@ body {
     overflow: hidden;
     animation: gridPulse 14s ease-in-out infinite;
     pointer-events: none; /* Overlay itself ignores clicks */
-    z-index: 0;
+    z-index: 0; /* Above background, below content */
     min-height: 100vh;
+    border: none; /* Ensure no visible outlines */
+    outline: none; /* Remove any focus outlines */
+    opacity: 0; /* Make hexagons completely invisible by default */
 }
+
+/* Hex overlay remains invisible - only individual tiles show on hover */
 
 @keyframes gridPulse {
     0%, 100% { opacity: 0.15; }
@@ -123,6 +174,21 @@ footer[role="contentinfo"] .bg-dark {
     margin: 1px;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     transition: 2s;
+    border: none; /* Ensure no visible outlines */
+    outline: none; /* Remove any focus outlines */
+}
+
+/* Hex tiles are invisible by default, only individual tiles show on hover */
+.hex-tile {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Only the specific hex tile being hovered becomes visible */
+.hex-tile:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.12);
+    transition: 0s;
 }
 
 .hex-tile.is-hovered { background: rgba(255,255,255,0.12); transition: 0s; }
@@ -156,14 +222,28 @@ footer[role="contentinfo"] .bg-dark {
     pointer-events: auto;
 }
 
+/* Universal pointer events for hex tiles */
+.hex-overlay .hex-tile {
+    pointer-events: auto;
+    touch-action: manipulation; /* Optimize touch interactions */
+}
+
 
 /* allow overlay hover even between posts without blocking interactions */
 /* no overlay shim over content; keep all content clickable */
 
+/* Individual hex tile hover effects */
 .hex-tile:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.12);
     transition: 0s;
-    background: black;
     cursor: alias;
+}
+
+.hex-tile.is-hovered {
+    opacity: 1;
+    background: rgba(255,255,255,0.12);
+    transition: 0s;
 }
 
 /* Background only – no hover interactions */

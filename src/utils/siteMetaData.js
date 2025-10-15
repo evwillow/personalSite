@@ -6,8 +6,8 @@ const siteMetadata = {
   language: "en-us",
   theme: "system",
   siteUrl: "https://evwillow.com",
-  siteLogo: "/logo.png",
-  socialBanner: "/social-banner.png",
+  siteLogo: "/headshot.jpg",
+  socialBanner: "/headshot.jpg", // Using existing headshot as social banner
   email: "evan_maus@berkeley.edu",
   github: "https://github.com/evwillow",
   linkedin: "https://linkedin.com/in/evwillow",
@@ -31,8 +31,20 @@ const siteMetadata = {
     "Finance",
     "Sustainability",
     "PyTorch",
-    "TensorFlow"
+    "TensorFlow",
+    "Blog",
+    "Personal Website",
+    "Portfolio",
+    "Research",
+    "Technology"
   ],
+  // Additional SEO metadata
+  category: "Technology & Education",
+  type: "website",
+  twitterHandle: "@evwillow1",
+  facebookAppId: "",
+  googleAnalyticsId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+  googleSiteVerification: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
 }
 
 export default siteMetadata

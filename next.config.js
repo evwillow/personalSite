@@ -27,7 +27,6 @@ const nextConfig = {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
   images: {
-    domains: ['images.ctfassets.net', 'images.unsplash.com'],
     remotePatterns: [
       {
         protocol: 'https',

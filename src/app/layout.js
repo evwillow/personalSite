@@ -63,10 +63,10 @@ export const metadata = {
     siteName: siteMetadata.title,
     images: [
       {
-        url: siteMetadata.socialBanner,
+        url: `${siteMetadata.siteUrl}${siteMetadata.socialBanner}`,
         width: 1200,
         height: 630,
-        alt: siteMetadata.title,
+        alt: `${siteMetadata.author} - ${siteMetadata.description}`,
       },
     ],
     locale: siteMetadata.locale,
@@ -76,8 +76,9 @@ export const metadata = {
     card: "summary_large_image",
     title: siteMetadata.title,
     description: siteMetadata.description,
-    images: [siteMetadata.socialBanner],
-    creator: "@evwillow1",
+    images: [`${siteMetadata.siteUrl}${siteMetadata.socialBanner}`],
+    creator: siteMetadata.twitterHandle,
+    site: siteMetadata.twitterHandle,
   },
   robots: {
     index: true,
@@ -86,7 +87,7 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      noimageindex: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -95,6 +96,10 @@ export const metadata = {
   alternates: {
     canonical: siteMetadata.siteUrl,
   },
+  verification: {
+    google: siteMetadata.googleSiteVerification,
+  },
+  category: siteMetadata.category,
 }
 
 export default function RootLayout({ children }) {

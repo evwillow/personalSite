@@ -1,21 +1,31 @@
 {
-  "name": "Evan Willow Moss | Personal Blog",
-  "short_name": "Evan's Blog",
-  "description": "Personal blog by Evan Willow Moss sharing insights, experiences, and thoughts on various topics.",
+  "name": "Evan Maus | Economics, Data Science & AI",
+  "short_name": "Evan Maus",
+  "description": "UC Berkeley student pursuing a Bachelor of Arts in Economics and Data Science with a minor in Computer Science. Building solutions at the intersection of AI, finance, and sustainability.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4a90e2",
+  "theme_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["education", "technology", "business"],
   "icons": [
     {
       "src": "/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     },
     {
       "src": "/icon-512x512.png",
       "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
     }

@@ -195,12 +195,64 @@ export default async function BlogPage({ params }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <article>
+        <article itemScope itemType="https://schema.org/BlogPosting">
+          {/* Breadcrumb Navigation */}
+          <nav aria-label="Breadcrumb" className="px-5 md:px-10 py-4">
+            <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>
+                <a href="/" className="hover:text-accent transition-colors">
+                  Home
+                </a>
+              </li>
+              <li className="flex items-center">
+                <span className="mx-2">/</span>
+                <span className="text-gray-900 dark:text-gray-100" aria-current="page">
+                  {mdxBlog.title}
+                </span>
+              </li>
+            </ol>
+          </nav>
+
           <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
             <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <h1 className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6">
+              <h1 
+                className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6"
+                itemProp="headline"
+              >
                 {mdxBlog.title}
               </h1>
+              {/* Article Meta Information */}
+              <div className="mt-4 text-light/80 text-sm md:text-base">
+                <time 
+                  dateTime={new Date(mdxBlog.publishedAt).toISOString()}
+                  itemProp="datePublished"
+                >
+                  {new Date(mdxBlog.publishedAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+                {mdxBlog.updatedAt && mdxBlog.updatedAt !== mdxBlog.publishedAt && (
+                  <>
+                    <span className="mx-2">•</span>
+                    <time 
+                      dateTime={new Date(mdxBlog.updatedAt).toISOString()}
+                      itemProp="dateModified"
+                    >
+                      Updated {new Date(mdxBlog.updatedAt).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+                  </>
+                )}
+                <span className="mx-2">•</span>
+                <span itemProp="author" itemScope itemType="https://schema.org/Person">
+                  <span itemProp="name">{mdxBlog?.author || siteMetadata.author}</span>
+                </span>
+              </div>
             </div>
             <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
             <Image
@@ -213,11 +265,14 @@ export default async function BlogPage({ params }) {
               className="aspect-square w-full h-full object-cover object-center"
               priority
               sizes="100vw"
+              itemProp="image"
             />
           </div>
           <div className="flex items-center justify-center px-5 md:px-10">
             <div className="max-w-4xl w-full">
-              <RenderMdx blog={mdxBlog} />
+              <div itemProp="articleBody">
+                <RenderMdx blog={mdxBlog} />
+              </div>
             </div>
           </div>
         </article>
@@ -288,12 +343,64 @@ export default async function BlogPage({ params }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <article>
+        <article itemScope itemType="https://schema.org/BlogPosting">
+          {/* Breadcrumb Navigation */}
+          <nav aria-label="Breadcrumb" className="px-5 md:px-10 py-4">
+            <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
+              <li>
+                <a href="/" className="hover:text-accent transition-colors">
+                  Home
+                </a>
+              </li>
+              <li className="flex items-center">
+                <span className="mx-2">/</span>
+                <span className="text-gray-900 dark:text-gray-100" aria-current="page">
+                  {contentfulBlog.fields.title}
+                </span>
+              </li>
+            </ol>
+          </nav>
+
           <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
             <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-              <h1 className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6">
+              <h1 
+                className="inline-block mt-6 font-semibold capitalize text-light text-2xl md:text-3xl lg:text-5xl !leading-normal relative w-5/6"
+                itemProp="headline"
+              >
                 {contentfulBlog.fields.title}
               </h1>
+              {/* Article Meta Information */}
+              <div className="mt-4 text-light/80 text-sm md:text-base">
+                <time 
+                  dateTime={new Date(contentfulBlog.sys.createdAt).toISOString()}
+                  itemProp="datePublished"
+                >
+                  {new Date(contentfulBlog.sys.createdAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+                {contentfulBlog.sys.updatedAt !== contentfulBlog.sys.createdAt && (
+                  <>
+                    <span className="mx-2">•</span>
+                    <time 
+                      dateTime={new Date(contentfulBlog.sys.updatedAt).toISOString()}
+                      itemProp="dateModified"
+                    >
+                      Updated {new Date(contentfulBlog.sys.updatedAt).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+                  </>
+                )}
+                <span className="mx-2">•</span>
+                <span itemProp="author" itemScope itemType="https://schema.org/Person">
+                  <span itemProp="name">{contentfulBlog.fields.author || siteMetadata.author}</span>
+                </span>
+              </div>
             </div>
             <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
             {contentfulBlog.fields.image && (
@@ -312,16 +419,19 @@ export default async function BlogPage({ params }) {
                 className="aspect-square w-full h-full object-cover object-center"
                 priority
                 sizes="100vw"
+                itemProp="image"
               />
             )}
           </div>
           <div className="flex items-center justify-center px-5 md:px-10">
             <div className="max-w-4xl w-full prose dark:prose-dark">
-              {contentfulBlog.fields.body ? (
-                documentToReactComponents(contentfulBlog.fields.body)
-              ) : (
-                <p>No content available</p>
-              )}
+              <div itemProp="articleBody">
+                {contentfulBlog.fields.body ? (
+                  documentToReactComponents(contentfulBlog.fields.body)
+                ) : (
+                  <p>No content available</p>
+                )}
+              </div>
             </div>
           </div>
         </article>

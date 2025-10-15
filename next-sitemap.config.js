@@ -1,23 +1,26 @@
 const siteMetadata = require("./src/utils/siteMetaData");
 
 module.exports = {
-  siteUrl: siteMetadata.siteUrl || "https://blog.evwillow.com",
+  siteUrl: siteMetadata.siteUrl || "https://evwillow.com",
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
       { userAgent: "*", allow: "/" },
-      { userAgent: "*", disallow: ["/api/*", "/_next/*", "/static/*"] },
+      { userAgent: "*", disallow: ["/api/*", "/_next/*", "/static/*", "/admin/*", "/private/*"] },
     ],
     additionalSitemaps: [
       `${siteMetadata.siteUrl}/sitemap.xml`,
       `${siteMetadata.siteUrl}/server-sitemap.xml`,
     ],
+    host: siteMetadata.siteUrl,
   },
   exclude: [
     "/server-sitemap.xml",
     "/api/*",
     "/_next/*",
     "/static/*",
+    "/admin/*",
+    "/private/*",
     "/404",
     "/500",
   ],
@@ -29,7 +32,7 @@ module.exports = {
   autoLastmod: true,
   transform: async (config, path) => {
     // Custom transformation for blog posts
-    if (path.startsWith("/blog/")) {
+    if (path.startsWith("/blog/") || (!path.includes("/") && path !== "")) {
       return {
         loc: path,
         changefreq: "weekly",
@@ -43,6 +46,15 @@ module.exports = {
         loc: path,
         changefreq: "daily",
         priority: 1.0,
+        lastmod: new Date().toISOString(),
+      }
+    }
+    // Main pages
+    if (["/about", "/contact", "/experience", "/projects"].includes(path)) {
+      return {
+        loc: path,
+        changefreq: "monthly",
+        priority: 0.9,
         lastmod: new Date().toISOString(),
       }
     }
