@@ -221,7 +221,7 @@ export default function About() {
         </section>
 
         {/* Mission Statement */}
-        <section className="bg-gradient-to-r from-gray-50 to-gray-100 dark:from-dark/50 dark:to-dark/80 rounded-2xl p-8 md:p-12 text-center border-2 border-gray-100 dark:border-gray-800">
+        <section className="bg-white dark:bg-dark rounded-2xl p-8 md:p-12 text-center border-2 border-gray-100 dark:border-gray-800">
           <h2 className="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-6">
             My Mission
           </h2>
