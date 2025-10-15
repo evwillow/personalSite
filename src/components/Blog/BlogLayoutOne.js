@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const BlogLayoutOne = ({ blog }) => {
   return (
-    <div className="group relative w-full h-full aspect-[4/3] rounded-xl overflow-hidden">
+    <div className="group hex-card relative w-full h-full aspect-[4/3] rounded-xl overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent from-0% to-dark/90 rounded-xl z-10" />
       <Image
         src={blog.image.src}

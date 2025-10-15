@@ -6,6 +6,178 @@ html{
     scroll-behavior: smooth;
 }
 
+/* Gradient background for light mode (modern desaturated blue-gray) */
+body {
+    background: linear-gradient(180deg, #ffffff 0%, #f3f7fc 60%, #e6eef8 100%);
+    min-height: 100vh;
+}
+
+/* Override for dark mode */
+.dark body {
+    background: #1b1b1b;
+}
+
+/* Hexagon Pattern Effect */
+.hex-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    animation: gridPulse 14s ease-in-out infinite;
+    pointer-events: none; /* Overlay itself ignores clicks */
+    z-index: 1; /* sits behind content blocks, above page background */
+}
+
+@keyframes gridPulse {
+    0%, 100% { opacity: 0.08; }
+    50% { opacity: 0.14; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hex-overlay { animation: none; }
+}
+
+.page-main {
+    position: relative;
+}
+
+/* Raise individual blocks inside main above the hex overlay (but not main itself) */
+.page-main > * {
+    position: relative;
+    z-index: 0; /* above overlay */
+}
+
+/* Ensure common content blocks within main are above the background */
+.page-main .prose,
+.page-main article,
+.page-main section,
+.page-main .grid > *,
+.page-main .container > * {
+    position: relative;
+    z-index: 5;
+}
+
+/* Only elevate individual cards above hex background, not gaps */
+.hex-card {
+    position: relative;
+    z-index: 10; /* well above .hex-overlay (1), blocks hex interaction beneath */
+    pointer-events: auto; /* cards are clickable */
+    background: inherit; /* ensure card has a background to block hexagons */
+}
+
+/* Only the footer panel sits above the background overlay */
+footer[role="contentinfo"] {
+    position: relative;
+    z-index: 1; /* base footer wrapper */
+}
+
+/* Lift only the dark panel inside the footer above the background */
+footer[role="contentinfo"].bg-dark,
+footer[role="contentinfo"] .bg-dark {
+    position: relative;
+    z-index: 2; /* dark panel always above overlay and content */
+}
+
+.hex-row {
+    display: inline-flex;
+    margin-left: -36px;
+    margin-top: -26px;
+    overflow: hidden;
+}
+
+.hex-row:nth-child(even) {
+    margin-left: 1px;
+}
+
+.hex-tile {
+    position: relative;
+    height: 88px;
+    width: 80px;
+    background: transparent;
+    margin: 1px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: 2s;
+}
+
+.hex-tile.is-hovered { background: rgba(255,255,255,0.12); transition: 0s; }
+
+.hex-tile:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(255,255,255,0.22), rgba(255,255,255,0));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex-tile:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to left, rgba(255,255,255,0.22), rgba(255,255,255,0));
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Allow hovering tiles while overlay itself ignores events */
+.hex-overlay .hex-tile { 
+    pointer-events: auto;
+}
+
+
+/* allow overlay hover even between posts without blocking interactions */
+.page-main {
+    position: relative;
+}
+/* no overlay shim over content; keep all content clickable */
+
+.hex-tile:hover {
+    transition: 0s;
+    background: black;
+    cursor: alias;
+}
+
+/* Background only – no hover interactions */
+
+/* Responsive scaling for smaller screens */
+@media (max-width: 1024px) {
+    .hex-row {
+        margin-left: -32px;
+        margin-top: -22px;
+    }
+    .hex-row:nth-child(even) {
+        margin-left: -1px;
+    }
+    .hex-tile {
+        width: 64px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hex-row {
+        margin-left: -26px;
+        margin-top: -19px;
+    }
+    .hex-row:nth-child(even) {
+        margin-left: 0;
+    }
+    .hex-tile {
+        width: 52px;
+        height: 57px;
+    }
+}
+
+/* Remove global z-index overrides to keep header/footer unaffected */
+
 h1>a>.icon.icon-link:before,
 h2>a>.icon.icon-link:before,
 h3>a>.icon.icon-link:before{

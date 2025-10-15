@@ -16,32 +16,7 @@ const Header = () => {
 
   return (
     <>
-      <header className={`relative w-full bg-white dark:bg-dark shadow-xl ${isOpen ? 'sticky top-0 z-50 md:relative' : ''}`} role="banner">
-        {!isOpen && (
-          <div className="absolute inset-0 -z-10">
-            <svg
-              viewBox="0 0 1440 400"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-full"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <defs>
-                <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0%" stopColor="#4a90e2" />
-                  <stop offset="50%" stopColor="#50e3c2" />
-                  <stop offset="100%" stopColor="#4a90e2" />
-                </linearGradient>
-              </defs>
-              <rect width="1440" height="400" fill="url(#gradient)" />
-              <path
-                fill="url(#gradient)"
-                d="M0,100 C480,300 960,0 1440,100 L1440,400 L0,400 Z"
-                className="opacity-80"
-              />
-            </svg>
-          </div>
-        )}
+      <header className={`relative z-30 w-full bg-white dark:bg-dark shadow-xl ${isOpen ? 'sticky top-0 z-50 md:relative' : ''}`} role="banner">
 
         <div className="container mx-auto px-4 sm:px-8 md:px-12 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-4 sm:space-x-8 md:space-x-12">
