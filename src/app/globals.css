@@ -336,6 +336,13 @@ a, button, input, textarea, select, img, video, iframe, [role="button"], [onclic
     z-index: 6 !important;
 }
 
+/* FORCE blog content to be selectable */
+.prose, .prose * {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 6 !important;
+}
+
 /* Remove global z-index overrides to keep header/footer unaffected */
 
 h1>a>.icon.icon-link:before,
