@@ -70,12 +70,54 @@ const SEOHead = ({
       <meta name="twitter:image" content={pageImage} />
       <meta name="twitter:image:alt" content={pageTitle} />
 
-      {/* Additional SEO Meta Tags */}
+      {/* Advanced SEO Meta Tags */}
       <meta name="theme-color" content="#ffffff" />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="apple-mobile-web-app-title" content={siteMetadata.title} />
+      
+      {/* Advanced Meta Tags */}
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="application-name" content={siteMetadata.title} />
+      <meta name="msapplication-tooltip" content={siteMetadata.description} />
+      <meta name="msapplication-starturl" content={siteMetadata.siteUrl} />
+      <meta name="msapplication-navbutton-color" content="#ffffff" />
+      <meta name="msapplication-TileImage" content={`${siteMetadata.siteUrl}${siteMetadata.siteLogo}`} />
+      
+      {/* Content Security and Performance */}
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="referrer" content="origin-when-cross-origin" />
+      <meta name="format-detection" content="address=no" />
+      <meta name="format-detection" content="email=no" />
+      
+      {/* Advanced Open Graph */}
+      <meta property="og:updated_time" content={new Date().toISOString()} />
+      <meta property="og:see_also" content={`${siteMetadata.siteUrl}/blog`} />
+      <meta property="og:see_also" content={`${siteMetadata.siteUrl}/about`} />
+      <meta property="og:see_also" content={`${siteMetadata.siteUrl}/projects`} />
+      
+      {/* Twitter Card Enhancements */}
+      <meta name="twitter:domain" content="evwillow.com" />
+      <meta name="twitter:url" content={pageUrl} />
+      <meta name="twitter:label1" content="Written by" />
+      <meta name="twitter:data1" content={author || siteMetadata.author} />
+      <meta name="twitter:label2" content="Est. reading time" />
+      <meta name="twitter:data2" content="5 min read" />
+      
+      {/* Additional Meta Tags for Better Indexing */}
+      <meta name="classification" content="Personal Website" />
+      <meta name="category" content="Technology" />
+      <meta name="coverage" content="Worldwide" />
+      <meta name="distribution" content="Global" />
+      <meta name="rating" content="General" />
+      <meta name="target" content="all" />
+      <meta name="audience" content="all" />
+      <meta name="resource-type" content="document" />
+      <meta name="revisit-after" content="1 days" />
+      <meta name="expires" content="never" />
+      <meta name="cache-control" content="public" />
       
       {/* Geo Tags */}
       <meta name="geo.region" content="US-CA" />
@@ -88,7 +130,7 @@ const SEOHead = ({
         <meta name="google-site-verification" content={siteMetadata.googleSiteVerification} />
       )}
 
-      {/* Structured Data for Organization */}
+      {/* Enhanced Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -102,10 +144,13 @@ const SEOHead = ({
               siteMetadata.twitter,
               siteMetadata.github
             ],
-            "jobTitle": "Student & Developer",
+            "jobTitle": "Economics & Data Science Student",
+            "description": siteMetadata.description,
+            "image": `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
             "worksFor": {
               "@type": "Organization",
-              "name": siteMetadata.university
+              "name": siteMetadata.university,
+              "url": "https://berkeley.edu"
             },
             "address": {
               "@type": "PostalAddress",
@@ -115,7 +160,28 @@ const SEOHead = ({
             },
             "alumniOf": {
               "@type": "Organization",
-              "name": siteMetadata.university
+              "name": siteMetadata.university,
+              "url": "https://berkeley.edu"
+            },
+            "knowsAbout": [
+              "Economics",
+              "Data Science", 
+              "Artificial Intelligence",
+              "Machine Learning",
+              "Quantitative Finance",
+              "Full Stack Development",
+              "Python",
+              "JavaScript",
+              "React",
+              "Next.js"
+            ],
+            "hasOccupation": {
+              "@type": "Occupation",
+              "name": "Student & Developer",
+              "occupationLocation": {
+                "@type": "City",
+                "name": "Berkeley, CA"
+              }
             }
           })
         }}

@@ -9,7 +9,59 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en-US",
-  "categories": ["education", "technology", "business"],
+  "categories": ["education", "technology", "business", "productivity", "lifestyle"],
+  "keywords": ["Evan Maus", "UC Berkeley", "Economics", "Data Science", "AI", "Machine Learning", "Portfolio", "Blog", "Technology"],
+  "author": "Evan Maus",
+  "homepage_url": "https://evwillow.com",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "screenshots": [
+    {
+      "src": "/headshot.jpg",
+      "sizes": "800x600",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Evan Maus Portfolio Homepage"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "description": "Read Evan's latest blog posts",
+      "url": "/blog",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "About",
+      "short_name": "About",
+      "description": "Learn more about Evan Maus",
+      "url": "/about",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "short_name": "Projects",
+      "description": "View Evan's projects and work",
+      "url": "/projects",
+      "icons": [
+        {
+          "src": "/icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
   "icons": [
     {
       "src": "/icon-192x192.png",
@@ -28,6 +80,12 @@
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/headshot.jpg",
+      "sizes": "800x600",
+      "type": "image/jpeg",
+      "purpose": "any"
     }
   ]
-} 
+}

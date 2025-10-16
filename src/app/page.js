@@ -4,6 +4,10 @@ import { samplePosts } from "@/lib/samplePosts"
 import Featured from "@/src/components/Home/Featured"
 import Recent from "@/src/components/Home/Recent"
 import siteMetadata from "@/src/utils/siteMetaData"
+import FAQSchema from "@/src/components/SEO/FAQSchema"
+import OrganizationSchema from "@/src/components/SEO/OrganizationSchema"
+import WebSiteSchema from "@/src/components/SEO/WebSiteSchema"
+import BlogSchema from "@/src/components/SEO/BlogSchema"
 import Script from "next/script"
 
 export const metadata = {
@@ -123,6 +127,10 @@ export default async function Home() {
         <Script id="schema-person" type="application/ld+json">
           {JSON.stringify(personSchema)}
         </Script>
+        <FAQSchema />
+        <OrganizationSchema />
+        <WebSiteSchema />
+        <BlogSchema posts={postsToDisplay} />
         <Featured posts={postsToDisplay} />
         <Recent posts={postsToDisplay} />
       </main>
