@@ -196,22 +196,6 @@ export default async function BlogPage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <article itemScope itemType="https://schema.org/BlogPosting">
-          {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="px-5 md:px-10 my-4">
-            <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <li>
-                <a href="/" className="hover:text-accent transition-colors">
-                  Home
-                </a>
-              </li>
-              <li className="flex items-center">
-                <span className="mx-2">/</span>
-                <span className="text-gray-900 dark:text-gray-100" aria-current="page">
-                  {mdxBlog.title}
-                </span>
-              </li>
-            </ol>
-          </nav>
 
           <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
             <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -312,22 +296,6 @@ export default async function BlogPage({ params }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <article itemScope itemType="https://schema.org/BlogPosting">
-          {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="px-5 md:px-10 my-4">
-            <ol className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <li>
-                <a href="/" className="hover:text-accent transition-colors">
-                  Home
-                </a>
-              </li>
-              <li className="flex items-center">
-                <span className="mx-2">/</span>
-                <span className="text-gray-900 dark:text-gray-100" aria-current="page">
-                  {contentfulBlog.fields.title}
-                </span>
-              </li>
-            </ol>
-          </nav>
 
           <div className="mb-8 text-center relative w-full h-[70vh] bg-dark">
             <div className="w-full z-10 flex flex-col items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -337,38 +305,6 @@ export default async function BlogPage({ params }) {
               >
                 {contentfulBlog.fields.title}
               </h1>
-              {/* Article Meta Information */}
-              <div className="mt-4 text-light/80 text-sm md:text-base">
-                <time 
-                  dateTime={new Date(contentfulBlog.sys.createdAt).toISOString()}
-                  itemProp="datePublished"
-                >
-                  {new Date(contentfulBlog.sys.createdAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </time>
-                {contentfulBlog.sys.updatedAt !== contentfulBlog.sys.createdAt && (
-                  <>
-                    <span className="mx-2">•</span>
-                    <time 
-                      dateTime={new Date(contentfulBlog.sys.updatedAt).toISOString()}
-                      itemProp="dateModified"
-                    >
-                      Updated {new Date(contentfulBlog.sys.updatedAt).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </time>
-                  </>
-                )}
-                <span className="mx-2">•</span>
-                <span itemProp="author" itemScope itemType="https://schema.org/Person">
-                  <span itemProp="name">{contentfulBlog.fields.author || siteMetadata.author}</span>
-                </span>
-              </div>
             </div>
             <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
             {contentfulBlog.fields.image && (
