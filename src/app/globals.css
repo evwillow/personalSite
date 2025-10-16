@@ -276,7 +276,7 @@ footer[role="contentinfo"] .bg-dark {
 
 .hex-overlay .hex-tile {
     pointer-events: auto !important; /* Individual tiles are hoverable */
-    z-index: 5 !important; /* Above all content to be always hoverable */
+    z-index: 1 !important; /* Below content to allow text selection */
     touch-action: manipulation; /* Optimize touch interactions */
 }
 

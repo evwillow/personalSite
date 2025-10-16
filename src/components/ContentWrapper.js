@@ -10,7 +10,7 @@ const ContentWrapper = ({ children }) => {
       <HexagonOverlay />
       
       {/* Content sits above the hex overlay */}
-      <div className="relative" style={{ zIndex: 2, pointerEvents: 'none' }}>
+      <div className="relative" style={{ zIndex: 2 }}>
         {children}
       </div>
       

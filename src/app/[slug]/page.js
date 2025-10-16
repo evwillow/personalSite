@@ -221,38 +221,6 @@ export default async function BlogPage({ params }) {
               >
                 {mdxBlog.title}
               </h1>
-              {/* Article Meta Information */}
-              <div className="mt-4 text-light/80 text-sm md:text-base">
-                <time 
-                  dateTime={new Date(mdxBlog.publishedAt).toISOString()}
-                  itemProp="datePublished"
-                >
-                  {new Date(mdxBlog.publishedAt).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </time>
-                {mdxBlog.updatedAt && mdxBlog.updatedAt !== mdxBlog.publishedAt && (
-                  <>
-                    <span className="mx-2">•</span>
-                    <time 
-                      dateTime={new Date(mdxBlog.updatedAt).toISOString()}
-                      itemProp="dateModified"
-                    >
-                      Updated {new Date(mdxBlog.updatedAt).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </time>
-                  </>
-                )}
-                <span className="mx-2">•</span>
-                <span itemProp="author" itemScope itemType="https://schema.org/Person">
-                  <span itemProp="name">{mdxBlog?.author || siteMetadata.author}</span>
-                </span>
-              </div>
             </div>
             <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
             <Image

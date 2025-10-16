@@ -99,7 +99,7 @@ const RenderMdx = ({blog}) => {
     dark:prose-li:marker:text-accentDark
 
     first-letter:text-3xl
-    sm:first-letter:text-5xl'> 
+    sm:first-letter:text-5xl' style={{ zIndex: 50, pointerEvents: 'auto', position: 'relative' }}> 
         <MDXContent code={blog.body} components={mdxComponents}/>
     </div>
   )
