@@ -27,7 +27,8 @@ export async function generateMetadata({ params }) {
   const mdxBlog = blogs.find((blog) => blog.slug === slug)
   if (mdxBlog) {
     const publishedAt = new Date(mdxBlog.publishedAt).toISOString()
-    let imageList = [siteMetadata.socialBanner]
+    // Ensure we always have a proper image for social sharing
+    let imageList = [siteMetadata.defaultBlogImage]
     if (mdxBlog.image) {
       imageList =
         typeof mdxBlog.image.src === "string"
@@ -87,19 +88,28 @@ export async function generateMetadata({ params }) {
       ? [...contentfulBlog.fields.tags, ...siteMetadata.keywords]
       : siteMetadata.keywords
       
-    // Get image for social sharing
+    // Get image for social sharing - prioritize featured image from Contentful
     let ogImages = [{ 
-      url: siteMetadata.socialBanner,
+      url: `${siteMetadata.siteUrl}${siteMetadata.defaultBlogImage}`,
       width: 1200,
       height: 630,
       alt: contentfulBlog.fields.title
     }]
     
+    // Use featured image if available, otherwise check for image field
     if (contentfulBlog.fields.featuredImage) {
       ogImages = [{
         url: `https:${contentfulBlog.fields.featuredImage.fields.file.url}`,
         width: contentfulBlog.fields.featuredImage.fields.file.details.image.width,
         height: contentfulBlog.fields.featuredImage.fields.file.details.image.height,
+        alt: contentfulBlog.fields.title
+      }]
+    } else if (contentfulBlog.fields.image) {
+      // Fallback to image field if featuredImage is not available
+      ogImages = [{
+        url: `https:${contentfulBlog.fields.image.fields.file.url}`,
+        width: contentfulBlog.fields.image.fields.file.details.image.width,
+        height: contentfulBlog.fields.image.fields.file.details.image.height,
         alt: contentfulBlog.fields.title
       }]
     }
@@ -114,7 +124,7 @@ export async function generateMetadata({ params }) {
         title: contentfulBlog.fields.title,
         description:
           contentfulBlog.fields.description || contentfulBlog.fields.title,
-        url: siteMetadata.siteUrl + contentfulBlog.fields.slug,
+        url: `${siteMetadata.siteUrl}/${contentfulBlog.fields.slug}`,
         siteName: siteMetadata.title,
         locale: "en_US",
         type: "article",
@@ -122,6 +132,8 @@ export async function generateMetadata({ params }) {
         modifiedTime: new Date(contentfulBlog.sys.updatedAt).toISOString(),
         images: ogImages,
         authors: [contentfulBlog.fields.author || siteMetadata.author],
+        section: "Blog",
+        tags: contentfulBlog.fields.tags || [],
       },
       twitter: {
         card: "summary_large_image",
@@ -143,7 +155,8 @@ export default async function BlogPage({ params }) {
   const mdxBlog = blogs.find((blog) => blog.slug === slug)
 
   if (mdxBlog) {
-    let imageList = [siteMetadata.socialBanner]
+    // Ensure we always have a proper image for social sharing
+    let imageList = [siteMetadata.defaultBlogImage]
     if (mdxBlog.image) {
       imageList =
         typeof mdxBlog.image.src === "string"
@@ -245,7 +258,9 @@ export default async function BlogPage({ params }) {
       description: contentfulBlog.fields.description || contentfulBlog.fields.title,
       image: contentfulBlog.fields.featuredImage ? 
         [`https:${contentfulBlog.fields.featuredImage.fields.file.url}`] : 
-        [`${siteMetadata.siteUrl}${siteMetadata.socialBanner}`],
+        contentfulBlog.fields.image ?
+        [`https:${contentfulBlog.fields.image.fields.file.url}`] :
+        [`${siteMetadata.siteUrl}${siteMetadata.defaultBlogImage}`],
       datePublished: new Date(contentfulBlog.sys.createdAt).toISOString(),
       dateModified: new Date(contentfulBlog.sys.updatedAt).toISOString(),
       author: {
@@ -307,18 +322,18 @@ export default async function BlogPage({ params }) {
               </h1>
             </div>
             <div className="absolute top-0 left-0 right-0 bottom-0 h-full bg-dark/60 dark:bg-dark/40" />
-            {contentfulBlog.fields.image && (
+            {(contentfulBlog.fields.featuredImage || contentfulBlog.fields.image) && (
               <Image
-                src={`https:${contentfulBlog.fields.image.fields.file.url}`}
+                src={`https:${(contentfulBlog.fields.featuredImage || contentfulBlog.fields.image).fields.file.url}`}
                 alt={
-                  contentfulBlog.fields.image.fields.title ||
+                  (contentfulBlog.fields.featuredImage || contentfulBlog.fields.image).fields.title ||
                   contentfulBlog.fields.title
                 }
                 width={
-                  contentfulBlog.fields.image.fields.file.details.image.width
+                  (contentfulBlog.fields.featuredImage || contentfulBlog.fields.image).fields.file.details.image.width
                 }
                 height={
-                  contentfulBlog.fields.image.fields.file.details.image.height
+                  (contentfulBlog.fields.featuredImage || contentfulBlog.fields.image).fields.file.details.image.height
                 }
                 className="aspect-square w-full h-full object-cover object-center"
                 priority

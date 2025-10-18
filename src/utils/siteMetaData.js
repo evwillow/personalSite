@@ -8,6 +8,7 @@ const siteMetadata = {
   siteUrl: "https://evwillow.com",
   siteLogo: "/headshot.jpg",
   socialBanner: "/headshot.jpg", // Using existing headshot as social banner
+  defaultBlogImage: "/headshot.jpg", // Default image for blog posts without featured images
   email: "evan_maus@berkeley.edu",
   github: "https://github.com/evwillow",
   linkedin: "https://linkedin.com/in/evwillow",
