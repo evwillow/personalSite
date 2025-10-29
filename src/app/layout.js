@@ -119,7 +119,7 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+        
       </head>
       <body
         className={cx(

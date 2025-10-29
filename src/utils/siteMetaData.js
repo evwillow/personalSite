@@ -5,7 +5,7 @@ const siteMetadata = {
   description: "UC Berkeley student pursuing a Bachelor of Arts in Economics and Data Science with a minor in Computer Science. Building solutions at the intersection of AI, finance, and sustainability. Fullstack developer, quantitative researcher, and entrepreneur.",
   language: "en-us",
   theme: "system",
-  siteUrl: "https://evwillow.com",
+  siteUrl: "http://blog.evwillow.com",
   siteLogo: "/headshot.jpg",
   socialBanner: "/headshot.jpg", // Using existing headshot as social banner
   defaultBlogImage: "/headshot.jpg", // Default image for blog posts without featured images
