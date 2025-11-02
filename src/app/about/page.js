@@ -2,8 +2,9 @@ import siteMetadata from "@/src/utils/siteMetaData"
 import Image from "next/image"
 
 export const metadata = {
-  title: "About",
-  description: `Learn more about ${siteMetadata.author}, a UC Berkeley student majoring in Economics & Data Science with a focus on AI, quantitative finance, and sustainable technology.`,
+  title: "About | Evan Maus",
+  description: `Learn more about ${siteMetadata.author}, a UC Berkeley student pursuing Bachelor of Arts in Economics and Data Science with a minor in Computer Science. Full-stack developer, quantitative researcher, and entrepreneur building at the intersection of AI, finance, and sustainability.`,
+  keywords: "Evan Maus, UC Berkeley student, Economics Data Science, Computer Science minor, full stack developer, Berkeley student, Berkeley Economics, Berkeley Data Science",
 }
 
 export default function About() {
@@ -19,7 +20,7 @@ export default function About() {
               </h1>
               <div className="h-1 w-20 bg-accent mb-8"></div>
               <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 md:mb-0">
-                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a Bachelor of Arts in Economics and Data Science with a minor in Computer Science. I'm passionate about building solutions at the intersection of AI, finance, and sustainability, with hands-on experience in fullstack development and quantitative research.
+                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a Bachelor of Arts in Economics and Data Science with a minor in Computer Science, graduating May 2027. I'm a full-stack developer and quantitative researcher building production applications at the intersection of AI, finance, and sustainability. I've shipped client projects end-to-end, built revenue-generating platforms, and conducted published research in LLM energy efficiency.
               </p>
             </div>
             <div className="flex-shrink-0 mx-auto md:mx-0">
@@ -66,20 +67,16 @@ export default function About() {
                 <li>Structure and Interpretation of Computer Programs</li>
                 <li>Introduction to Probability and Statistics</li>
                 <li>Principles and Techniques of Data Science</li>
-                <li>Data Structures (CS61B)</li>
-                <li>Macroeconomics & Microeconomics</li>
+                <li>Macroeconomics</li>
+                <li>Data Structures</li>
+                <li>Microeconomics</li>
                 <li>Econometrics</li>
                 <li>Linear Algebra</li>
+                <li>Probability for Data Science</li>
+                <li>Game Theory</li>
+                <li>Data Science for Economists</li>
+                <li>Machine Structures</li>
               </ul>
-            </div>
-
-            <div className="mt-6">
-              <h4 className="text-xl font-semibold text-dark dark:text-light mb-3">
-                Research & Projects
-              </h4>
-              <p className="text-dark/80 dark:text-light/80">
-                ML-based trading research focusing on returns forecasting, factor models, and portfolio optimization using market and alternative data. Currently developing a breakout pattern analysis tool processing 10,000+ tickers across multiple timeframes.
-              </p>
             </div>
 
             <div className="mt-6">
@@ -228,6 +225,14 @@ export default function About() {
           <p className="text-lg md:text-xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 max-w-4xl mx-auto">
             I am building a career at the intersection of AI, finance, and sustainability, leveraging data-driven methods to create scalable solutions with global impact. My interests span full-stack engineering, data pipelines, applied ML (PyTorch/TensorFlow), market-data tools, climate software, and product-led entrepreneurship.
           </p>
+          <div className="mt-6">
+            <h4 className="text-xl font-semibold text-dark dark:text-light mb-3">
+              Interests
+            </h4>
+            <p className="text-dark/80 dark:text-light/80">
+              Full-stack engineering, data pipelines, applied ML (PyTorch/TensorFlow), market-data tools, climate software, product-led entrepreneurship.
+            </p>
+          </div>
           <a
             href="/resume.pdf"
             target="_blank"

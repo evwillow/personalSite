@@ -103,17 +103,20 @@ export default async function Home() {
       "@type": "Person",
       name: siteMetadata.author,
       url: siteMetadata.siteUrl,
+      email: siteMetadata.email,
       sameAs: [
+        siteMetadata.github,
         siteMetadata.linkedin,
         siteMetadata.twitter
       ],
-      jobTitle: "Blogger",
-      worksFor: {
-        "@type": "Organization",
-        name: siteMetadata.title
+      jobTitle: "Full-Stack Developer & Quantitative Researcher",
+      alumniOf: {
+        "@type": "EducationalOrganization",
+        name: siteMetadata.university
       },
       image: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
-      description: `Author of ${siteMetadata.title}`
+      description: siteMetadata.description,
+      knowsAbout: ["Full-Stack Development", "Machine Learning", "Quantitative Finance", "Data Science", "Economics"]
     }
 
     return (

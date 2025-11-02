@@ -22,7 +22,7 @@ export default function Contact() {
           </h1>
           <div className="h-1 w-20 bg-accent mb-8"></div>
           <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed">
-            I'm always open to discussing new opportunities, research collaborations, or innovative projects in AI, finance, and technology.
+            I'm actively seeking opportunities in quantitative finance, AI/ML research, and fullstack development. Always open to discussing internships, research collaborations, or innovative projects at the intersection of AI, finance, and technology.
           </p>
         </section>
 

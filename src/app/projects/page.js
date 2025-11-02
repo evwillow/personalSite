@@ -3,54 +3,57 @@ import Link from "next/link"
 import Image from "next/image"
 
 export const metadata = {
-  title: "Projects",
-  description: `Explore ${siteMetadata.author}'s portfolio of quantitative trading systems, ML models, and fullstack applications.`,
+  title: "Projects | Evan Maus",
+  description: `Explore ${siteMetadata.author}'s portfolio including Breakout Study Tool (breakouts.trade), LLM Energy Benchmark Research, X Lead Scraper, and other quantitative trading systems, ML models, and fullstack applications.`,
+  keywords: "Evan Maus projects, Breakout Study Tool, LLM research, trading systems, machine learning projects, Next.js projects, Python projects, Berkeley student projects",
 }
 
 export default function Projects() {
   const projects = [
     {
       title: "Breakout Study Tool",
-      subtitle: "Next.js, TypeScript, yfinance, Supabase",
-      description: "Built a web app for studying breakout patterns across ~10,000 tickers using yfinance + pandas, with a Next.js/TypeScript front end. Scans multiple timeframes (intraday 1/5/15 min & 1h, plus daily/weekly), adds chart overlays, notes, and simple up/down classifications.",
+      subtitle: "Next.js, TypeScript, React 19, Express/tRPC, FastAPI, Supabase, Prisma, Turborepo",
+      description: "Built a production web app for studying breakout patterns across ~10,000 tickers using yfinance and pandas, with a Next.js + TypeScript frontend. Features subscription-based monetization with free and premium tiers. Currently expanding with a live AI Insight System for automated setup detection, performance analytics, and adaptive signal scoring.",
       highlights: [
-        "Scans multiple timeframes (intraday 1/5/15 min & 1h, plus daily/weekly)",
-        "Processes ~10,000 tickers using yfinance + pandas",
-        "Deployed on DigitalOcean with Supabase Auth (admin/user) and storage via Google Drive/Supabase",
-        "Used daily by me and my dad for pattern practice",
-        "Built with Next.js/TypeScript front end"
+        "Scans multiple timeframes (1/5/15 min, 1h, daily, weekly) with dynamic chart overlays, tagging, and up/down pattern classification",
+        "Processes ~10,000 tickers using yfinance and pandas",
+        "Subscription-based monetization with free and premium tiers for user access",
+        "Integrated Supabase (Auth + storage) and deployed on DigitalOcean",
+        "Used daily for real-time pattern practice and analytics by multiple users",
+        "Currently expanding with a live AI Insight System for automated setup detection, performance analytics, and adaptive signal scoring to forecast breakout quality and trader accuracy trends",
+        "Full-stack architecture using React 19, Express/tRPC API, Python/FastAPI data processing, and Supabase/Prisma database in a Turborepo monorepo"
       ],
-      link: "https://trade.evwillow.com",
-      linkText: "View Live Demo",
-      tags: ["Next.js", "TypeScript", "yfinance", "pandas", "Supabase", "DigitalOcean"]
+      link: "https://breakouts.trade",
+      linkText: "View Live Site",
+      tags: ["Next.js", "TypeScript", "React 19", "Express", "tRPC", "FastAPI", "Python", "yfinance", "pandas", "Supabase", "Prisma", "Turborepo", "DigitalOcean", "Trading", "AI"]
+    },
+    {
+      title: "X (Twitter) Lead Scraper",
+      subtitle: "Python, Web Scraping, Automation",
+      description: "Developed an automated Python scraper to identify and rank potential users for the Breakout Study Tool by analyzing posts on breakout trading, technical analysis, and market trends, filtering results by keywords and engagement metrics.",
+      highlights: [
+        "Automated lead generation for Breakout Study Tool platform",
+        "Analyzes X (Twitter) posts on breakout trading, technical analysis, and market trends",
+        "Filters results by keywords and engagement metrics to identify potential users",
+        "Supports platform growth through systematic lead identification"
+      ],
+      link: siteMetadata.github,
+      linkText: "View on GitHub",
+      tags: ["Python", "Web Scraping", "Automation", "Lead Generation", "Trading"]
     },
     {
       title: "Live Intraday Scanner",
       subtitle: "Thinkorswim + JavaScript",
-      description: "Wrote a JS pipeline that feeds custom scans into Thinkorswim watchlists for real-time candidates; notably surfaced CLSK ahead of a breakout for discretionary review.",
+      description: "Wrote a JavaScript pipeline that feeds custom scans into Thinkorswim watchlists for real-time candidates; notably surfaced CLSK ahead of a breakout for discretionary review.",
       highlights: [
         "JavaScript pipeline for real-time market scanning",
         "Custom scans into Thinkorswim watchlists",
         "Notably surfaced CLSK ahead of a breakout for discretionary review",
-        "Real-time candidate identification"
+        "Real-time candidate identification for trading opportunities"
       ],
       link: siteMetadata.github,
       linkText: "View on GitHub",
-      tags: ["JavaScript", "Thinkorswim", "Trading", "Real-time"]
-    },
-    {
-      title: "Job-Opportunity Scraper",
-      subtitle: "Python, LinkedIn, Greenhouse, Indeed",
-      description: "Aggregates roles from LinkedIn, Greenhouse, and Indeed into CSV for targeted applications; handles 'thousands' of U.S. postings with filters/keywords to speed search and triage.",
-      highlights: [
-        "Aggregates roles from LinkedIn, Greenhouse, and Indeed into CSV",
-        "Handles 'thousands' of U.S. postings with filters/keywords",
-        "Speeds search and triage for targeted applications",
-        "Automated job opportunity discovery"
-      ],
-      link: siteMetadata.github,
-      linkText: "View on GitHub",
-      tags: ["Python", "Web Scraping", "LinkedIn", "Greenhouse", "Indeed"]
+      tags: ["JavaScript", "Thinkorswim", "Trading", "Real-time", "Market Scanning"]
     },
     {
       title: "Cat-vs-Dog Classifier",
@@ -60,7 +63,7 @@ export default function Projects() {
         "Collaboratively trained a CNN on a local GPU",
         "Classified images with solid accuracy",
         "Managed compute usage (batch sizing/runtime) to run reliably on limited VRAM",
-        "Hands-on experience with GPU workflow basics"
+        "Hands-on experience with GPU workflow basics and resource optimization"
       ],
       link: siteMetadata.github,
       linkText: "View on GitHub",
@@ -70,7 +73,12 @@ export default function Projects() {
 
   const academicProjects = [
     {
-      title: "CS 61B Data Structures",
+      title: "LLM Energy Benchmark Research",
+      description: "Built an end-to-end pipeline for measuring energy consumption across LLM models (OpenAI GPT-4o-mini, Groq Llama-3.1-8b, Mistral Large) using CodeCarbon. Implemented streaming data collection from LMSYS Chat 1M dataset, prompt extraction with validation, and multi-API integration with exponential backoff retry logic. Engineered 30+ linguistic features using spaCy, NLTK, and textstat. Research paper currently in publication process.",
+      tags: ["Python", "CodeCarbon", "spaCy", "NLTK", "textstat", "NLP", "Machine Learning", "Research"]
+    },
+    {
+      title: "CS 61B Data Structures & Algorithms",
       description: "Implemented ArrayDeque and LinkedListDeque (circular sentinel), BSTMap, and project features (iterators, equals, toString, resizing). Wrote JUnit tests and analyzed runtime; explored how maps/queues can model basic order-book mechanics.",
       tags: ["Java", "Algorithms", "Data Structures", "JUnit"]
     },

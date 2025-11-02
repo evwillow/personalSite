@@ -3,8 +3,9 @@ import Link from "next/link"
 import Image from "next/image"
 
 export const metadata = {
-  title: "Experience",
-  description: `${siteMetadata.author}'s professional experience in fullstack development, quantitative research, and sustainable technology.`,
+  title: "Experience | Evan Maus",
+  description: `${siteMetadata.author}'s professional experience as a full-stack developer, freelance engineer, and quantitative researcher. Built production applications including Breakout Study Tool, LLM energy research, and client projects.`,
+  keywords: "Evan Maus experience, full stack developer, freelance developer, quantitative research, Next.js developer, Berkeley student experience",
 }
 
 export default function Experience() {
@@ -14,14 +15,17 @@ export default function Experience() {
       company: "Independent",
       location: "Remote",
       period: "January 2024 - Present",
-      description: "Shipped three client projects end-to-end using Next.js with TypeScript; worked directly with stakeholders from scope to launch.",
+      description: "Shipped three client projects end-to-end using Next.js with TypeScript; worked directly with stakeholders from scope to launch. Built and launched Breakout Study Tool (breakouts.trade), a revenue-generating trading education platform with subscription-based monetization.",
       achievements: [
         "Shipped three client projects end-to-end using Next.js with TypeScript; worked directly with stakeholders from scope to launch",
-        "Implemented authentication where needed and integrated analytics APIs to monitor usage and guide content updates",
+        "Built and launched Breakout Study Tool (breakouts.trade), a trading education platform I use daily, featuring subscription-based monetization with free and premium tiers for user access",
+        "Developed X (Twitter) scraper to generate leads and identify potential users interested in breakout trading patterns, automating lead generation to support platform growth",
+        "Implemented authentication where needed (NextAuth.js) and integrated analytics APIs to monitor usage, guide content updates, and track user engagement across all projects",
         "Optimized for performance, accessibility, and reliability; containerized with Docker and deployed/maintained on DigitalOcean with GitHub for source control",
-        "Delivered real outcomes: built and launched a paid site for an environmental nonprofit that now actively serves community visitors (example: northcentralohiopollinatorpathway.org)"
+        "Designed full-stack architecture for Breakout Study Tool using React 19, Express/tRPC API, Python/FastAPI data processing, and Supabase/Prisma database in a Turborepo monorepo",
+        "Delivered real outcomes: built and launched a site for an environmental nonprofit that now actively serves community visitors (example: northcentralohiopollinatorpathway.org), and created a revenue-generating trading education platform that I personally use and maintain in production"
       ],
-      technologies: ["Next.js", "TypeScript", "Docker", "DigitalOcean", "GitHub", "Authentication", "Analytics APIs"]
+      technologies: ["Next.js", "TypeScript", "React 19", "Express", "tRPC", "FastAPI", "Python", "Supabase", "Prisma", "Docker", "DigitalOcean", "GitHub", "NextAuth.js", "Turborepo"]
     },
     {
       title: "Intern",
@@ -37,19 +41,6 @@ export default function Experience() {
       ],
       technologies: ["Python", "Pandas", "Google Sheets", "Apps Script", "Data Analysis"]
     },
-    {
-      title: "Gallery Attendant",
-      company: "BAMPFA, UC Berkeley",
-      location: "Berkeley, CA",
-      period: "August 2024 - November 2024",
-      description: "Provided operational support at one of Berkeley's most prestigious art museums.",
-      achievements: [
-        "Entrusted with safeguarding high-value artwork and visitor safety",
-        "Provided frontline operational support ensuring professional environment",
-        "Ensured seamless guest experience in museum setting"
-      ],
-      technologies: []
-    }
   ]
 
   const leadershipExperiences = [
@@ -85,19 +76,19 @@ export default function Experience() {
 
   const researchExperiences = [
     {
-      title: "Quantitative Research",
-      company: "UC Berkeley - Independent Study",
+      title: "LLM Energy Benchmark Research",
+      company: "UC Berkeley - Data Science & NLP",
       location: "Berkeley, CA",
-      period: "September 2024 - Present",
-      description: "Conducting ML-based trading research focusing on returns forecasting, factor models, and portfolio optimization.",
+      period: "Ongoing",
+      description: "Built an end-to-end pipeline for measuring energy consumption across LLM models (OpenAI GPT-4o-mini, Groq Llama-3.1-8b, Mistral Large) using CodeCarbon. Research paper currently in publication process.",
       achievements: [
-        "Developing returns forecasting models using machine learning on market and alternative data",
-        "Implementing factor models for systematic trading strategies",
-        "Optimizing portfolio construction with risk-adjusted return metrics",
-        "Processing and analyzing large-scale financial datasets",
-        "Applying academic research to practical trading applications"
+        "Built an end-to-end pipeline for measuring energy consumption across LLM models (OpenAI GPT-4o-mini, Groq Llama-3.1-8b, Mistral Large) using CodeCarbon",
+        "Implemented streaming data collection from LMSYS Chat 1M dataset, prompt extraction with validation, and multi-API integration with exponential backoff retry logic",
+        "Engineered 30+ linguistic features using spaCy, NLTK, and textstat, including syntactic complexity, sentiment, readability, and topic/concept density",
+        "Analyzed relationships between prompt characteristics and energy efficiency, developing metrics for tokens-per-second, energy-per-token, and latency analysis",
+        "Research paper currently in publication process"
       ],
-      technologies: ["Python", "Machine Learning", "Pandas", "NumPy", "Financial Modeling"]
+      technologies: ["Python", "CodeCarbon", "spaCy", "NLTK", "textstat", "NLP", "Machine Learning", "Data Analysis", "Research"]
     }
   ]
 
