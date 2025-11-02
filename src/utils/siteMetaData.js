@@ -5,7 +5,7 @@ const siteMetadata = {
   description: "Evan Maus - UC Berkeley Economics & Data Science student, full-stack developer, and quantitative researcher. Building production web applications, ML systems, and trading tools. Expertise in Next.js, Python, React, PyTorch, and applied machine learning. Available for internships and collaborations.",
   language: "en-us",
   theme: "system",
-  siteUrl: "https://evwillow.com",
+  siteUrl: "http://blog.evwillow.com",
   siteLogo: "/headshot.jpg",
   socialBanner: "/headshot.jpg", // Using existing headshot as social banner
   defaultBlogImage: "/headshot.jpg", // Default image for blog posts without featured images
