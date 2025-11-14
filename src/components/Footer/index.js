@@ -54,7 +54,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <a 
-                    href="/resume.pdf" 
+                    href="/Evan_Maus_Resume.pdf" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-accent hover:text-accent/80 hover:underline focus:underline inline-flex items-center gap-1 font-semibold"

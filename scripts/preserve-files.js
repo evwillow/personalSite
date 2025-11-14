@@ -8,7 +8,7 @@ const PRESERVE_FILES = [
   'public/manifest.json',
   'public/favicon.ico',
   'public/apple-touch-icon.png',
-  'public/resume.pdf',
+  'public/Evan_Maus_Resume.pdf',
   'public/icon-192x192.png',
   'public/icon-512x512.png'
 ];

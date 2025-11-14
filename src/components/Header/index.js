@@ -58,7 +58,7 @@ const Header = () => {
                 </li>
                 <li>
                   <a
-                    href="/resume.pdf"
+                    href="/Evan_Maus_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-dark dark:text-light hover:text-accent dark:hover:text-accent transition-colors duration-200 font-medium flex items-center gap-1"
@@ -190,7 +190,7 @@ const Header = () => {
                 Contact
               </Link>
               <a
-                href="/resume.pdf"
+                href="/Evan_Maus_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={toggle}

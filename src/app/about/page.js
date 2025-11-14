@@ -234,7 +234,7 @@ export default function About() {
             </p>
           </div>
           <a
-            href="/resume.pdf"
+            href="/Evan_Maus_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-16 py-6 bg-gradient-to-r from-accent to-accent/80 text-dark rounded-xl hover:from-accent/90 hover:to-accent/70 transition-all duration-300 font-bold text-2xl shadow-2xl hover:shadow-accent/50 transform hover:scale-105 border-2 border-accent/20"
