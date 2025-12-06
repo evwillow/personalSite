@@ -20,7 +20,7 @@ export default function About() {
               </h1>
               <div className="h-1 w-20 bg-accent mb-8"></div>
               <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 md:mb-0">
-                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a Bachelor of Arts in Economics and Data Science with a minor in Computer Science, graduating May 2027. I'm a full-stack developer and quantitative researcher building production applications at the intersection of AI, finance, and sustainability. I've shipped client projects end-to-end, built revenue-generating platforms, and conducted published research in LLM energy efficiency.
+                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a Bachelor of Arts in Data Science & Economics with a minor in Computer Science, graduating May 2027. I'm a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I've shipped production software for 200+ users with real-time features and data pipelines, while writing clean, maintainable code.
               </p>
             </div>
             <div className="flex-shrink-0 mx-auto md:mx-0">
@@ -48,7 +48,7 @@ export default function About() {
                   University of California, Berkeley
                 </h3>
                 <p className="text-lg text-dark/70 dark:text-light/70 mt-2">
-                  B.A. Economics and Data Science
+                  B.A. Data Science & Economics
                 </p>
                 <p className="text-lg text-dark/70 dark:text-light/70">
                   Minor in Computer Science
@@ -64,30 +64,18 @@ export default function About() {
                 Relevant Coursework
               </h4>
               <ul className="list-disc list-inside text-dark/80 dark:text-light/80 space-y-2">
-                <li>Structure and Interpretation of Computer Programs</li>
-                <li>Introduction to Probability and Statistics</li>
-                <li>Principles and Techniques of Data Science</li>
-                <li>Macroeconomics</li>
                 <li>Data Structures</li>
-                <li>Microeconomics</li>
-                <li>Econometrics</li>
-                <li>Linear Algebra</li>
+                <li>Introduction to AI</li>
+                <li>Principles & Techniques of Data Science</li>
                 <li>Probability for Data Science</li>
-                <li>Game Theory</li>
-                <li>Data Science for Economists</li>
-                <li>Machine Structures</li>
+                <li>Linear Algebra</li>
+                <li>Advanced Econometrics</li>
+                <li>Microeconomics</li>
+                <li>Macroeconomics</li>
+                <li>International Trade</li>
               </ul>
             </div>
 
-            <div className="mt-6">
-              <h4 className="text-xl font-semibold text-dark dark:text-light mb-3">
-                Campus Involvement
-              </h4>
-              <ul className="list-disc list-inside text-dark/80 dark:text-light/80 space-y-2">
-                <li>Berkeley Computer Science Association (CSA)</li>
-                <li>Undergraduate Economics Association (UEA)</li>
-              </ul>
-            </div>
           </div>
         </section>
 
@@ -173,47 +161,20 @@ export default function About() {
             <div>
               <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
                 <h3 className="text-2xl font-semibold text-dark dark:text-light">
-                  Founder & President, Student Climate Action Team
+                  President, Student Climate Action Team
                 </h3>
                 <span className="text-dark/60 dark:text-light/60 text-sm mt-2 md:mt-0">
-                  Jan 2023 - Aug 2024
+                  Oct 2022 - Sep 2023
                 </span>
               </div>
               <ul className="list-disc list-inside text-dark/80 dark:text-light/80 space-y-2">
-                <li>Founded and led a 10-person team; organized ~30 policy-focused events (~30 attendees on average)</li>
-                <li>Partnered with Sustainable Delaware Ohio and campus groups to support outreach for a city policy projected to reach ~10,000 households (per city/NGO estimates)</li>
-                <li>Built and maintained a lightweight React website to centralize resources and sign-ups</li>
-                <li>Presented initiatives to City Council; work received local media coverage</li>
+                <li>Led a student-run environmental group, coordinating strategy, events, and community partnerships</li>
+                <li>Started the organization and grew it to 20 active members through outreach and leadership</li>
+                <li>Built the website from scratch to centralize events, announcements, and volunteer sign-ups</li>
+                <li>Eagle Scout: led 100 volunteers on a community trail expansion project</li>
               </ul>
             </div>
 
-            <div>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                <h3 className="text-2xl font-semibold text-dark dark:text-light">
-                  Eagle Scout
-                </h3>
-                <span className="text-dark/60 dark:text-light/60 text-sm mt-2 md:mt-0">
-                  October 2023
-                </span>
-              </div>
-              <p className="text-dark/80 dark:text-light/80">
-                Coordinated ~100 participants to extend woodland/trail access with signage and trail markers; managed ~$1,000 materials budget and stakeholder approvals (Board of Education, community partners).
-              </p>
-            </div>
-
-            <div>
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                <h3 className="text-2xl font-semibold text-dark dark:text-light">
-                  Global Scholar Diploma
-                </h3>
-                <span className="text-dark/60 dark:text-light/60 text-sm mt-2 md:mt-0">
-                  April 2023
-                </span>
-              </div>
-              <p className="text-dark/80 dark:text-light/80">
-                Completed seminars and a capstone on environmental policy/economics.
-              </p>
-            </div>
           </div>
         </section>
 
@@ -225,14 +186,6 @@ export default function About() {
           <p className="text-lg md:text-xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 max-w-4xl mx-auto">
             I am building a career at the intersection of AI, finance, and sustainability, leveraging data-driven methods to create scalable solutions with global impact. My interests span full-stack engineering, data pipelines, applied ML (PyTorch/TensorFlow), market-data tools, climate software, and product-led entrepreneurship.
           </p>
-          <div className="mt-6">
-            <h4 className="text-xl font-semibold text-dark dark:text-light mb-3">
-              Interests
-            </h4>
-            <p className="text-dark/80 dark:text-light/80">
-              Full-stack engineering, data pipelines, applied ML (PyTorch/TensorFlow), market-data tools, climate software, product-led entrepreneurship.
-            </p>
-          </div>
           <a
             href="/Evan_Maus_Resume.pdf"
             target="_blank"

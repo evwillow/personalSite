@@ -11,86 +11,81 @@ export const metadata = {
 export default function Experience() {
   const professionalExperiences = [
     {
-      title: "Full stack developer (Freelance)",
-      company: "Independent",
-      location: "Remote",
-      period: "January 2024 - Present",
-      description: "Shipped three client projects end-to-end using Next.js with TypeScript; worked directly with stakeholders from scope to launch. Built and launched Breakout Study Tool (breakouts.trade), a revenue-generating trading education platform with subscription-based monetization.",
+      title: "Full-Stack Engineer",
+      company: "Breakout Study Tool",
+      location: "Berkeley, CA",
+      period: "Apr 2025 – Present",
+      description: "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations. Shipped a production product used by 200+ traders through iteration with Reddit and X.com communities.",
       achievements: [
-        "Shipped three client projects end-to-end using Next.js with TypeScript; worked directly with stakeholders from scope to launch",
-        "Built and launched Breakout Study Tool (breakouts.trade), a trading education platform I use daily, featuring subscription-based monetization with free and premium tiers for user access",
-        "Developed X (Twitter) scraper to generate leads and identify potential users interested in breakout trading patterns, automating lead generation to support platform growth",
-        "Implemented authentication where needed (NextAuth.js) and integrated analytics APIs to monitor usage, guide content updates, and track user engagement across all projects",
-        "Optimized for performance, accessibility, and reliability; containerized with Docker and deployed/maintained on DigitalOcean with GitHub for source control",
-        "Designed full-stack architecture for Breakout Study Tool using React 19, Express/tRPC API, Python/FastAPI data processing, and Supabase/Prisma database in a Turborepo monorepo",
-        "Delivered real outcomes: built and launched a site for an environmental nonprofit that now actively serves community visitors (example: northcentralohiopollinatorpathway.org), and created a revenue-generating trading education platform that I personally use and maintain in production"
+        "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations",
+        "Shipped a production product used by 200+ traders through iteration with Reddit and X.com communities",
+        "Engineered interactive React/Next.js charting and drill flows with sub-80ms interactions",
+        "Developed Python pipelines to ingest and normalize large-scale market data",
+        "Designed analytics to track accuracy, performance metrics, and study behavior",
+        "Implemented secure auth, rate-limited APIs, and CI/CD with >99% uptime"
       ],
-      technologies: ["Next.js", "TypeScript", "React 19", "Express", "tRPC", "FastAPI", "Python", "Supabase", "Prisma", "Docker", "DigitalOcean", "GitHub", "NextAuth.js", "Turborepo"]
+      technologies: ["Next.js", "TypeScript", "React", "Python", "PostgreSQL", "CI/CD"]
     },
     {
-      title: "Intern",
-      company: "necoTECH",
-      location: "Delaware, OH",
-      period: "May 2023 - September 2023",
-      description: "Delivered a repeatable, company-wide process for consistent outreach and timely proposal prep, helping the team identify and pursue government contracts and partnerships.",
+      title: "AI Infrastructure Researcher",
+      company: "LLM Energy Benchmark",
+      location: "Berkeley, CA",
+      period: "Aug 2025 – Present",
+      description: "Initiated and built a benchmark to study how prompt features affect LLM energy use and performance. Processed 1M+ chats and 20k+ measurements independently, engineering 30+ linguistic features with CodeCarbon.",
       achievements: [
-        "Tracker: Centralized contract/lead management in a single Google Sheets/Excel pipeline; defined stages & ownership; added Apps Script dedupe/status nudges",
-        "Strategy + mentorship: Co-developed the initial marketing playbook (social, networking, outreach templates) with founders and two mentors, including an experienced entrepreneur who coached me on startup ops, cash flow, and go-to-market",
-        "Gov contracts: Built Python (pandas) scripts to surface/structure government procurement opportunities; cleaned/tagged opportunities and fed prioritized leads into the tracker",
-        "Outcome: Delivered a repeatable, company-wide process for consistent outreach and timely proposal prep, helping the team identify and pursue government contracts and partnerships"
+        "Initiated and built a benchmark to study how prompt features affect LLM energy use and performance",
+        "Processed 1M+ chats and 20k+ measurements independently, engineering 30+ linguistic features with CodeCarbon",
+        "Analyzed efficiency tradeoffs across model types and advanced a self-driven paper and open dataset"
       ],
-      technologies: ["Python", "Pandas", "Google Sheets", "Apps Script", "Data Analysis"]
+      technologies: ["Python", "CodeCarbon", "NLP", "Machine Learning", "Data Analysis", "Research"]
+    },
+    {
+      title: "Full-Stack Developer",
+      company: "North Central Ohio Pollinator Pathway & Sustainable Delaware Ohio",
+      location: "Columbus, OH",
+      period: "Jan 2024 – Aug 2024",
+      description: "Sole developer for 2 local environmental organizations, leading technical decisions with non-technical leaders. Owned development and deployment with a focus on reliability and maintainability.",
+      achievements: [
+        "Sole developer for 2 local environmental organizations, leading technical decisions with non-technical leaders",
+        "Owned development and deployment with a focus on reliability and maintainability",
+        "Built secure auth, analytics, and cloud deployments to improve visibility and trust"
+      ],
+      technologies: ["Next.js", "TypeScript", "React", "Authentication", "Analytics", "Cloud Deployment"]
+    },
+    {
+      title: "Data & Product Intern",
+      company: "necoTECH",
+      location: "Columbus, OH",
+      period: "May 2023 – Sept 2023",
+      description: "Worked as a Data & Product Intern focused on identifying and solving real business problems through scripting, internal tools, and process improvement.",
+      achievements: [
+        "Automated Python-based lead tracking and data workflows, reducing manual effort by ~50%",
+        "Improved CRM reliability by consolidating fragmented processes and downstream integrations",
+        "Designed proposal pipelines and marketing workflows adopted across multiple teams",
+        "Collaborated cross-functionally and learned directly from experienced mentors, including the CEO"
+      ],
+      technologies: ["Python", "Pandas", "Data Analysis", "Process Automation", "CRM"]
     },
   ]
 
   const leadershipExperiences = [
     {
-      title: "Founder and President",
-      company: "Student Climate Action Team (SCAT)",
+      title: "President",
+      company: "Student Climate Action Team",
       location: "Delaware, OH",
-      period: "January 2023 - August 2024",
-      description: "Founded and led a 10-person team; organized ~30 policy-focused events (~30 attendees on average).",
+      period: "Oct 2022 – Sep 2023",
+      description: "Led a student-run environmental group, coordinating strategy, events, and community partnerships. Started the organization and grew it to 20 active members through outreach and leadership.",
       achievements: [
-        "Founded and led a 10-person team; organized ~30 policy-focused events (~30 attendees on average)",
-        "Partnered with Sustainable Delaware Ohio and campus groups to support outreach for a city policy projected to reach ~10,000 households (per city/NGO estimates)",
-        "Built and maintained a lightweight React website to centralize resources and sign-ups",
-        "Presented initiatives to City Council; work received local media coverage"
+        "Led a student-run environmental group, coordinating strategy, events, and community partnerships",
+        "Started the organization and grew it to 20 active members through outreach and leadership",
+        "Built the website from scratch to centralize events, announcements, and volunteer sign-ups",
+        "Eagle Scout: led 100 volunteers on a community trail expansion project"
       ],
-      technologies: ["React", "Web Development", "Community Organizing", "Policy Advocacy"]
-    },
-    {
-      title: "Eagle Scout",
-      company: "Schultz Elementary Environmental Project",
-      location: "Delaware, OH",
-      period: "October 2023",
-      description: "Coordinated ~100 participants to extend woodland/trail access with signage and trail markers; managed ~$1,000 materials budget and stakeholder approvals (Board of Education, community partners).",
-      achievements: [
-        "Coordinated ~100 participants to extend woodland/trail access with signage and trail markers",
-        "Managed ~$1,000 materials budget and stakeholder approvals (Board of Education, community partners)",
-        "Demonstrated leadership, project management, and community service"
-      ],
-      technologies: [],
-      image: "/prarieMap.jpg"
+      technologies: ["React", "Web Development", "Community Organizing", "Leadership"]
     }
   ]
 
-  const researchExperiences = [
-    {
-      title: "LLM Energy Benchmark Research",
-      company: "UC Berkeley - Data Science & NLP",
-      location: "Berkeley, CA",
-      period: "Ongoing",
-      description: "Built an end-to-end pipeline for measuring energy consumption across LLM models (OpenAI GPT-4o-mini, Groq Llama-3.1-8b, Mistral Large) using CodeCarbon. Research paper currently in publication process.",
-      achievements: [
-        "Built an end-to-end pipeline for measuring energy consumption across LLM models (OpenAI GPT-4o-mini, Groq Llama-3.1-8b, Mistral Large) using CodeCarbon",
-        "Implemented streaming data collection from LMSYS Chat 1M dataset, prompt extraction with validation, and multi-API integration with exponential backoff retry logic",
-        "Engineered 30+ linguistic features using spaCy, NLTK, and textstat, including syntactic complexity, sentiment, readability, and topic/concept density",
-        "Analyzed relationships between prompt characteristics and energy efficiency, developing metrics for tokens-per-second, energy-per-token, and latency analysis",
-        "Research paper currently in publication process"
-      ],
-      technologies: ["Python", "CodeCarbon", "spaCy", "NLTK", "textstat", "NLP", "Machine Learning", "Data Analysis", "Research"]
-    }
-  ]
+  const researchExperiences = []
 
   return (
     <main className="flex flex-col items-center justify-center px-5 sm:px-10 md:px-24 lg:px-32 my-12">
@@ -102,7 +97,7 @@ export default function Experience() {
           </h1>
           <div className="h-1 w-20 bg-accent mb-8"></div>
           <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed">
-            Comprehensive experience spanning professional development, quantitative research, and leadership initiatives with measurable impact across technology, finance, and sustainability sectors.
+            Full-stack engineering experience building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. Production software for 200+ users with real-time features and data pipelines.
           </p>
         </section>
 
@@ -185,84 +180,6 @@ export default function Experience() {
           </div>
         </section>
 
-        {/* Research Experience */}
-        <section className="mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-8">
-            Research Experience
-          </h2>
-          <div className="relative">
-            <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-accent/30"></div>
-            <div className="space-y-12">
-              {researchExperiences.map((experience, index) => (
-                <article
-                  key={index}
-                  className="relative bg-white dark:bg-dark shadow-lg rounded-2xl p-8 border-2 border-gray-100 dark:border-accentDark/50 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 md:ml-20"
-                >
-                  <div className="hidden md:block absolute -left-[52px] top-8 w-4 h-4 bg-accent rounded-full border-4 border-light dark:border-dark"></div>
-
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-dark dark:text-light mb-2">
-                        {experience.title}
-                      </h3>
-                      <h4 className="text-xl text-dark/80 dark:text-light/80 font-semibold mb-1">
-                        {experience.company}
-                      </h4>
-                      <p className="text-dark/60 dark:text-light/60">
-                        {experience.location}
-                      </p>
-                    </div>
-                    <div className="text-dark/70 dark:text-light/70 font-medium mt-4 lg:mt-0 lg:text-right">
-                      {experience.period}
-                    </div>
-                  </div>
-
-                  <p className="text-lg text-dark/80 dark:text-light/80 mb-6 leading-relaxed">
-                    {experience.description}
-                  </p>
-
-                  <div className="mb-6">
-                    <h5 className="text-lg font-semibold text-dark dark:text-light mb-3">
-                      Key Focus Areas
-                    </h5>
-                    <ul className="space-y-2">
-                      {experience.achievements.map((achievement, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-dark/60 dark:text-light/60 mr-2 mt-1 flex-shrink-0">▸</span>
-                          <span className="text-dark/80 dark:text-light/80">{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {experience.technologies.length > 0 && (
-                    <div>
-                      <h5 className="text-lg font-semibold text-dark dark:text-light mb-3">
-                        Technologies Used
-                      </h5>
-                      <div className="flex flex-wrap gap-2">
-                        {experience.technologies.map((tech) => {
-                          const keyTechs = ["Next.js", "React", "Python", "Pandas", "JavaScript", "TypeScript"];
-                          const isKeyTech = keyTechs.includes(tech);
-                          return (
-                            <span
-                              key={tech}
-                              className={`px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-semibold border border-gray-200 dark:border-gray-700 ${
-                                isKeyTech ? "text-accent" : "text-dark dark:text-light"
-                              }`}
-                            >
-                              {tech}
-                            </span>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Leadership Experience */}
         <section className="mb-12">
@@ -404,7 +321,7 @@ export default function Experience() {
             Let's Work Together
           </h2>
           <p className="text-lg md:text-xl text-dark/80 dark:text-light/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            I'm actively seeking opportunities in quantitative finance, AI/ML research, and fullstack development. I bring proven experience delivering measurable results across technical projects, from optimizing systems to building production applications.
+            I'm actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. I bring proven experience building fast, reliable applications with real-time features and data pipelines for 200+ users.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a

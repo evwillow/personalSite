@@ -10,6 +10,7 @@ const siteMetadata = {
   socialBanner: "/headshot.jpg", // Using existing headshot as social banner
   defaultBlogImage: "/headshot.jpg", // Default image for blog posts without featured images
   email: "evan_maus@berkeley.edu",
+  phone: "740-971-8762",
   github: "https://github.com/evwillow",
   linkedin: "https://linkedin.com/in/evwillow",
   twitter: "https://x.com/evwillow1",

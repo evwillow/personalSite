@@ -16,7 +16,7 @@ const OrganizationSchema = () => {
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-XXX-XXX-XXXX",
+      "telephone": `+1-${siteMetadata.phone || '740-971-8762'}`,
       "contactType": "Personal",
       "email": siteMetadata.email,
       "availableLanguage": ["English"]

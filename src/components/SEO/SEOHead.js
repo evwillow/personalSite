@@ -144,7 +144,7 @@ const SEOHead = ({
               siteMetadata.twitter,
               siteMetadata.github
             ],
-            "jobTitle": "Economics & Data Science Student",
+            "jobTitle": "Full-Stack Engineer",
             "description": siteMetadata.description,
             "image": `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
             "worksFor": {
@@ -177,7 +177,7 @@ const SEOHead = ({
             ],
             "hasOccupation": {
               "@type": "Occupation",
-              "name": "Student & Developer",
+              "name": "Full-Stack Engineer",
               "occupationLocation": {
                 "@type": "City",
                 "name": "Berkeley, CA"

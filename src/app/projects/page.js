@@ -12,70 +12,40 @@ export default function Projects() {
   const projects = [
     {
       title: "Breakout Study Tool",
-      subtitle: "Next.js, TypeScript, React 19, Express/tRPC, FastAPI, Supabase, Prisma, Turborepo",
-      description: "Built a production web app for studying breakout patterns across ~10,000 tickers using yfinance and pandas, with a Next.js + TypeScript frontend. Features subscription-based monetization with free and premium tiers. Currently expanding with a live AI Insight System for automated setup detection, performance analytics, and adaptive signal scoring.",
+      subtitle: "Next.js, TypeScript, React, Python, PostgreSQL",
+      description: "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations. Shipped a production product used by 200+ traders through iteration with Reddit and X.com communities.",
       highlights: [
-        "Scans multiple timeframes (1/5/15 min, 1h, daily, weekly) with dynamic chart overlays, tagging, and up/down pattern classification",
-        "Processes ~10,000 tickers using yfinance and pandas",
-        "Subscription-based monetization with free and premium tiers for user access",
-        "Integrated Supabase (Auth + storage) and deployed on DigitalOcean",
-        "Used daily for real-time pattern practice and analytics by multiple users",
-        "Currently expanding with a live AI Insight System for automated setup detection, performance analytics, and adaptive signal scoring to forecast breakout quality and trader accuracy trends",
-        "Full-stack architecture using React 19, Express/tRPC API, Python/FastAPI data processing, and Supabase/Prisma database in a Turborepo monorepo"
+        "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations",
+        "Shipped a production product used by 200+ traders through iteration with Reddit and X.com communities",
+        "Engineered interactive React/Next.js charting and drill flows with sub-80ms interactions",
+        "Developed Python pipelines to ingest and normalize large-scale market data",
+        "Designed analytics to track accuracy, performance metrics, and study behavior",
+        "Implemented secure auth, rate-limited APIs, and CI/CD with >99% uptime"
       ],
       link: "https://breakouts.trade",
       linkText: "View Live Site",
-      tags: ["Next.js", "TypeScript", "React 19", "Express", "tRPC", "FastAPI", "Python", "yfinance", "pandas", "Supabase", "Prisma", "Turborepo", "DigitalOcean", "Trading", "AI"]
+      tags: ["Next.js", "TypeScript", "React", "Python", "PostgreSQL", "CI/CD", "Trading", "Full-Stack"]
     },
     {
-      title: "X (Twitter) Lead Scraper",
-      subtitle: "Python, Web Scraping, Automation",
-      description: "Developed an automated Python scraper to identify and rank potential users for the Breakout Study Tool by analyzing posts on breakout trading, technical analysis, and market trends, filtering results by keywords and engagement metrics.",
+      title: "Cat vs Dog Image Classifier",
+      subtitle: "TensorFlow, Machine Learning",
+      description: "Built and tuned a TensorFlow CNN on a large image dataset, handling preprocessing, train/validation/test splits, and hyperparameter tuning.",
       highlights: [
-        "Automated lead generation for Breakout Study Tool platform",
-        "Analyzes X (Twitter) posts on breakout trading, technical analysis, and market trends",
-        "Filters results by keywords and engagement metrics to identify potential users",
-        "Supports platform growth through systematic lead identification"
+        "Built and tuned a TensorFlow CNN on a large image dataset",
+        "Handled preprocessing, train/validation/test splits, and hyperparameter tuning",
+        "Applied machine learning best practices for image classification"
       ],
       link: siteMetadata.github,
       linkText: "View on GitHub",
-      tags: ["Python", "Web Scraping", "Automation", "Lead Generation", "Trading"]
-    },
-    {
-      title: "Live Intraday Scanner",
-      subtitle: "Thinkorswim + JavaScript",
-      description: "Wrote a JavaScript pipeline that feeds custom scans into Thinkorswim watchlists for real-time candidates; notably surfaced CLSK ahead of a breakout for discretionary review.",
-      highlights: [
-        "JavaScript pipeline for real-time market scanning",
-        "Custom scans into Thinkorswim watchlists",
-        "Notably surfaced CLSK ahead of a breakout for discretionary review",
-        "Real-time candidate identification for trading opportunities"
-      ],
-      link: siteMetadata.github,
-      linkText: "View on GitHub",
-      tags: ["JavaScript", "Thinkorswim", "Trading", "Real-time", "Market Scanning"]
-    },
-    {
-      title: "Cat-vs-Dog Classifier",
-      subtitle: "TensorFlow, Local GPU",
-      description: "Collaboratively trained a CNN on a local GPU to classify images with solid accuracy; managed compute usage (batch sizing/runtime) to run reliably on limited VRAM—giving hands-on experience with GPU workflow basics.",
-      highlights: [
-        "Collaboratively trained a CNN on a local GPU",
-        "Classified images with solid accuracy",
-        "Managed compute usage (batch sizing/runtime) to run reliably on limited VRAM",
-        "Hands-on experience with GPU workflow basics and resource optimization"
-      ],
-      link: siteMetadata.github,
-      linkText: "View on GitHub",
-      tags: ["TensorFlow", "CNN", "GPU", "Machine Learning", "Computer Vision"]
+      tags: ["TensorFlow", "CNN", "Machine Learning", "Computer Vision", "Image Classification"]
     }
   ]
 
   const academicProjects = [
     {
-      title: "LLM Energy Benchmark Research",
-      description: "Built an end-to-end pipeline for measuring energy consumption across LLM models (OpenAI GPT-4o-mini, Groq Llama-3.1-8b, Mistral Large) using CodeCarbon. Implemented streaming data collection from LMSYS Chat 1M dataset, prompt extraction with validation, and multi-API integration with exponential backoff retry logic. Engineered 30+ linguistic features using spaCy, NLTK, and textstat. Research paper currently in publication process.",
-      tags: ["Python", "CodeCarbon", "spaCy", "NLTK", "textstat", "NLP", "Machine Learning", "Research"]
+      title: "LLM Energy Benchmark",
+      description: "Initiated and built a benchmark to study how prompt features affect LLM energy use and performance. Processed 1M+ chats and 20k+ measurements independently, engineering 30+ linguistic features with CodeCarbon. Analyzed efficiency tradeoffs across model types and advanced a self-driven paper and open dataset.",
+      tags: ["Python", "CodeCarbon", "NLP", "Machine Learning", "Research", "Data Analysis"]
     },
     {
       title: "CS 61B Data Structures & Algorithms",

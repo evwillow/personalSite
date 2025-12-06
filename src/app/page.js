@@ -109,7 +109,7 @@ export default async function Home() {
         siteMetadata.linkedin,
         siteMetadata.twitter
       ],
-      jobTitle: "Full-Stack Developer & Quantitative Researcher",
+      jobTitle: "Full-Stack Engineer",
       alumniOf: {
         "@type": "EducationalOrganization",
         name: siteMetadata.university

@@ -3,13 +3,21 @@ import siteMetadata from "@/src/utils/siteMetaData"
 import { useState } from "react"
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const copyEmail = (e) => {
     e.preventDefault();
     navigator.clipboard.writeText(siteMetadata.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const copyPhone = (e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(siteMetadata.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   return (
@@ -22,20 +30,20 @@ export default function Contact() {
           </h1>
           <div className="h-1 w-20 bg-accent mb-8"></div>
           <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed">
-            I'm actively seeking opportunities in quantitative finance, AI/ML research, and fullstack development. Always open to discussing internships, research collaborations, or innovative projects at the intersection of AI, finance, and technology.
+            I'm actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. Always open to discussing internships, research collaborations, or innovative projects at the intersection of AI, finance, and technology.
           </p>
         </section>
 
         {/* Contact Information Cards */}
-        <section className="mb-16 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section className="mb-16 grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Email Card */}
           <button
             onClick={copyEmail}
             className="bg-white/50 dark:bg-gray-900/50 shadow-lg rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 group text-left w-full cursor-pointer backdrop-blur-sm"
           >
-            <div className="flex items-start space-x-4">
+              <div className="flex items-start space-x-4">
               <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-colors">
-                {copied ? (
+                {copiedEmail ? (
                   <svg
                     className="w-6 h-6 text-accent"
                     fill="none"
@@ -71,12 +79,66 @@ export default function Contact() {
                 <h3 className="text-xl font-semibold text-dark dark:text-light mb-2 flex items-center gap-2">
                   Email
                   <span className="text-xs text-dark/60 dark:text-light/60 font-normal">
-                    {copied ? "(Copied!)" : "(Click to copy)"}
+                    {copiedEmail ? "(Copied!)" : "(Click to copy)"}
                   </span>
                 </h3>
                 <p className="text-accent font-medium">{siteMetadata.email}</p>
                 <p className="text-sm text-dark/60 dark:text-light/60 mt-2">
                   Best for professional inquiries
+                </p>
+              </div>
+            </div>
+          </button>
+
+          {/* Phone Card */}
+          <button
+            onClick={copyPhone}
+            className="bg-white/50 dark:bg-gray-900/50 shadow-lg rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 group text-left w-full cursor-pointer backdrop-blur-sm"
+          >
+            <div className="flex items-start space-x-4">
+              <div className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center transition-colors">
+                {copiedPhone ? (
+                  <svg
+                    className="w-6 h-6 text-accent"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-6 h-6 text-accent"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                )}
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-dark dark:text-light mb-2 flex items-center gap-2">
+                  Phone
+                  <span className="text-xs text-dark/60 dark:text-light/60 font-normal">
+                    {copiedPhone ? "(Copied!)" : "(Click to copy)"}
+                  </span>
+                </h3>
+                <p className="text-accent font-medium">{siteMetadata.phone}</p>
+                <p className="text-sm text-dark/60 dark:text-light/60 mt-2">
+                  Available for calls
                 </p>
               </div>
             </div>
@@ -243,7 +305,7 @@ export default function Contact() {
               onClick={copyEmail}
               className="w-full sm:w-auto px-16 py-6 bg-dark dark:bg-light text-light dark:text-dark rounded-xl hover:bg-dark/90 dark:hover:bg-light/90 transition-colors font-bold text-xl sm:text-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2"
             >
-              {copied ? "Email Copied!" : "Copy Email"}
+              {copiedEmail ? "Email Copied!" : "Copy Email"}
             </button>
           </div>
         </section>
