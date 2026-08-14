@@ -18,7 +18,7 @@ export default function Projects() {
           subtitle: "Python, Polars, DuckDB, Parquet, Anthropic API",
           description:
             "An AI product for commercial-auto claims reconciliation. It reads adjuster notes on open claims and flags the ones where a documented fact is not reflected in the carried reserve. It is a reconciliation tool rather than a prediction machine.",
-          link: "https://incurra.com",
+          link: "https://incurra.ai",
           linkText: "View Live Site",
           privateRepo: true,
           tags: ["Python", "Polars", "DuckDB", "Parquet", "Anthropic API", "Insurance"],
