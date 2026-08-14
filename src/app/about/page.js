@@ -20,7 +20,7 @@ export default function About() {
               </h1>
               <div className="h-1 w-20 bg-accent mb-8"></div>
               <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 md:mb-0">
-                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a Bachelor of Arts in Data Science & Economics with a minor in Computer Science, graduating May 2027. I'm a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I've shipped production software for 200+ users with real-time features and data pipelines, while writing clean, maintainable code.
+                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a Bachelor of Arts in Data Science & Economics with a minor in Computer Science, graduating May 2027. I'm a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I've shipped production software with 458 signups across six continents, including real-time features and data pipelines, while writing clean, maintainable code.
               </p>
             </div>
             <div className="flex-shrink-0 mx-auto md:mx-0">
@@ -74,6 +74,38 @@ export default function About() {
                 <li>Macroeconomics</li>
                 <li>International Trade</li>
               </ul>
+            </div>
+
+            <div className="mt-8">
+              <h4 className="text-xl font-semibold text-dark dark:text-light mb-3">
+                Coursework Projects & Self-Study
+              </h4>
+              <div className="space-y-4">
+                <div>
+                  <h5 className="text-lg font-semibold text-dark dark:text-light">
+                    CS 61B Data Structures &amp; Algorithms
+                  </h5>
+                  <p className="text-dark/80 dark:text-light/80">
+                    Implemented ArrayDeque and LinkedListDeque (circular sentinel), BSTMap, and project features (iterators, equals, toString, resizing). Wrote JUnit tests and analyzed runtime; explored how maps/queues can model basic order-book mechanics.
+                  </p>
+                </div>
+                <div>
+                  <h5 className="text-lg font-semibold text-dark dark:text-light">
+                    Self-Directed AI/ML Coursework
+                  </h5>
+                  <p className="text-dark/80 dark:text-light/80">
+                    Completed practical courses covering tensors &amp; autograd, nn.Module, DataLoaders, training/evaluation loops, overfitting control (regularization/early stopping), and basic model types (MLP/CNN); used NumPy/Pandas for preprocessing and small applied exercises.
+                  </p>
+                </div>
+                <div>
+                  <h5 className="text-lg font-semibold text-dark dark:text-light">
+                    Supplemental Online Study
+                  </h5>
+                  <p className="text-dark/80 dark:text-light/80">
+                    Python &amp; backend fundamentals, plus quantitative topics (stochastic processes, numerical optimization, introductory quantitative finance) with small practice projects.
+                  </p>
+                </div>
+              </div>
             </div>
 
           </div>

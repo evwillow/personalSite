@@ -301,6 +301,12 @@ export default function Contact() {
             >
               View Full Resume
             </a>
+            <a
+              href={`mailto:${siteMetadata.email}`}
+              className="w-full sm:w-auto px-16 py-6 bg-dark dark:bg-light text-light dark:text-dark rounded-xl hover:bg-dark/90 dark:hover:bg-light/90 transition-colors font-bold text-xl sm:text-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2 text-center"
+            >
+              Email Me
+            </a>
             <button
               onClick={copyEmail}
               className="w-full sm:w-auto px-16 py-6 bg-dark dark:bg-light text-light dark:text-dark rounded-xl hover:bg-dark/90 dark:hover:bg-light/90 transition-colors font-bold text-xl sm:text-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center gap-2"
@@ -308,6 +314,15 @@ export default function Contact() {
               {copiedEmail ? "Email Copied!" : "Copy Email"}
             </button>
           </div>
+          <p className="mt-6 text-dark/70 dark:text-light/70">
+            Or reach me directly at{" "}
+            <a
+              href={`mailto:${siteMetadata.email}`}
+              className="text-accent font-medium hover:underline focus:underline"
+            >
+              {siteMetadata.email}
+            </a>
+          </p>
         </section>
       </div>
     </main>

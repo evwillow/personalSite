@@ -15,14 +15,14 @@ export default function Experience() {
       company: "Breakout Study Tool",
       location: "Berkeley, CA",
       period: "Apr 2025 – Present",
-      description: "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations. Shipped a production product used by 200+ traders through iteration with Reddit and X.com communities.",
+      description: "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations. Shipped a production product with 458 signups across six continents through iteration with Reddit and X.com communities.",
       achievements: [
         "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations",
-        "Shipped a production product used by 200+ traders through iteration with Reddit and X.com communities",
-        "Engineered interactive React/Next.js charting and drill flows with sub-80ms interactions",
+        "Shipped a production product with 458 signups across six continents through iteration with Reddit and X.com communities",
+        "Engineered interactive React/Next.js charting and drill flows",
         "Developed Python pipelines to ingest and normalize large-scale market data",
         "Designed analytics to track accuracy, performance metrics, and study behavior",
-        "Implemented secure auth, rate-limited APIs, and CI/CD with >99% uptime"
+        "Implemented secure auth, rate-limited APIs, and CI/CD"
       ],
       technologies: ["Next.js", "TypeScript", "React", "Python", "PostgreSQL", "CI/CD"]
     },
@@ -31,11 +31,12 @@ export default function Experience() {
       company: "LLM Energy Benchmark",
       location: "Berkeley, CA",
       period: "Aug 2025 – Present",
-      description: "Initiated and built a benchmark to study how prompt features affect LLM energy use and performance. Processed 1M+ chats and 20k+ measurements independently, engineering 30+ linguistic features with CodeCarbon.",
+      description: "Initiated and built a measurement pipeline for the energy cost of LLM API usage, ingesting and cleaning large conversation datasets, replaying the extracted prompts against several hosted models, and recording power draw with CodeCarbon while engineering 30+ linguistic features per prompt.",
       achievements: [
-        "Initiated and built a benchmark to study how prompt features affect LLM energy use and performance",
-        "Processed 1M+ chats and 20k+ measurements independently, engineering 30+ linguistic features with CodeCarbon",
-        "Analyzed efficiency tradeoffs across model types and advanced a self-driven paper and open dataset"
+        "Measurement scope: the CodeCarbon tracker runs on the local client during each remote API call, so it captures client-side power draw across the request window, not provider-side inference energy, which these APIs do not expose",
+        "Result was null: across 20,709 measured API calls spanning three models, no prompt characteristic predicted client-side energy, with the strongest correlation at r = 0.027 (prompt length in characters)",
+        "Request duration dominated the measurement (r = 0.44), which is the expected behavior for a client-side tracker and explains the absent prompt-feature signal",
+        "The negative result runs against the project's original hypothesis and is reported as such"
       ],
       technologies: ["Python", "CodeCarbon", "NLP", "Machine Learning", "Data Analysis", "Research"]
     },
@@ -97,7 +98,7 @@ export default function Experience() {
           </h1>
           <div className="h-1 w-20 bg-accent mb-8"></div>
           <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed">
-            Full-stack engineering experience building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. Production software for 200+ users with real-time features and data pipelines.
+            Full-stack engineering experience building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. Production software with 458 signups across six continents, built with real-time features and data pipelines.
           </p>
         </section>
 
@@ -321,7 +322,7 @@ export default function Experience() {
             Let's Work Together
           </h2>
           <p className="text-lg md:text-xl text-dark/80 dark:text-light/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            I'm actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. I bring proven experience building fast, reliable applications with real-time features and data pipelines for 200+ users.
+            I'm actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. I bring proven experience building fast, reliable applications with real-time features and data pipelines, with 458 signups across six continents.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a
