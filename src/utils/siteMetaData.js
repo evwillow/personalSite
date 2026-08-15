@@ -16,7 +16,7 @@ const siteMetadata = {
   twitter: "https://x.com/evwillow1",
   location: "Berkeley, CA",
   university: "UC Berkeley",
-  graduation: "May 2027",
+  graduation: "December 2026",
   locale: "en-US",
   keywords: [
     "Evan Maus",
@@ -26,7 +26,6 @@ const siteMetadata = {
     "Berkeley Data Science",
     "Economics student",
     "Data Science student",
-    "Computer Science minor",
     "Full stack developer",
     "Fullstack developer",
     "Next.js developer",

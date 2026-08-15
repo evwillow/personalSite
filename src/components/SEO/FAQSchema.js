@@ -10,7 +10,7 @@ const FAQSchema = () => {
         "name": "What does Evan Maus study at UC Berkeley?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Evan Maus is pursuing a Bachelor of Arts in Economics and Data Science with a minor in Computer Science at UC Berkeley, focusing on building solutions at the intersection of AI, finance, and sustainability."
+          "text": "Evan Maus is pursuing a dual Bachelor of Arts in Economics and Data Science at UC Berkeley, focusing on building solutions at the intersection of AI, finance, and sustainability."
         }
       },
       {

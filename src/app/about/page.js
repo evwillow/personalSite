@@ -3,8 +3,8 @@ import Image from "next/image"
 
 export const metadata = {
   title: "About | Evan Maus",
-  description: `Learn more about ${siteMetadata.author}, a UC Berkeley student pursuing Bachelor of Arts in Economics and Data Science with a minor in Computer Science. Full-stack developer, quantitative researcher, and entrepreneur building at the intersection of AI, finance, and sustainability.`,
-  keywords: "Evan Maus, UC Berkeley student, Economics Data Science, Computer Science minor, full stack developer, Berkeley student, Berkeley Economics, Berkeley Data Science",
+  description: `Learn more about ${siteMetadata.author}, a UC Berkeley student pursuing a dual Bachelor of Arts in Economics and Data Science. Full-stack developer, quantitative researcher, and entrepreneur building at the intersection of AI, finance, and sustainability.`,
+  keywords: "Evan Maus, UC Berkeley student, Economics Data Science, full stack developer, Berkeley student, Berkeley Economics, Berkeley Data Science",
 }
 
 export default function About() {
@@ -20,7 +20,7 @@ export default function About() {
               </h1>
               <div className="h-1 w-20 bg-accent mb-8"></div>
               <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 md:mb-0">
-                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a Bachelor of Arts in Data Science & Economics with a minor in Computer Science, graduating May 2027. I'm a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I've shipped production software with 458 signups across six continents, including real-time features and data pipelines, while writing clean, maintainable code.
+                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a dual Bachelor of Arts in Data Science & Economics, graduating December 2026. I'm a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I've shipped production software with 458 signups across six continents, including real-time features and data pipelines, while writing clean, maintainable code.
               </p>
             </div>
             <div className="flex-shrink-0 mx-auto md:mx-0">
@@ -48,14 +48,11 @@ export default function About() {
                   University of California, Berkeley
                 </h3>
                 <p className="text-lg text-dark/70 dark:text-light/70 mt-2">
-                  B.A. Data Science & Economics
-                </p>
-                <p className="text-lg text-dark/70 dark:text-light/70">
-                  Minor in Computer Science
+                  Dual B.A. Data Science & Economics
                 </p>
               </div>
               <div className="text-lg text-dark/60 dark:text-light/60 mt-4 md:mt-0">
-                Graduating: May 2027
+                Graduating: December 2026
               </div>
             </div>
             
@@ -72,7 +69,6 @@ export default function About() {
                 <li>Advanced Econometrics</li>
                 <li>Microeconomics</li>
                 <li>Macroeconomics</li>
-                <li>International Trade</li>
               </ul>
             </div>
 
