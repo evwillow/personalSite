@@ -131,6 +131,21 @@ section,
 .hex-card video,
 .hex-card iframe {
     pointer-events: auto !important; /* FORCE clickable */
+}
+
+/* Give flow content a stacking context, but never override children that are
+   deliberately absolutely positioned (image scrims, overlaid titles). Forcing
+   position:relative on those collapsed them to the top of the card and hid the
+   scrim, leaving white titles unreadable on light photos. */
+.hex-card > *:not(.absolute),
+.hex-card a:not(.absolute),
+.hex-card button:not(.absolute),
+.hex-card input:not(.absolute),
+.hex-card textarea:not(.absolute),
+.hex-card select:not(.absolute),
+.hex-card img:not(.absolute),
+.hex-card video:not(.absolute),
+.hex-card iframe:not(.absolute) {
     position: relative;
     z-index: 6; /* Above hex tiles to remain clickable */
 }
@@ -140,8 +155,9 @@ section,
     background: transparent !important; /* Completely transparent in dark mode too */
 }
 
-/* Remove gradient overlays to show hexagon background behind text */
-.hex-card .bg-gradient-to-b {
+/* Card image scrims must stay visible so overlaid titles remain legible.
+   Only neutralise gradients that are NOT the card scrim. */
+.hex-card .bg-gradient-to-b:not(.z-\[7\]) {
     background: transparent !important;
 }
 

@@ -6,7 +6,6 @@ const BlogLayoutOne = ({ blog, zIndexClass = "blog-above-hex" }) => {
   return (
     <Link href={blog.url} className="block w-full h-full">
       <div className="group hex-card relative w-full h-full aspect-[4/3] rounded-xl cursor-pointer">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent from-0% to-dark/90 rounded-xl" />
         <Image
           src={blog.image.src}
           placeholder="blur"
@@ -17,7 +16,8 @@ const BlogLayoutOne = ({ blog, zIndexClass = "blog-above-hex" }) => {
           sizes="(max-width: 1180px) 100vw, 50vw"
           priority={true}
         />
-        <div className={`absolute bottom-0 p-6 w-full ${zIndexClass}`}>
+        <div className="absolute inset-0 z-[7] rounded-xl bg-gradient-to-b from-transparent via-dark/30 to-dark/90 pointer-events-none" />
+        <div className={`absolute bottom-0 p-6 w-full z-[8] ${zIndexClass}`}>
           <h2 className="font-bold text-sm sm:text-base md:text-lg text-light">
             <span className="bg-gradient-to-r from-accent to-accent bg-[length:0px_6px] dark:from-accentDark/50 dark:to-accentDark/50 group-hover:bg-[length:100%_6px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500">
               {blog.title}
