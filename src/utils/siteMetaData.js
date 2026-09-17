@@ -46,8 +46,6 @@ const siteMetadata = {
     "FastAPI",
     "Supabase",
     "DigitalOcean",
-    "Docker",
-    "Freelance developer",
     "Web development",
     "Software engineering",
     "Data pipelines",

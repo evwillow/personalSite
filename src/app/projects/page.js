@@ -5,7 +5,7 @@ import Image from "next/image"
 export const metadata = {
   title: "Projects | Evan Maus",
   description: `Explore ${siteMetadata.author}'s portfolio of quantitative trading systems, machine learning and AI infrastructure work, and fullstack applications, including the breakouts.trade study tool and the LLM Energy Benchmark.`,
-  keywords: "Evan Maus projects, Breakout Study Tool, breakouts.trade, LLM Energy Benchmark, trading systems, machine learning projects, Next.js projects, Python projects, Berkeley student projects",
+  keywords: "Evan Maus projects, breakouts.trade, LLM Energy Benchmark, trading systems, machine learning projects, Next.js projects, Python projects, Berkeley student projects",
 }
 
 export default function Projects() {
@@ -15,13 +15,13 @@ export default function Projects() {
       projects: [
         {
           title: "Incurra",
-          subtitle: "Python, Polars, DuckDB, Parquet, Anthropic API",
+          subtitle: "Python, DuckDB, Parquet, Anthropic API",
           description:
             "An AI product for commercial-auto claims reconciliation. It reads adjuster notes on open claims and flags the ones where a documented fact is not reflected in the carried reserve. It is a reconciliation tool rather than a prediction machine.",
           link: "https://incurra.ai",
           linkText: "View Live Site",
           privateRepo: true,
-          tags: ["Python", "Polars", "DuckDB", "Parquet", "Anthropic API", "Insurance"],
+          tags: ["Python", "DuckDB", "Parquet", "Anthropic API", "Insurance"],
         },
       ],
     },
@@ -93,14 +93,12 @@ export default function Projects() {
           title: "breakouts.trade Study Tool",
           subtitle: "Next.js, TypeScript, React, Python, PostgreSQL",
           description:
-            "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations. Shipped a production product with 458 signups across six continents through iteration with Reddit and X.com communities.",
+            "A browser drill app that teaches a breakout stock-trading strategy on real charts, with a daily scanner on the same strategy code. Shipped to real use: 458 signups, ~240 activated users, 10,203 practice drills.",
           highlights: [
-            "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations",
-            "Shipped a production product with 458 signups across six continents through iteration with Reddit and X.com communities",
-            "Engineered interactive React/Next.js charting and drill flows",
-            "Developed Python pipelines to ingest and normalize large-scale market data",
-            "Designed analytics to track accuracy, performance metrics, and study behavior",
-            "Implemented secure auth, rate-limited APIs, and CI/CD",
+            "Drill and scanner on one strategy code: 458 signups, ~240 activated users, 10,203 practice drills",
+            "Hand-written SQL migrations and row-level-security policies with no ORM, and a quota gate that fails closed",
+            "A June 2026 review of all 67 API route handlers found and fixed a pre-auth account-takeover flaw, then re-verified it",
+            "Type-check, lint, tests and build on every pull request; a cold-path fix cut ~18,000 storage reads to one precomputed artifact",
           ],
           link: "https://breakouts.trade",
           linkText: "View Live Site",

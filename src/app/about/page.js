@@ -20,7 +20,7 @@ export default function About() {
               </h1>
               <div className="h-1 w-20 bg-accent mb-8"></div>
               <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 md:mb-0">
-                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a dual Bachelor of Arts in Data Science & Economics, graduating December 2026. I'm a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I've shipped production software with 458 signups across six continents, including real-time features and data pipelines, while writing clean, maintainable code.
+                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a dual Bachelor of Arts in Data Science & Economics, graduating December 2026. I'm a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I founded breakouts.trade, shipped it to 458 signups, and run the trading robot behind it on a real-money account.
               </p>
             </div>
             <div className="flex-shrink-0 mx-auto md:mx-0">
@@ -61,14 +61,17 @@ export default function About() {
                 Relevant Coursework
               </h4>
               <ul className="list-disc list-inside text-dark/80 dark:text-light/80 space-y-2">
-                <li>Data Structures</li>
-                <li>Introduction to AI</li>
-                <li>Principles & Techniques of Data Science</li>
-                <li>Probability for Data Science</li>
-                <li>Linear Algebra</li>
-                <li>Advanced Econometrics</li>
-                <li>Microeconomics</li>
-                <li>Macroeconomics</li>
+                <li>Data Structures (CS 61B)</li>
+                <li>Structure and Interpretation of Computer Programs (CS 61A)</li>
+                <li>Artificial Intelligence (CS 188)</li>
+                <li>Principles &amp; Techniques of Data Science (Data C100)</li>
+                <li>Probability for Data Science (Data C140)</li>
+                <li>Linear Algebra (Math 56)</li>
+                <li>Econometrics (Econ 140)</li>
+                <li>Econometrics: Advanced Methods (Econ 143)</li>
+                <li>Behavioral Finance (UGBA 136F)</li>
+                <li>Microeconomics (Econ 100A) and Macroeconomics (Econ 100B)</li>
+                <li>In progress, Fall 2026: Data, Inference and Decisions (Data C102); Data Mining and Analytics (Data 144); Time Series (Stat 153); Asset Pricing and Portfolio Choice (Econ 139); Macroeconomic Policy (Econ 134)</li>
               </ul>
             </div>
 
@@ -79,10 +82,26 @@ export default function About() {
               <div className="space-y-4">
                 <div>
                   <h5 className="text-lg font-semibold text-dark dark:text-light">
-                    CS 61B Data Structures &amp; Algorithms
+                    Build Your Own World (CS 61B, Java)
                   </h5>
                   <p className="text-dark/80 dark:text-light/80">
-                    Implemented ArrayDeque and LinkedListDeque (circular sentinel), BSTMap, and project features (iterators, equals, toString, resizing). Wrote JUnit tests and analyzed runtime; explored how maps/queues can model basic order-book mechanics.
+                    A three-person course project: I wrote the procedural world generator, the main menu, the state management and the save-and-replay feature, with JUnit tests. Course labs covered balanced binary search trees, union-find (percolation with the backwash fix), hashing, heaps and graph search.
+                  </p>
+                </div>
+                <div>
+                  <h5 className="text-lg font-semibold text-dark dark:text-light">
+                    Artificial Intelligence projects (CS 188, Python and PyTorch)
+                  </h5>
+                  <p className="text-dark/80 dark:text-light/80">
+                    Five course projects on a provided skeleton: graph search, adversarial search with alpha-beta pruning, value iteration and Q-learning, Bayes-net and hidden-Markov inference with particle filtering, and PyTorch models including a recurrent language classifier and a hand-written causal self-attention block.
+                  </p>
+                </div>
+                <div>
+                  <h5 className="text-lg font-semibold text-dark dark:text-light">
+                    Pre-registered quantile-regression study (Econ 143)
+                  </h5>
+                  <p className="text-dark/80 dark:text-light/80">
+                    Locked the hypothesis in a timestamped commit before the estimator ran, then reported the null as it came, with a bootstrap interval and a shuffled-label placebo. Code and write-up at github.com/evwillow/econ143-project.
                   </p>
                 </div>
                 <div>
@@ -157,7 +176,7 @@ export default function About() {
             <div className="bg-white dark:bg-dark shadow-lg rounded-2xl p-6 border-2 border-gray-100 dark:border-accentDark/50">
               <h3 className="text-xl font-semibold text-dark dark:text-light mb-4">Tools & Platforms</h3>
               <div className="flex flex-wrap gap-2">
-                {["Linux", "Docker", "Git & GitHub", "GitHub Actions", "SSH", "DigitalOcean", "Supabase", "PostgreSQL", "Python venv"].map((skill) => (
+                {["Linux", "systemd", "Git & GitHub", "GitHub Actions", "SSH", "DigitalOcean", "Supabase", "PostgreSQL", "DuckDB", "Parquet"].map((skill) => (
                   <span
                     key={skill}
                     className="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-dark dark:text-light rounded-lg text-sm font-semibold border border-gray-200 dark:border-gray-700"

@@ -4,33 +4,33 @@ import Image from "next/image"
 
 export const metadata = {
   title: "Experience | Evan Maus",
-  description: `${siteMetadata.author}'s professional experience as a full-stack developer, freelance engineer, and quantitative researcher. Built production applications including Breakout Study Tool, LLM energy research, and client projects.`,
-  keywords: "Evan Maus experience, full stack developer, freelance developer, quantitative research, Next.js developer, Berkeley student experience",
+  description: `${siteMetadata.author}'s professional experience as a founder and full-stack engineer: breakouts.trade, a live trading robot, LLM energy research, and two nonprofit sites.`,
+  keywords: "Evan Maus experience, full stack developer, founder, quantitative research, Next.js developer, Berkeley student experience",
 }
 
 export default function Experience() {
   const professionalExperiences = [
     {
-      title: "Full-Stack Engineer",
-      company: "Breakout Study Tool",
+      title: "Founder & Engineer",
+      company: "breakouts.trade",
       location: "Berkeley, CA",
-      period: "Apr 2025 – Present",
-      description: "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations. Shipped a production product with 458 signups across six continents through iteration with Reddit and X.com communities.",
+      period: "Feb 2025 – Present",
+      description: "Founder and sole engineer of breakouts.trade: a browser drill app and daily scanner for a breakout trading strategy, and the Python research engine and live execution robot behind it, all as the repositories' only contributor.",
       achievements: [
-        "Built a Duolingo-style platform to learn a breakout stock-trading strategy with real charts and simulations",
-        "Shipped a production product with 458 signups across six continents through iteration with Reddit and X.com communities",
-        "Engineered interactive React/Next.js charting and drill flows",
-        "Developed Python pipelines to ingest and normalize large-scale market data",
-        "Designed analytics to track accuracy, performance metrics, and study behavior",
-        "Implemented secure auth, rate-limited APIs, and CI/CD"
+        "Built a browser drill app for breakout patterns and a daily scanner on the same strategy code: 458 signups, ~240 activated users, 10,203 practice drills",
+        "Reviewed all 67 API route handlers and middleware in June 2026, found a credentials path that accepted a password as proof of Google identity, and fixed and re-verified it",
+        "Hand-wrote 22 idempotent SQL migrations and 13 row-level-security policies with no ORM, and gated every pull request on type-check, lint, tests and build",
+        "Replaced a stock-metadata cold path that fanned out ~18,000 storage reads and timed out on every cold start with one precomputed artifact, and added a test that proves the fan-out is gone",
+        "Shipped an Interactive Brokers robot that has traded real money since June 2026: systemd units, a kill switch, broker-versus-journal reconciliation every five minutes and a heartbeat that names the running commit",
+        "Backtested 66,753 trades, 1998–2026, survivorship-free, and ran the 2024–2026 holdout once at mean R = 2.61"
       ],
-      technologies: ["Next.js", "TypeScript", "React", "Python", "PostgreSQL", "CI/CD"]
+      technologies: ["Next.js", "TypeScript", "React", "Python", "PostgreSQL", "Supabase", "GitHub Actions", "systemd"]
     },
     {
       title: "AI Infrastructure Researcher",
       company: "LLM Energy Benchmark",
       location: "Berkeley, CA",
-      period: "Aug 2025 – Present",
+      period: "Aug 2025 – Oct 2025",
       description: "Initiated and built a measurement pipeline for the energy cost of LLM API usage, ingesting and cleaning large conversation datasets, replaying the extracted prompts against several hosted models, and recording power draw with CodeCarbon while engineering 30+ linguistic features per prompt.",
       achievements: [
         "Measurement scope: the CodeCarbon tracker runs on the local client during each remote API call, so it captures client-side power draw across the request window, not provider-side inference energy, which these APIs do not expose",
@@ -44,26 +44,25 @@ export default function Experience() {
       title: "Full-Stack Developer",
       company: "North Central Ohio Pollinator Pathway & Sustainable Delaware Ohio",
       location: "Columbus, OH",
-      period: "Jan 2024 – Aug 2024",
-      description: "Sole developer for 2 local environmental organizations, leading technical decisions with non-technical leaders. Owned development and deployment with a focus on reliability and maintainability.",
+      period: "Dec 2023 – Jul 2024",
+      description: "Sole developer for two local environmental nonprofits, deciding the technical questions with owners who were not technical, and delivering each site end to end: design, build, hosting and content.",
       achievements: [
-        "Sole developer for 2 local environmental organizations, leading technical decisions with non-technical leaders",
-        "Owned development and deployment with a focus on reliability and maintainability",
-        "Built secure auth, analytics, and cloud deployments to improve visibility and trust"
+        "Sole developer for two local environmental organizations, deciding the technical questions with non-technical owners",
+        "Delivered each site end to end: design, build, hosting and content",
+        "Handed both sites off in May 2024, supported the owners through July, and both have run on their own since"
       ],
-      technologies: ["Next.js", "TypeScript", "React", "Authentication", "Analytics", "Cloud Deployment"]
+      technologies: ["React", "React Router", "Tailwind CSS"]
     },
     {
       title: "Data & Product Intern",
       company: "necoTECH",
       location: "Columbus, OH",
-      period: "May 2023 – Sept 2023",
+      period: "May 2023 – Sep 2023",
       description: "Worked as a Data & Product Intern focused on identifying and solving real business problems through scripting, internal tools, and process improvement.",
       achievements: [
-        "Automated Python-based lead tracking and data workflows, reducing manual effort by ~50%",
-        "Improved CRM reliability by consolidating fragmented processes and downstream integrations",
-        "Designed proposal pipelines and marketing workflows adopted across multiple teams",
-        "Collaborated cross-functionally and learned directly from experienced mentors, including the CEO"
+        "Automated lead tracking in Python and cleaned proposal data, consolidating CRM, proposal and marketing workflows across three teams",
+        "Surveyed several hundred US federal contracts and funding applications with pandas",
+        "Worked directly with experienced mentors, including the CEO"
       ],
       technologies: ["Python", "Pandas", "Data Analysis", "Process Automation", "CRM"]
     },
@@ -98,7 +97,7 @@ export default function Experience() {
           </h1>
           <div className="h-1 w-20 bg-accent mb-8"></div>
           <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed">
-            Full-stack engineering experience building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. Production software with 458 signups across six continents, built with real-time features and data pipelines.
+            Full-stack engineering experience building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. Production software with 458 signups and a trading robot on a real-money account, built end to end as a solo founder.
           </p>
         </section>
 
@@ -322,7 +321,7 @@ export default function Experience() {
             Let's Work Together
           </h2>
           <p className="text-lg md:text-xl text-dark/80 dark:text-light/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            I'm actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. I bring proven experience building fast, reliable applications with real-time features and data pipelines, with 458 signups across six continents.
+            I'm actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. I have built and run a production product end to end, from the web app to the live execution service behind it.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a
