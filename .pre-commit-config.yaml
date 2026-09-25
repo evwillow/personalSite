@@ -1,0 +1,9 @@
+# Prose lint (LT08). Errors block the commit; warnings and info do not (--quiet prints errors only).
+repos:
+  - repo: local
+    hooks:
+      - id: prose-lint
+        name: prose lint
+        entry: grow lint-prose --quiet
+        language: system
+        files: \.mdx?$
