@@ -57,10 +57,24 @@ jobs:
     needs: build
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
       - uses: actions/download-artifact@v4
         with:
           name: next-build
-      - name: Check links in built HTML
+      - name: Serve the built site
+        run: |
+          nohup npm run start > server.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:3001/ > /dev/null && exit 0
+            sleep 2
+          done
+          cat server.log
+          exit 1
+      - name: Check links on the served pages
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
@@ -68,10 +82,14 @@ jobs:
             --max-retries 2
             --timeout 20
             --accept 200,204,206,429,999
-            --root-dir ${{ github.workspace }}/public
             --format markdown
             --output lychee-report.md
-            '.next/server/app/**/*.html'
+            http://localhost:3001/
+            http://localhost:3001/about
+            http://localhost:3001/blog
+            http://localhost:3001/contact
+            http://localhost:3001/experience
+            http://localhost:3001/projects
           fail: true
       - name: Upload link report
         if: always()
