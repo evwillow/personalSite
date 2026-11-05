@@ -113,7 +113,7 @@ export default async function BlogPage() {
               Blog
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-              Insights on economics, data science, AI, and technology from a UC Berkeley student's perspective
+              Insights on economics, data science, AI, and technology from a UC Berkeley student&apos;s perspective
             </p>
           </header>
 

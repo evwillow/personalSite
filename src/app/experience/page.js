@@ -318,10 +318,10 @@ export default function Experience() {
         {/* Call to Action */}
         <section className="mt-16 bg-white dark:bg-dark rounded-2xl p-8 md:p-12 text-center border-2 border-gray-100 dark:border-gray-800">
           <h2 className="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-6">
-            Let's Work Together
+            Let&apos;s Work Together
           </h2>
           <p className="text-lg md:text-xl text-dark/80 dark:text-light/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            I'm actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. I have built and run a production product end to end, from the web app to the live execution service behind it.
+            I&apos;m actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. I have built and run a production product end to end, from the web app to the live execution service behind it.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a

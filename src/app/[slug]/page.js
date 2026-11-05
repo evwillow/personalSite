@@ -417,7 +417,7 @@ export default async function BlogPage({ params }) {
                 <p>
                   This placeholder demonstrates the layout and styling of your blog posts.
                   Your actual content will appear here once you publish it. The layout matches
-                  exactly what you'll see with real blog posts from your CMS.
+                  exactly what you&apos;ll see with real blog posts from your CMS.
                 </p>
                 
                 <h3>Key Features</h3>

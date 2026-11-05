@@ -26,11 +26,11 @@ export default function Contact() {
         {/* Hero Section */}
         <section className="mb-16">
           <h1 className="text-4xl md:text-6xl font-bold text-dark dark:text-light mb-6">
-            Let's Connect
+            Let&apos;s Connect
           </h1>
           <div className="h-1 w-20 bg-accent mb-8"></div>
           <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed">
-            I'm actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. Always open to discussing internships, research collaborations, or innovative projects at the intersection of AI, finance, and technology.
+            I&apos;m actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. Always open to discussing internships, research collaborations, or innovative projects at the intersection of AI, finance, and technology.
           </p>
         </section>
 
@@ -264,7 +264,7 @@ export default function Contact() {
         {/* Opportunities */}
         <section className="bg-white dark:bg-dark rounded-2xl p-8 md:p-12 border-2 border-gray-100 dark:border-gray-800">
           <h2 className="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-8">
-            What I'm Looking For
+            What I&apos;m Looking For
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
