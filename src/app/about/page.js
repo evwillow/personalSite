@@ -143,7 +143,7 @@ export default function About() {
                     <span
                       key={skill}
                       className={`px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-semibold border border-gray-200 dark:border-gray-700 ${
-                        isKeySkill ? "text-accent" : "text-dark dark:text-light"
+                        isKeySkill ? "text-accentText dark:text-accent" : "text-dark dark:text-light"
                       }`}
                     >
                       {skill}
@@ -163,7 +163,7 @@ export default function About() {
                     <span
                       key={skill}
                       className={`px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-semibold border border-gray-200 dark:border-gray-700 ${
-                        isKeySkill ? "text-accent" : "text-dark dark:text-light"
+                        isKeySkill ? "text-accentText dark:text-accent" : "text-dark dark:text-light"
                       }`}
                     >
                       {skill}

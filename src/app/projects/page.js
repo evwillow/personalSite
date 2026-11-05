@@ -219,7 +219,7 @@ export default function Projects() {
                             <span
                               key={tag}
                               className={`px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-semibold border border-gray-200 dark:border-gray-700 ${
-                                isKeyTag ? "text-accent" : "text-dark dark:text-light"
+                                isKeyTag ? "text-accentText dark:text-accent" : "text-dark dark:text-light"
                               }`}
                             >
                               {tag}

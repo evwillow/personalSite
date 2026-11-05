@@ -5,6 +5,8 @@ import Header from "@/src/components/Header"
 import ContentWrapper from "../components/ContentWrapper"
 import siteMetadata from "../utils/siteMetaData"
 import Script from "next/script"
+import PersonSchema from "@/src/components/SEO/PersonSchema"
+import Analytics from "@/src/components/Analytics"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,14 +66,6 @@ export const metadata = {
     description: siteMetadata.description,
     url: siteMetadata.siteUrl,
     siteName: siteMetadata.title,
-    images: [
-      {
-        url: `${siteMetadata.siteUrl}${siteMetadata.socialBanner}`,
-        width: 1200,
-        height: 630,
-        alt: `${siteMetadata.author} - ${siteMetadata.description}`,
-      },
-    ],
     locale: siteMetadata.locale,
     type: "website",
   },
@@ -79,7 +73,6 @@ export const metadata = {
     card: "summary_large_image",
     title: siteMetadata.title,
     description: siteMetadata.description,
-    images: [`${siteMetadata.siteUrl}${siteMetadata.socialBanner}`],
     creator: siteMetadata.twitterHandle,
     site: siteMetadata.twitterHandle,
   },
@@ -97,7 +90,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: siteMetadata.siteUrl,
+    canonical: "./",
   },
   verification: {
     google: siteMetadata.googleSiteVerification,
@@ -134,16 +127,24 @@ export default function RootLayout({ children }) {
           "font-mr dark:bg-dark min-h-screen flex flex-col relative"
         )}
       >
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-PY3QDKEHPN"
-        />
+        <PersonSchema />
+        <Analytics />
+        {/* gtag is third-party and costs ~1.4 s of main-thread time on mobile; load it after the page is idle.
+            The inline stub below queues events on dataLayer, so none are lost before it arrives. */}
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-PY3QDKEHPN');
+            window.addEventListener('load', function () {
+              (window.requestIdleCallback || function (f) { setTimeout(f, 3000) })(function () {
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-PY3QDKEHPN';
+                document.head.appendChild(s);
+              }, { timeout: 5000 });
+            });
           `}
         </Script>
         <Header />

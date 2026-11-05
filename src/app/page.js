@@ -4,8 +4,6 @@ import { samplePosts } from "@/lib/samplePosts"
 import Featured from "@/src/components/Home/Featured"
 import Recent from "@/src/components/Home/Recent"
 import siteMetadata from "@/src/utils/siteMetaData"
-import FAQSchema from "@/src/components/SEO/FAQSchema"
-import OrganizationSchema from "@/src/components/SEO/OrganizationSchema"
 import WebSiteSchema from "@/src/components/SEO/WebSiteSchema"
 import BlogSchema from "@/src/components/SEO/BlogSchema"
 import Script from "next/script"
@@ -57,15 +55,7 @@ export default async function Home() {
         }
       },
       inLanguage: siteMetadata.language,
-      copyrightYear: new Date().getFullYear(),
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${siteMetadata.siteUrl}/search?q={search_term_string}`
-        },
-        "query-input": "required name=search_term_string"
-      }
+      copyrightYear: new Date().getFullYear()
     }
 
     const blogSchema = {
@@ -98,27 +88,6 @@ export default async function Home() {
       }))
     }
 
-    const personSchema = {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: siteMetadata.author,
-      url: siteMetadata.siteUrl,
-      email: siteMetadata.email,
-      sameAs: [
-        siteMetadata.github,
-        siteMetadata.linkedin,
-        siteMetadata.twitter
-      ],
-      jobTitle: "Full-Stack Engineer",
-      alumniOf: {
-        "@type": "EducationalOrganization",
-        name: siteMetadata.university
-      },
-      image: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
-      description: siteMetadata.description,
-      knowsAbout: ["Full-Stack Development", "Machine Learning", "Quantitative Finance", "Data Science", "Economics"]
-    }
-
     return (
       <main className="flex flex-col items-center">
         <Script id="schema-website" type="application/ld+json">
@@ -127,11 +96,6 @@ export default async function Home() {
         <Script id="schema-blog" type="application/ld+json">
           {JSON.stringify(blogSchema)}
         </Script>
-        <Script id="schema-person" type="application/ld+json">
-          {JSON.stringify(personSchema)}
-        </Script>
-        <FAQSchema />
-        <OrganizationSchema />
         <WebSiteSchema />
         <BlogSchema posts={postsToDisplay} />
         <Featured posts={postsToDisplay} />
