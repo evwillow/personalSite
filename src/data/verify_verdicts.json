@@ -1,0 +1,59 @@
+{
+  "source": "PUB01/conflicts.md",
+  "sections": {
+    "trades": {
+      "accept": true,
+      "retract": false,
+      "note": "",
+      "claims": []
+    },
+    "R": {
+      "accept": true,
+      "retract": false,
+      "note": "",
+      "claims": []
+    },
+    "CAGR": {
+      "accept": true,
+      "retract": false,
+      "note": "",
+      "claims": []
+    },
+    "Sharpe": {
+      "accept": true,
+      "retract": false,
+      "note": "",
+      "claims": []
+    },
+    "drawdown": {
+      "accept": true,
+      "retract": false,
+      "note": "",
+      "claims": []
+    },
+    "win_rate": {
+      "accept": true,
+      "retract": false,
+      "note": "",
+      "claims": []
+    },
+    "tests": {
+      "accept": true,
+      "retract": false,
+      "note": "",
+      "claims": []
+    },
+    "postings": {
+      "accept": false,
+      "retract": false,
+      "note": "",
+      "claims": []
+    },
+    "boards": {
+      "accept": false,
+      "retract": false,
+      "note": "",
+      "claims": []
+    }
+  }
+}

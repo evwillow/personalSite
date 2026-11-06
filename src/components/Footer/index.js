@@ -58,6 +58,11 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/verify" className="hover:underline focus:underline">
+                    How I verify results
+                  </Link>
+                </li>
+                <li>
                   <a 
                     href="/Evan_Maus_Resume.pdf" 
                     target="_blank" 

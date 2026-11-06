@@ -13,6 +13,7 @@ const PRIORITY = {
   "/blog": { priority: 0.6, changefreq: "weekly" },
   "/case-studies": { priority: 0.7, changefreq: "monthly" },
   "/posts": { priority: 0.7, changefreq: "monthly" },
+  "/verify": { priority: 0.5, changefreq: "monthly" },
 };
 
 module.exports = {
