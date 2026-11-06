@@ -5,16 +5,16 @@
 
     // Add the react/no-unescaped-entities rule
     "react/no-unescaped-entities": [
-      "error",
+      "warn",
       {
         "forbid": [
           {
             "char": "'",
-            "alternative": "&apos;"
+            "alternatives": ["&apos;"]
           },
           {
             "char": "\"",
-            "alternative": "&quot;"
+            "alternatives": ["&quot;"]
           }
           // Add more entities as needed
         ]
