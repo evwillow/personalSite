@@ -1,0 +1,10 @@
+{
+  "_note": "Evan-editable policy for the /ask agent. The agent may state a number only if it matches an accepted claim it cites. Ids listed in excludeClaimIds are never given to the agent, even if accepted.",
+  "excludeClaimIds": ["R.ledger_1998_2026.mean"],
+  "excludeWhy": {
+    "R.ledger_1998_2026.mean": "The +3.17R full-ledger mean must never be quoted (standing rule, 2026-11). The validator also blocks 3.17 outright."
+  },
+  "forbiddenPatterns": ["3\\.17\\s*R", "\\bCAGR\\b", "\\b81\\s*%", "\\b155\\s*%", "live[- ]parity"],
+  "backtestCaveat": "This is a backtest figure from the research ledger, not a live trading result.",
+  "readmeMaxChars": 6000
+}

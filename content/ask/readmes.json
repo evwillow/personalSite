@@ -1,0 +1,16 @@
+{
+  "_note": "Public GitHub READMEs in the /ask corpus. Snapshots live in content/ask/readmes/; refresh with `npm run ask:readmes`. Excluded repos and why are listed so the allowlist is explicit.",
+  "include": [
+    { "repo": "evwillow/llm-energy-benchmark", "title": "llm-energy-benchmark README (GitHub)" },
+    { "repo": "evwillow/marketOpenMomentum", "title": "marketOpenMomentum README (GitHub)" },
+    { "repo": "evwillow/econ143-project", "title": "econ143-project README (GitHub)" },
+    { "repo": "evwillow/stockData", "title": "stockData README (GitHub)" },
+    { "repo": "evwillow/pollinatorPathwaysWebsite", "title": "pollinatorPathwaysWebsite README (GitHub)" },
+    { "repo": "evwillow/selfSolvingMaze", "title": "selfSolvingMaze README (GitHub)" },
+    { "repo": "evwillow/evwillow", "title": "GitHub profile README" }
+  ],
+  "exclude": [
+    { "repo": "evwillow/jobApplications", "why": "Old README describes scraping job boards and salary filtering; off-message for the current job search. Evan can re-include it." },
+    { "repo": "evwillow/personalSite", "why": "README is stale (Contentlayer, DigitalOcean); site pages describe the current stack." }
+  ]
+}

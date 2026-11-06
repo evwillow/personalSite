@@ -9,9 +9,14 @@
     "postbuild": "node scripts/preserve-files.js restore && next-sitemap",
     "start": "next start -p 3001",
     "lint": "next lint",
-    "content": "velite --clean"
+    "content": "velite --clean",
+    "ask:corpus": "node scripts/build-ask-corpus.mjs",
+    "ask:readmes": "node scripts/fetch-ask-readmes.mjs",
+    "test:ask": "node scripts/build-ask-corpus.mjs --check && node --test scripts/ask-tests/ask.test.mjs",
+    "eval:ask": "node scripts/eval-ask.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
     "@contentful/rich-text-react-renderer": "^16.0.1",
     "@tailwindcss/forms": "^0.5.5",
     "@tailwindcss/typography": "^0.5.9",

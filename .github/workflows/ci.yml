@@ -29,6 +29,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
+      - name: /ask guard, validator, budget and rate-limit tests (no model calls)
+        run: npm run test:ask
 
   build:
     name: next build
@@ -91,6 +93,7 @@ jobs:
             http://localhost:3001/experience
             http://localhost:3001/projects
             http://localhost:3001/verify
+            http://localhost:3001/ask
             http://localhost:3001/case-studies
             http://localhost:3001/posts
             http://localhost:3001/posts/fde-field-guide

@@ -52,3 +52,6 @@ id_ed25519.pub
 
 # build backups made by scripts/preserve-files.js (holds a copy of the resume PDF)
 backup-files/
+
+# /ask eval run outputs (summaries go to the CRE30 report)
+scripts/ask-eval/results/
