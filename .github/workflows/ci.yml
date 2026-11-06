@@ -82,12 +82,21 @@ jobs:
             --max-retries 2
             --timeout 20
             --accept 200,204,206,429,999
+            --exclude '^https?://(www\.)?(x|twitter)\.com/'
+            --remap 'https://evwillow\.com http://localhost:3001'
             http://localhost:3001/
             http://localhost:3001/about
             http://localhost:3001/blog
             http://localhost:3001/contact
             http://localhost:3001/experience
             http://localhost:3001/projects
+            http://localhost:3001/verify
+            http://localhost:3001/case-studies
+            http://localhost:3001/posts
+            http://localhost:3001/posts/fde-field-guide
+          # x.com answers 403 to every crawler, so profile links are skipped.
+          # Links to the live domain (canonical, RSS) are checked against this
+          # build instead, since pages added here do not exist live until merge.
           # lychee-action v2 rejects --output/--format in args; they go here.
           format: markdown
           output: lychee-report.md
