@@ -4,22 +4,20 @@ import React, { useState, useEffect } from 'react';
 const HexagonOverlay = () => {
   const [isClient, setIsClient] = useState(false);
 
+  // Tiles are invisible until hovered, so touch screens never see them. Build the grid only
+  // on hover-capable devices, and only once the browser is idle: building ~500 nodes during
+  // hydration is what held up first paint and interactivity on mobile.
   useEffect(() => {
-    setIsClient(true);
+    if (!window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 768px)').matches) return;
+    const idle = window.requestIdleCallback || ((f) => setTimeout(f, 200));
+    const cancel = window.cancelIdleCallback || clearTimeout;
+    const id = idle(() => setIsClient(true));
+    return () => cancel(id);
   }, []);
 
   // Generate hexagon rows to fill the screen
   const generateHexagonRows = () => {
-    if (!isClient) {
-      // Return a minimal set for SSR
-      return Array.from({ length: 10 }, (_, i) => (
-        <div key={i} className="hex-row">
-          {Array.from({ length: 16 }, (_, j) => (
-            <div key={j} className="hex-tile"></div>
-          ))}
-        </div>
-      ));
-    }
+    if (!isClient) return null;
 
     const rows = [];
     // Generate hexagons for the full page height
@@ -59,7 +57,7 @@ const HexagonOverlay = () => {
   };
 
   return (
-    <div className="hex-overlay">
+    <div className="hex-overlay" aria-hidden="true">
       {generateHexagonRows()}
     </div>
   );
