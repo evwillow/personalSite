@@ -1,116 +1,54 @@
-const siteMetadata = require("./src/utils/siteMetaData");
+// siteMetaData.js is an ES module (default export); under require() the value sits on .default.
+const siteMetadataModule = require("./src/utils/siteMetaData");
+const siteMetadata = siteMetadataModule.default || siteMetadataModule;
+const siteUrl = siteMetadata.siteUrl || "https://evwillow.com";
+
+// Live static routes only. Blog posts are served by src/app/server-sitemap.xml/route.js.
+const PRIORITY = {
+  "/": { priority: 1.0, changefreq: "monthly" },
+  "/about": { priority: 0.8, changefreq: "monthly" },
+  "/experience": { priority: 0.8, changefreq: "monthly" },
+  "/projects": { priority: 0.8, changefreq: "monthly" },
+  "/contact": { priority: 0.5, changefreq: "yearly" },
+  "/blog": { priority: 0.6, changefreq: "weekly" },
+  "/case-studies": { priority: 0.7, changefreq: "monthly" },
+  "/posts": { priority: 0.7, changefreq: "monthly" },
+  "/verify": { priority: 0.5, changefreq: "monthly" },
+};
 
 module.exports = {
-  siteUrl: siteMetadata.siteUrl || "https://evwillow.com",
+  siteUrl,
   generateRobotsTxt: true,
+  // One plain urlset at /sitemap.xml; the dynamic blog sitemap is listed in robots.txt only.
+  generateIndexSitemap: false,
   robotsTxtOptions: {
     policies: [
-      { userAgent: "*", allow: "/" },
-      { userAgent: "*", disallow: ["/api/*", "/_next/*", "/static/*", "/admin/*", "/private/*"] },
+      { userAgent: "*", allow: "/", disallow: ["/api/", "/_next/"] },
     ],
-    additionalSitemaps: [
-      `${siteMetadata.siteUrl}/sitemap.xml`,
-      `${siteMetadata.siteUrl}/server-sitemap.xml`,
-    ],
-    host: siteMetadata.siteUrl,
+    additionalSitemaps: [`${siteUrl}/server-sitemap.xml`],
   },
   exclude: [
     "/server-sitemap.xml",
+    "/feed.xml",
     "/api/*",
     "/_next/*",
-    "/static/*",
-    "/admin/*",
-    "/private/*",
     "/404",
     "/500",
+    "/opengraph-image*",
+    "/twitter-image*",
+    "/*/opengraph-image*",
+    "/*/*/opengraph-image*",
   ],
   outDir: "./public",
-  changefreq: "daily",
-  priority: 0.7,
-  sitemapSize: 7000,
-  generateIndexSitemap: true,
   autoLastmod: true,
   transform: async (config, path) => {
-    // Homepage - Highest priority
-    if (path === "/") {
-      return {
-        loc: path,
-        changefreq: "daily",
-        priority: 1.0,
-        lastmod: new Date().toISOString(),
-        images: [{
-          loc: `${siteMetadata.siteUrl}/headshot.jpg`,
-          title: "Evan Maus - Economics, Data Science & AI",
-          caption: "Evan Maus, UC Berkeley student specializing in Economics, Data Science, and AI"
-        }]
-      }
-    }
-    
-    // Blog posts - High priority for content
-    if (path.startsWith("/blog/") || (!path.includes("/") && path !== "")) {
-      return {
-        loc: path,
-        changefreq: "weekly",
-        priority: 0.9,
-        lastmod: new Date().toISOString(),
-        images: [{
-          loc: `${siteMetadata.siteUrl}/headshot.jpg`,
-          title: "Blog Post by Evan Maus",
-          caption: "Data Science and Technology Blog"
-        }]
-      }
-    }
-    
-    // Main navigation pages - Very high priority
-    if (["/about", "/experience", "/projects"].includes(path)) {
-      return {
-        loc: path,
-        changefreq: "monthly",
-        priority: 0.95,
-        lastmod: new Date().toISOString(),
-        images: [{
-          loc: `${siteMetadata.siteUrl}/headshot.jpg`,
-          title: `${path.charAt(1).toUpperCase() + path.slice(2)} - Evan Maus`,
-          caption: `Evan Maus ${path.charAt(1).toUpperCase() + path.slice(2)} Page`
-        }]
-      }
-    }
-    
-    // Contact page - High priority for local SEO
-    if (path === "/contact") {
-      return {
-        loc: path,
-        changefreq: "monthly",
-        priority: 0.85,
-        lastmod: new Date().toISOString(),
-        images: [{
-          loc: `${siteMetadata.siteUrl}/headshot.jpg`,
-          title: "Contact Evan Maus",
-          caption: "Get in touch with Evan Maus"
-        }]
-      }
-    }
-    
-    // Blog listing page - High priority
-    if (path === "/blog") {
-      return {
-        loc: path,
-        changefreq: "daily",
-        priority: 0.9,
-        lastmod: new Date().toISOString(),
-        images: [{
-          loc: `${siteMetadata.siteUrl}/headshot.jpg`,
-          title: "Evan Maus Blog",
-          caption: "Data Science, Economics, and Technology Blog"
-        }]
-      }
-    }
-    
+    const entry = PRIORITY[path];
+    if (!entry) return null; // not a known live route: leave it out
     return {
       loc: path,
-      changefreq: config.changefreq,
-      priority: config.priority,
-      lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
-    }
+      changefreq: entry.changefreq,
+      priority: entry.priority,
+      lastmod: new Date().toISOString(),
+    };
   },
-}
+};

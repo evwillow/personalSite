@@ -50,6 +50,14 @@ const Header = () => {
                 </li>
                 <li>
                   <Link
+                    href="/blog"
+                    className="text-dark dark:text-light hover:text-accent dark:hover:text-accent transition-colors duration-200 font-medium"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/contact"
                     className="text-dark dark:text-light hover:text-accent dark:hover:text-accent transition-colors duration-200 font-medium"
                   >
@@ -181,6 +189,13 @@ const Header = () => {
                 className="text-white text-xl font-medium hover:text-accent transition-colors duration-200"
               >
                 Experience
+              </Link>
+              <Link
+                href="/blog"
+                onClick={toggle}
+                className="text-white text-xl font-medium hover:text-accent transition-colors duration-200"
+              >
+                Blog
               </Link>
               <Link
                 href="/contact"

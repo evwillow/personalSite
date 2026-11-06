@@ -1,0 +1,419 @@
+{
+  "_comment": "Shape-only stand-in for the Contentful 'blog' entries behind the 9 legacy post URLs, so routing can be checked locally without credentials. Titles and bodies are placeholders. The image URL is the one lib/samplePosts.js already uses; the homepage cards require an image on every Contentful post.",
+  "items": [
+    {
+      "sys": {
+        "id": "fixture-0",
+        "createdAt": "2025-03-10T00:00:00.000Z",
+        "updatedAt": "2025-10-10T00:00:00.000Z",
+        "firstPublishedAt": "2025-03-10T00:00:00.000Z"
+      },
+      "fields": {
+        "title": "Fixture post: algorithmic-trading",
+        "slug": "algorithmic-trading",
+        "description": "Local test fixture standing in for a Contentful entry. Not real content.",
+        "author": "Evan Maus",
+        "body": {
+          "nodeType": "document",
+          "data": {},
+          "content": [
+            {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "text",
+                  "value": "Fixture body: no real content.",
+                  "marks": [],
+                  "data": {}
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "fields": {
+            "title": "fixture image",
+            "file": {
+              "url": "//images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
+              "details": {
+                "image": {
+                  "width": 800,
+                  "height": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "fixture-1",
+        "createdAt": "2025-03-11T00:00:00.000Z",
+        "updatedAt": "2025-10-11T00:00:00.000Z",
+        "firstPublishedAt": "2025-03-11T00:00:00.000Z"
+      },
+      "fields": {
+        "title": "Fixture post: hello-world",
+        "slug": "hello-world",
+        "description": "Local test fixture standing in for a Contentful entry. Not real content.",
+        "author": "Evan Maus",
+        "body": {
+          "nodeType": "document",
+          "data": {},
+          "content": [
+            {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "text",
+                  "value": "Fixture body: no real content.",
+                  "marks": [],
+                  "data": {}
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "fields": {
+            "title": "fixture image",
+            "file": {
+              "url": "//images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
+              "details": {
+                "image": {
+                  "width": 800,
+                  "height": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "fixture-2",
+        "createdAt": "2025-03-12T00:00:00.000Z",
+        "updatedAt": "2025-10-12T00:00:00.000Z",
+        "firstPublishedAt": "2025-03-12T00:00:00.000Z"
+      },
+      "fields": {
+        "title": "Fixture post: interleaved-learning",
+        "slug": "interleaved-learning",
+        "description": "Local test fixture standing in for a Contentful entry. Not real content.",
+        "author": "Evan Maus",
+        "body": {
+          "nodeType": "document",
+          "data": {},
+          "content": [
+            {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "text",
+                  "value": "Fixture body: no real content.",
+                  "marks": [],
+                  "data": {}
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "fields": {
+            "title": "fixture image",
+            "file": {
+              "url": "//images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
+              "details": {
+                "image": {
+                  "width": 800,
+                  "height": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "fixture-3",
+        "createdAt": "2025-03-13T00:00:00.000Z",
+        "updatedAt": "2025-10-13T00:00:00.000Z",
+        "firstPublishedAt": "2025-03-13T00:00:00.000Z"
+      },
+      "fields": {
+        "title": "Fixture post: learning-and-feedback",
+        "slug": "learning-and-feedback",
+        "description": "Local test fixture standing in for a Contentful entry. Not real content.",
+        "author": "Evan Maus",
+        "body": {
+          "nodeType": "document",
+          "data": {},
+          "content": [
+            {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "text",
+                  "value": "Fixture body: no real content.",
+                  "marks": [],
+                  "data": {}
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "fields": {
+            "title": "fixture image",
+            "file": {
+              "url": "//images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
+              "details": {
+                "image": {
+                  "width": 800,
+                  "height": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "fixture-4",
+        "createdAt": "2025-03-14T00:00:00.000Z",
+        "updatedAt": "2025-10-14T00:00:00.000Z",
+        "firstPublishedAt": "2025-03-14T00:00:00.000Z"
+      },
+      "fields": {
+        "title": "Fixture post: mental-prep",
+        "slug": "mental-prep",
+        "description": "Local test fixture standing in for a Contentful entry. Not real content.",
+        "author": "Evan Maus",
+        "body": {
+          "nodeType": "document",
+          "data": {},
+          "content": [
+            {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "text",
+                  "value": "Fixture body: no real content.",
+                  "marks": [],
+                  "data": {}
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "fields": {
+            "title": "fixture image",
+            "file": {
+              "url": "//images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
+              "details": {
+                "image": {
+                  "width": 800,
+                  "height": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "fixture-5",
+        "createdAt": "2025-03-15T00:00:00.000Z",
+        "updatedAt": "2025-10-15T00:00:00.000Z",
+        "firstPublishedAt": "2025-03-15T00:00:00.000Z"
+      },
+      "fields": {
+        "title": "Fixture post: optimal-workflow",
+        "slug": "optimal-workflow",
+        "description": "Local test fixture standing in for a Contentful entry. Not real content.",
+        "author": "Evan Maus",
+        "body": {
+          "nodeType": "document",
+          "data": {},
+          "content": [
+            {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "text",
+                  "value": "Fixture body: no real content.",
+                  "marks": [],
+                  "data": {}
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "fields": {
+            "title": "fixture image",
+            "file": {
+              "url": "//images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
+              "details": {
+                "image": {
+                  "width": 800,
+                  "height": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "fixture-6",
+        "createdAt": "2025-03-16T00:00:00.000Z",
+        "updatedAt": "2025-10-16T00:00:00.000Z",
+        "firstPublishedAt": "2025-03-16T00:00:00.000Z"
+      },
+      "fields": {
+        "title": "Fixture post: optimizing-accountability",
+        "slug": "optimizing-accountability",
+        "description": "Local test fixture standing in for a Contentful entry. Not real content.",
+        "author": "Evan Maus",
+        "body": {
+          "nodeType": "document",
+          "data": {},
+          "content": [
+            {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "text",
+                  "value": "Fixture body: no real content.",
+                  "marks": [],
+                  "data": {}
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "fields": {
+            "title": "fixture image",
+            "file": {
+              "url": "//images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
+              "details": {
+                "image": {
+                  "width": 800,
+                  "height": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "fixture-7",
+        "createdAt": "2025-03-17T00:00:00.000Z",
+        "updatedAt": "2025-10-17T00:00:00.000Z",
+        "firstPublishedAt": "2025-03-17T00:00:00.000Z"
+      },
+      "fields": {
+        "title": "Fixture post: optimizing-feedback",
+        "slug": "optimizing-feedback",
+        "description": "Local test fixture standing in for a Contentful entry. Not real content.",
+        "author": "Evan Maus",
+        "body": {
+          "nodeType": "document",
+          "data": {},
+          "content": [
+            {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "text",
+                  "value": "Fixture body: no real content.",
+                  "marks": [],
+                  "data": {}
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "fields": {
+            "title": "fixture image",
+            "file": {
+              "url": "//images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
+              "details": {
+                "image": {
+                  "width": 800,
+                  "height": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "id": "fixture-8",
+        "createdAt": "2025-03-18T00:00:00.000Z",
+        "updatedAt": "2025-10-18T00:00:00.000Z",
+        "firstPublishedAt": "2025-03-18T00:00:00.000Z"
+      },
+      "fields": {
+        "title": "Fixture post: short-term-goal-setting",
+        "slug": "short-term-goal-setting",
+        "description": "Local test fixture standing in for a Contentful entry. Not real content.",
+        "author": "Evan Maus",
+        "body": {
+          "nodeType": "document",
+          "data": {},
+          "content": [
+            {
+              "nodeType": "paragraph",
+              "data": {},
+              "content": [
+                {
+                  "nodeType": "text",
+                  "value": "Fixture body: no real content.",
+                  "marks": [],
+                  "data": {}
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "fields": {
+            "title": "fixture image",
+            "file": {
+              "url": "//images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop",
+              "details": {
+                "image": {
+                  "width": 800,
+                  "height": 600
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

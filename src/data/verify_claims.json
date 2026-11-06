@@ -1,0 +1,364 @@
+{
+  "source": "PUB01/claims.json + PUB01/public_numbers.json",
+  "claims": [
+    {
+      "id": "trades.ledger_1998_2026",
+      "claim": "66,753 trades, 1998-2026, survivorship-free",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine && export PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB && timeout 1200 /usr/bin/python3 -m bot.scripts.make_r_baseline --trades data/research/qm_trades.parquet --out ~/growth/out/PUB01/work/logs/trades__r_baseline.json 2>&1 | tee ~/growth/out/PUB01/work/logs/trades__make_r_baseline.log",
+      "inputs": [
+        {
+          "path": "breakouts-engine/data/research/qm_trades.parquet",
+          "sha256": "a56f572864cdae24166385c1631032d0ff0ff893842d45d6474d75fdc495bf8a"
+        },
+        {
+          "path": "breakouts-engine/bot/scripts/make_r_baseline.py",
+          "sha256": "eb5502a87685ceba90f19dcab05950da57318d4cc1b6d291e0beeeb52b6001c9"
+        },
+        {
+          "path": "breakouts-engine/bot/drift.py",
+          "sha256": "5555162bab545545b9bb54c076945919fb8e2b7aa3519dc2a389c19b48a2fc33"
+        },
+        {
+          "path": "breakouts-engine/bot/model/backtest_r_baseline.json",
+          "sha256": "6d6e0e71c6858208df0ed2f55f7812c18765c5e1b2c64be15ad9b7f36783417b"
+        }
+      ]
+    },
+    {
+      "id": "win_rate.ledger_1998_2026",
+      "claim": "36.9% win rate across the full ledger",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine && export DUCKDB_MEMORY_LIMIT=1GB && timeout 1200 /usr/bin/python3 -m bot.scripts.make_r_baseline --trades data/research/qm_trades.parquet --out ~/growth/out/PUB01/work/logs/win_rate__baseline_qm_trades.json 2>&1 | tee ~/growth/out/PUB01/work/logs/win_rate__1_make_r_baseline.log",
+      "inputs": [
+        {
+          "path": "~/wt/pub01-engine/data/research/qm_trades.parquet",
+          "sha256": "a56f572864cdae24166385c1631032d0ff0ff893842d45d6474d75fdc495bf8a"
+        },
+        {
+          "path": "~/wt/pub01-engine/bot/scripts/make_r_baseline.py",
+          "sha256": "eb5502a87685ceba90f19dcab05950da57318d4cc1b6d291e0beeeb52b6001c9"
+        },
+        {
+          "path": "~/wt/pub01-engine/bot/drift.py",
+          "sha256": "5555162bab545545b9bb54c076945919fb8e2b7aa3519dc2a389c19b48a2fc33"
+        },
+        {
+          "path": "~/wt/pub01-engine/bot/trades.py",
+          "sha256": "89c5138ad5f2120a14fd084e64c3b3155b8d6c8fd24b099e037969590d666fd1"
+        },
+        {
+          "path": "~/wt/pub01-engine/bot/model/backtest_r_baseline.json",
+          "sha256": "6d6e0e71c6858208df0ed2f55f7812c18765c5e1b2c64be15ad9b7f36783417b"
+        }
+      ]
+    },
+    {
+      "id": "R.ledger_1998_2026.median",
+      "claim": "a median trade of -1.05R",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine && export PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB && timeout 1200 /usr/bin/python3 -m bot.scripts.make_r_baseline --trades data/research/qm_trades.parquet --out ~/growth/out/PUB01/work/logs/R__baseline_full.json 2>&1 | tee ~/growth/out/PUB01/work/logs/R__1_make_r_baseline.log",
+      "inputs": [
+        {
+          "path": "breakouts-engine/data/research/qm_trades.parquet",
+          "sha256": "a56f572864cdae24166385c1631032d0ff0ff893842d45d6474d75fdc495bf8a"
+        },
+        {
+          "path": "breakouts-engine/bot/scripts/make_r_baseline.py",
+          "sha256": "eb5502a87685ceba90f19dcab05950da57318d4cc1b6d291e0beeeb52b6001c9"
+        },
+        {
+          "path": "breakouts-engine/bot/drift.py",
+          "sha256": "5555162bab545545b9bb54c076945919fb8e2b7aa3519dc2a389c19b48a2fc33"
+        }
+      ]
+    },
+    {
+      "id": "R.holdout_2024_2026.mean",
+      "claim": "2024-2026 holdout mean R of 2.61, run once",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine/src/data-processing && export PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB && timeout 1200 /usr/bin/python3 ~/growth/out/PUB01/work/R/derive_R.py 2>&1 | tee ~/growth/out/PUB01/work/logs/R__2_ledger_stats.log",
+      "inputs": [
+        {
+          "path": "breakouts-engine/data/research/qm_trades.parquet",
+          "sha256": "a56f572864cdae24166385c1631032d0ff0ff893842d45d6474d75fdc495bf8a"
+        },
+        {
+          "path": "~/growth/out/PUB01/work/R/derive_R.py",
+          "sha256": "d301df958ac3600f88cdc48332f42a7f36d816279e3e6268956f36557e4d78e0"
+        },
+        {
+          "path": "breakouts-engine/bot/drift.py",
+          "sha256": "5555162bab545545b9bb54c076945919fb8e2b7aa3519dc2a389c19b48a2fc33"
+        }
+      ]
+    },
+    {
+      "id": "R.holdout_2024_2026.ci95_bootstrap",
+      "claim": "a 95% CI of [2.36, 2.87] on that holdout mean",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine/src/data-processing && export PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB && timeout 1200 /usr/bin/python3 ~/growth/out/PUB01/work/R/derive_R.py --holdout-100k 2>&1 | tee ~/growth/out/PUB01/work/logs/R__3_holdout_boot100k.log",
+      "inputs": [
+        {
+          "path": "breakouts-engine/data/research/qm_trades.parquet",
+          "sha256": "a56f572864cdae24166385c1631032d0ff0ff893842d45d6474d75fdc495bf8a"
+        },
+        {
+          "path": "~/growth/out/PUB01/work/R/derive_R.py",
+          "sha256": "d301df958ac3600f88cdc48332f42a7f36d816279e3e6268956f36557e4d78e0"
+        },
+        {
+          "path": "breakouts-engine/src/data-processing/research/regime_decay.py",
+          "sha256": "0cd650d5456a9322241d4219749d986afc06c424cf0610eb9ea616443378f911"
+        }
+      ]
+    },
+    {
+      "id": "Sharpe.baseline_orb_portfolio_heldout",
+      "claim": "a 1.184 Sharpe, held-out 2018-2026 portfolio simulation",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine/src/data-processing && PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB timeout 1200 /usr/bin/python3 research/ab_eqcurve.py --run --only eq_50_half --boot 20 --out ~/growth/out/PUB01/work/Sharpe/s15_eqcurve_rerun.md",
+      "inputs": [
+        {
+          "path": "~/wt/pub01-engine/data/research/s13_scalein_1500.pkl",
+          "sha256": "dc817881e6f8d65190df4f03ad7fa6d7e59b9c8366e629323e16efcb071b5b2a"
+        },
+        {
+          "path": "src/data-processing/research/ab_eqcurve.py",
+          "sha256": "b75b57afd1e1d98f5802788295b7ec582f7e7f9ed61b019dc9cabda39055ea96"
+        },
+        {
+          "path": "src/data-processing/research/ab_batch_s4.py",
+          "sha256": "e30191475fe1249e255dc33e489753f3508c7edc9a10f84b635f94c8dcce8cea"
+        },
+        {
+          "path": "src/data-processing/research/ab_exit_screen.py",
+          "sha256": "db25976dfc1bce6887ce41b238c78ca6e578cb92a456b4103dfc516e61924d64"
+        },
+        {
+          "path": "src/data-processing/research/qm_backtest.py",
+          "sha256": "4c9ef4d5ebdb4713d5e0a631b4e3108953dcbdbd689b4003def7e9ddd3937dd5"
+        },
+        {
+          "path": "src/data-processing/research/sizing_overlays.py",
+          "sha256": "ecd560f7d9e2ce8ef23d47d0438a6e7d8642a8a087b12f65b6192bd2a01d8ea9"
+        },
+        {
+          "path": "src/data-processing/research/risk_free.py",
+          "sha256": "363107d1fb313288e7fccbe604afc06b9e785f98097c6bbd0c0be97d54c40c11"
+        },
+        {
+          "path": "src/data-processing/research/refdata/risk_free_tbill_3m.csv",
+          "sha256": "12882f48e0ab592aa4e114b60e6c08a364e6b649be0ad0810ccf90db51abd06e"
+        },
+        {
+          "path": "src/data-processing/market_regime.py",
+          "sha256": "dae29d7c22c2b4001f4e401bac5b50ef0c7afd44babc058c872adb4087ef2cc2"
+        },
+        {
+          "path": "~/wt/pub01-engine/data/pipeline/indices/daily/qqq.parquet",
+          "sha256": "2176c5099a8ab45dff4d6a1a14c39240b54c965fbe17b502138f7e656ebe282c"
+        },
+        {
+          "path": "src/data-processing/ds/research/ab/s15_eqcurve.json",
+          "sha256": "adab410e5095a64d4aae4bfb47d094bef8c9ea7b1b5761772a8be133a3ed65f1"
+        }
+      ]
+    },
+    {
+      "id": "Sharpe.baseline_orb_portfolio_insample",
+      "claim": "a 1.031 Sharpe, in-sample 2004-2017 portfolio simulation",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine/src/data-processing && PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB timeout 1200 /usr/bin/python3 research/ab_eqcurve.py --run --only eq_50_half --boot 20 --out ~/growth/out/PUB01/work/Sharpe/s15_eqcurve_rerun.md",
+      "inputs": [
+        {
+          "path": "~/wt/pub01-engine/data/research/s13_scalein_1500.pkl",
+          "sha256": "dc817881e6f8d65190df4f03ad7fa6d7e59b9c8366e629323e16efcb071b5b2a"
+        },
+        {
+          "path": "src/data-processing/research/ab_eqcurve.py",
+          "sha256": "b75b57afd1e1d98f5802788295b7ec582f7e7f9ed61b019dc9cabda39055ea96"
+        },
+        {
+          "path": "src/data-processing/research/ab_batch_s4.py",
+          "sha256": "e30191475fe1249e255dc33e489753f3508c7edc9a10f84b635f94c8dcce8cea"
+        },
+        {
+          "path": "src/data-processing/research/ab_exit_screen.py",
+          "sha256": "db25976dfc1bce6887ce41b238c78ca6e578cb92a456b4103dfc516e61924d64"
+        },
+        {
+          "path": "src/data-processing/research/qm_backtest.py",
+          "sha256": "4c9ef4d5ebdb4713d5e0a631b4e3108953dcbdbd689b4003def7e9ddd3937dd5"
+        },
+        {
+          "path": "src/data-processing/research/sizing_overlays.py",
+          "sha256": "ecd560f7d9e2ce8ef23d47d0438a6e7d8642a8a087b12f65b6192bd2a01d8ea9"
+        },
+        {
+          "path": "src/data-processing/research/risk_free.py",
+          "sha256": "363107d1fb313288e7fccbe604afc06b9e785f98097c6bbd0c0be97d54c40c11"
+        },
+        {
+          "path": "src/data-processing/market_regime.py",
+          "sha256": "dae29d7c22c2b4001f4e401bac5b50ef0c7afd44babc058c872adb4087ef2cc2"
+        },
+        {
+          "path": "~/wt/pub01-engine/data/pipeline/indices/daily/qqq.parquet",
+          "sha256": "2176c5099a8ab45dff4d6a1a14c39240b54c965fbe17b502138f7e656ebe282c"
+        }
+      ]
+    },
+    {
+      "id": "drawdown.portA_baseline_insample_2004_2017",
+      "claim": "-23.17% max drawdown, in-sample 2004-2017, 1,500-ticker universe",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine/src/data-processing && PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB timeout 1200 /usr/bin/python3 research/ab_eqcurve.py --run --only eq_50_half --boot 10 --out ~/growth/out/PUB01/work/logs/drawdown__s15_eqcurve.md",
+      "inputs": [
+        {
+          "path": "~/wt/pub01-engine/data/research/s13_scalein_1500.pkl",
+          "sha256": "dc817881e6f8d65190df4f03ad7fa6d7e59b9c8366e629323e16efcb071b5b2a"
+        },
+        {
+          "path": "src/data-processing/research/ab_eqcurve.py",
+          "sha256": "b75b57afd1e1d98f5802788295b7ec582f7e7f9ed61b019dc9cabda39055ea96"
+        },
+        {
+          "path": "src/data-processing/research/ab_batch_s4.py",
+          "sha256": "e30191475fe1249e255dc33e489753f3508c7edc9a10f84b635f94c8dcce8cea"
+        },
+        {
+          "path": "src/data-processing/research/ab_exit_screen.py",
+          "sha256": "db25976dfc1bce6887ce41b238c78ca6e578cb92a456b4103dfc516e61924d64"
+        },
+        {
+          "path": "src/data-processing/research/qm_backtest.py",
+          "sha256": "4c9ef4d5ebdb4713d5e0a631b4e3108953dcbdbd689b4003def7e9ddd3937dd5"
+        }
+      ]
+    },
+    {
+      "id": "drawdown.portA_baseline_heldout_2018_2026",
+      "claim": "-36.78% max drawdown, held-out 2018-2026",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine/src/data-processing && PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB timeout 1200 /usr/bin/python3 research/ab_eqcurve.py --run --only eq_50_half --boot 10 --out ~/growth/out/PUB01/work/logs/drawdown__s15_eqcurve.md",
+      "inputs": [
+        {
+          "path": "~/wt/pub01-engine/data/research/s13_scalein_1500.pkl",
+          "sha256": "dc817881e6f8d65190df4f03ad7fa6d7e59b9c8366e629323e16efcb071b5b2a"
+        },
+        {
+          "path": "src/data-processing/research/ab_eqcurve.py",
+          "sha256": "b75b57afd1e1d98f5802788295b7ec582f7e7f9ed61b019dc9cabda39055ea96"
+        },
+        {
+          "path": "src/data-processing/research/ab_batch_s4.py",
+          "sha256": "e30191475fe1249e255dc33e489753f3508c7edc9a10f84b635f94c8dcce8cea"
+        },
+        {
+          "path": "src/data-processing/research/ab_exit_screen.py",
+          "sha256": "db25976dfc1bce6887ce41b238c78ca6e578cb92a456b4103dfc516e61924d64"
+        },
+        {
+          "path": "src/data-processing/research/qm_backtest.py",
+          "sha256": "4c9ef4d5ebdb4713d5e0a631b4e3108953dcbdbd689b4003def7e9ddd3937dd5"
+        }
+      ]
+    },
+    {
+      "id": "tests.repo_collected_a4087032",
+      "claim": "742 tests collected across the engine repo (a4087032)",
+      "source_metric": "tests.repo_collected_head",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine && timeout 1200 /usr/bin/python3 -m pytest --collect-only -q 2>&1 | tee ~/growth/out/PUB01/work/logs/tests__collect_all.log",
+      "inputs": [
+        {
+          "path": "~/growth/out/PUB01/work/tests_manifest_a4087032.sha256",
+          "sha256": "f728429d213454e4616828c10c141f2a3e3e6f08ca31d93f53270d23af0ea282"
+        },
+        {
+          "path": "breakouts-engine/FACTS.md",
+          "sha256": "45ab7ae07b3b30a8ef8603c8a8da52ed78dd96babe3b69c1090f294de8c3a35e"
+        },
+        {
+          "path": "bot/tests/conftest.py",
+          "sha256": "063320188f02a153b95b87b31d37e0cec3c9586c190ad0c10d8c760c6c3d1397"
+        },
+        {
+          "path": "src/data-processing/research/tests/conftest.py",
+          "sha256": "de4c11e395449e32cfa266db4bcb91a5d03cfdea0c000ee4b863be77df8fb3ad"
+        }
+      ]
+    },
+    {
+      "id": "tests.bot_collected_a4087032",
+      "claim": "321 tests in the execution module (a4087032)",
+      "source_metric": "tests.bot_collected_head",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine && timeout 1200 /usr/bin/python3 -m pytest --collect-only -q bot/tests 2>&1 | tee ~/growth/out/PUB01/work/logs/tests__collect_bot.log",
+      "inputs": [
+        {
+          "path": "~/growth/out/PUB01/work/tests_manifest_a4087032.sha256",
+          "sha256": "f728429d213454e4616828c10c141f2a3e3e6f08ca31d93f53270d23af0ea282"
+        },
+        {
+          "path": "bot/tests/conftest.py",
+          "sha256": "063320188f02a153b95b87b31d37e0cec3c9586c190ad0c10d8c760c6c3d1397"
+        }
+      ]
+    },
+    {
+      "id": "tests.research_collected_head",
+      "claim": "415 tests in the research module",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine/src/data-processing && PYTHONUTF8=1 timeout 1200 /usr/bin/python3 -m pytest --collect-only -q research/tests 2>&1 | tee ~/growth/out/PUB01/work/logs/tests__collect_research.log",
+      "inputs": [
+        {
+          "path": "~/growth/out/PUB01/work/tests_manifest_a4087032.sha256",
+          "sha256": "f728429d213454e4616828c10c141f2a3e3e6f08ca31d93f53270d23af0ea282"
+        },
+        {
+          "path": "src/data-processing/research/tests/conftest.py",
+          "sha256": "de4c11e395449e32cfa266db4bcb91a5d03cfdea0c000ee4b863be77df8fb3ad"
+        }
+      ]
+    },
+    {
+      "id": "R.ledger_1998_2026.mean",
+      "claim": "+3.17R mean per trade (66,753 trades, 1998-2026)",
+      "commit": "a4087032",
+      "date": "2026-09-24",
+      "command": "cd ~/wt/pub01-engine && export PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB && timeout 1200 /usr/bin/python3 -m bot.scripts.make_r_baseline --trades data/research/qm_trades.parquet --out ~/growth/out/PUB01/work/logs/R__baseline_full.json 2>&1 | tee ~/growth/out/PUB01/work/logs/R__1_make_r_baseline.log",
+      "inputs": [
+        {
+          "path": "breakouts-engine/data/research/qm_trades.parquet",
+          "sha256": "a56f572864cdae24166385c1631032d0ff0ff893842d45d6474d75fdc495bf8a"
+        },
+        {
+          "path": "breakouts-engine/bot/scripts/make_r_baseline.py",
+          "sha256": "eb5502a87685ceba90f19dcab05950da57318d4cc1b6d291e0beeeb52b6001c9"
+        },
+        {
+          "path": "breakouts-engine/bot/drift.py",
+          "sha256": "5555162bab545545b9bb54c076945919fb8e2b7aa3519dc2a389c19b48a2fc33"
+        },
+        {
+          "path": "breakouts-engine/bot/model/backtest_r_baseline.json",
+          "sha256": "6d6e0e71c6858208df0ed2f55f7812c18765c5e1b2c64be15ad9b7f36783417b"
+        }
+      ]
+    }
+  ]
+}

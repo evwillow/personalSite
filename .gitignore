@@ -49,3 +49,6 @@ id_ed25519
 id_ed25519.pub
 *.key
 
+
+# build backups made by scripts/preserve-files.js (holds a copy of the resume PDF)
+backup-files/

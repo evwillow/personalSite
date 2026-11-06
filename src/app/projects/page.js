@@ -219,7 +219,7 @@ export default function Projects() {
                             <span
                               key={tag}
                               className={`px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-semibold border border-gray-200 dark:border-gray-700 ${
-                                isKeyTag ? "text-accent" : "text-dark dark:text-light"
+                                isKeyTag ? "text-accentText dark:text-accent" : "text-dark dark:text-light"
                               }`}
                             >
                               {tag}
@@ -252,10 +252,10 @@ export default function Projects() {
         {/* Call to Action */}
         <section className="bg-white dark:bg-dark rounded-2xl p-8 md:p-12 text-center border-2 border-gray-100 dark:border-gray-800">
           <h2 className="text-3xl md:text-4xl font-bold text-dark dark:text-light mb-6">
-            Let's Build Something
+            Let&apos;s Build Something
           </h2>
           <p className="text-lg md:text-xl text-dark/80 dark:text-light/80 mb-8 leading-relaxed max-w-3xl mx-auto">
-            Open to projects, research collaborations, and innovative work in AI, finance, and technology. If you're building something that matters, I want to hear about it.
+            Open to projects, research collaborations, and innovative work in AI, finance, and technology. If you&apos;re building something that matters, I want to hear about it.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link

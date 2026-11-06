@@ -26,14 +26,6 @@ const WebSiteSchema = () => {
     },
     "potentialAction": [
       {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": `${siteMetadata.siteUrl}/search?q={search_term_string}`
-        },
-        "query-input": "required name=search_term_string"
-      },
-      {
         "@type": "ReadAction",
         "target": [
           `${siteMetadata.siteUrl}/blog`,

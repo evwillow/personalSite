@@ -20,7 +20,7 @@ export default function About() {
               </h1>
               <div className="h-1 w-20 bg-accent mb-8"></div>
               <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 md:mb-0">
-                I'm <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a dual Bachelor of Arts in Data Science & Economics, graduating December 2026. I'm a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I founded breakouts.trade, shipped it to 458 signups, and run the trading robot behind it on a real-money account.
+                I&apos;m <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a dual Bachelor of Arts in Data Science & Economics, graduating December 2026. I&apos;m a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I founded breakouts.trade, shipped it to 458 signups, and run the trading robot behind it on a real-money account.
               </p>
             </div>
             <div className="flex-shrink-0 mx-auto md:mx-0">
@@ -143,7 +143,7 @@ export default function About() {
                     <span
                       key={skill}
                       className={`px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-semibold border border-gray-200 dark:border-gray-700 ${
-                        isKeySkill ? "text-accent" : "text-dark dark:text-light"
+                        isKeySkill ? "text-accentText dark:text-accent" : "text-dark dark:text-light"
                       }`}
                     >
                       {skill}
@@ -163,7 +163,7 @@ export default function About() {
                     <span
                       key={skill}
                       className={`px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm font-semibold border border-gray-200 dark:border-gray-700 ${
-                        isKeySkill ? "text-accent" : "text-dark dark:text-light"
+                        isKeySkill ? "text-accentText dark:text-accent" : "text-dark dark:text-light"
                       }`}
                     >
                       {skill}

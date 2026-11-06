@@ -48,8 +48,18 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/blog" className="hover:underline focus:underline">
+                    Blog
+                  </Link>
+                </li>
+                <li>
                   <Link href="/contact" className="hover:underline focus:underline">
                     Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/verify" className="hover:underline focus:underline">
+                    How I verify results
                   </Link>
                 </li>
                 <li>
