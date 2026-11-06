@@ -70,6 +70,12 @@ const mdxComponents = {
       {children}
     </pre>
   ),
+  // Wide tables scroll inside their own box instead of widening the page on phones.
+  table: ({ children, ...props }) => (
+    <div className="overflow-x-auto my-6">
+      <table {...props}>{children}</table>
+    </div>
+  ),
   img: ({ src, alt, ...props }) => (
     <img 
       src={src} 
