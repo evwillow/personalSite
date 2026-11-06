@@ -1,0 +1,122 @@
+---
+title: "What FDE interviews test: notes from preparing"
+slug: fde-field-guide
+description: "What I found reading every public write-up of forward deployed engineer interview loops I could reach: the stages, the skills they keep testing, how I practice each one, and where candidates fail."
+publishedAt: 2026-11-05
+draft: false
+tags: ["forward deployed engineering", "interviews"]
+---
+
+I'm preparing for forward deployed engineer (FDE) interviews, so I read every public description of FDE interview loops I could reach. This is what I found. It is not insider knowledge. Nothing here comes from my own interviews or from anything under NDA. Every claim about a company links to the page it came from, and you should read those pages yourself, because the loops change.
+
+One warning up front, because it shapes everything below: the public data is thinner than it looks. I found descriptions of FDE loops at eight companies on nine company pages, and those come from only two publishers. Seven are company guides from [Exponent](https://www.tryexponent.com/blog/forward-deployed-engineer-interview-the-definitive-2026-guide-fde), a prep site that synthesizes candidate reports. The other two are from techinterview.org. A few general guides fill in the rest. None is an official company spec. A few candidate reports I found on review sites and job boards were blocked or deleted when I went back to check them, so I left them out. Treat the counts as "what the prep literature says", not as ground truth.
+
+## What the role is
+
+Palantir coined the title more than a decade ago: a forward deployed software engineer "builds product from inside the customer's office, sitting closer to the messy requirements than any product manager ever gets" ([techinterview.org](https://www.techinterview.org/post/3233477236/forward-deployed-engineer-interview/)). Palantir's own framing, quoted in [The Pragmatic Engineer](https://newsletter.pragmaticengineer.com/p/forward-deployed-engineers): a product engineer's focus is "one capability, many customers," while a forward deployed engineer's is "one customer, many capabilities."
+
+The clearest line I found between an FDE and the roles next to it: "A solutions architect designs the implementation and hands it off. An FDE builds it inside the customer's environment and owns whether it runs" ([Exponent](https://www.tryexponent.com/blog/forward-deployed-engineer-interview-the-definitive-2026-guide-fde)). The same Pragmatic Engineer piece says FDEs "work with customers and also contribute to the product their company sells."
+
+Why companies pay for this: [a16z](https://a16z.com/services-led-growth/) argues that enterprises buying AI "want to use it, but they need you to set it up," and that forward deployed teams exist "to operationalize the model into a real-world solution": connecting it to internal databases, APIs and workflows so the model has the context it needs.
+
+So the interview is trying to answer one question, phrased well by a recent OpenAI FDE candidate, quoted in Exponent's [OpenAI guide](https://www.tryexponent.com/guides/openai-forward-deployed-engineer-interview), describing what the hiring manager needs to know: "Can I trust this person in front of a customer, and can I trust them to build out the solution necessary?"
+
+## Loop stages by archetype
+
+The eight loops fall into four rough shapes. Each loop is the one described on the cited page. Several pages say loops vary by team and candidate.
+
+| Archetype | Companies (n) | Shape of the loop | Reported length |
+|---|---|---|---|
+| Decomposition-led | Palantir, Databricks, Distyl (3) | Recruiter screen, practical coding, a decomposition round on a vague customer problem, plus learning or build rounds and a values or hiring-manager close ([Palantir](https://www.tryexponent.com/guides/palantir-forward-deployed-engineer-interview), [Databricks](https://www.tryexponent.com/guides/databricks-forward-deployed-engineer-interview), [Distyl](https://www.techinterview.org/post/3233477242/how-distyl-ai-hires-forward-deployed-engineers/)) | Palantir 3-4 weeks, Databricks 4-6 weeks |
+| AI lab / platform | OpenAI, Anthropic, Google (3) | Recruiter screen, coding, system or solution design for a customer deployment, a project deep dive or use-case screen, and a values round ([OpenAI](https://www.tryexponent.com/guides/openai-forward-deployed-engineer-interview), [Anthropic](https://www.tryexponent.com/guides/anthropic-forward-deployed-engineer-interview), [Google](https://www.tryexponent.com/guides/google-forward-deployed-engineer-interview)) | OpenAI 3-6 weeks, Anthropic about 4-6, Google 6-8 |
+| Shared SWE bar | Scale AI (1) | Online assessment, recruiter call, technical screen, then an onsite of credo, coding, debugging, system design and hiring manager, with the same technical rounds as software engineers ([Scale AI](https://www.tryexponent.com/guides/scale-ai-forward-deployed-engineer-interview)) | About 2 months |
+| Take-home-led | Labelbox (1) | Recruiter screen, a take-home dataset design, an in-person debrief of it, then peer, behavioral and onsite conversations ([Labelbox](https://www.tryexponent.com/guides/labelbox-forward-deployed-engineer-interview)) | Not stated |
+
+How often each round type appears across those eight loops:
+
+| Round type | Loops (of 8) | Notes |
+|---|---|---|
+| Recruiter screen | 8 | About 30 minutes where a length is given (Google 30-45); several sources say it cuts hard on motivation |
+| Live coding | 7 | Labelbox is the exception |
+| Behavioral or values round | 7 | Palantir has none on its own; it puts behavioral questions inside nearly every round ([Exponent](https://www.tryexponent.com/guides/palantir-forward-deployed-engineer-interview)) |
+| Ambiguous customer problem (decomposition or customer-scenario design) | 5 | Palantir, Databricks, Distyl, OpenAI (some loops), Anthropic |
+| System design | 5 | Palantir (one of a pool of onsite rounds), OpenAI, Anthropic (as solution design for an enterprise customer), Google, Scale |
+| Hiring manager round | 4 | Palantir, Anthropic, Scale, Labelbox |
+| Project deep dive | 3 | OpenAI, Anthropic, Labelbox |
+| Take-home or extended build | 2 firm, 3 conditional | Firm at Distyl and Labelbox; team-dependent at OpenAI and Databricks; reported for Palantir's FDE track on one of its two pages only |
+| Online assessment | 2 | Scale and Palantir (HackerRank) |
+| Debugging or re-engineering | 2 | Scale and Palantir |
+| Learning round | 1 | Palantir |
+
+What the table says to me: coding is close to universal, but it is rarely the hard algorithmic kind. Palantir's screen "rarely turns on graph or tree-heavy algorithms" ([Exponent](https://www.tryexponent.com/guides/palantir-forward-deployed-engineer-interview)). At Databricks the graph, algorithm and concurrency problems from the core engineering loop "rarely appear here" ([Exponent](https://www.tryexponent.com/guides/databricks-forward-deployed-engineer-interview)). Google is the exception: its coding round is described as a standard data structures and algorithms evaluation. What sets the FDE loop apart is the round where someone hands you a vague customer problem and watches what you ask first.
+
+## The skills they keep testing, and how I practice each
+
+I built my own drills for most of these. I describe how each one is designed, not how I score on it.
+
+### 1. Clarifying before solving
+
+This comes up more than anything else. Exponent's decomposition guide says skipping clarification "is the most common reason for failure" ([Exponent](https://www.tryexponent.com/blog/how-to-answer-decomposition-interview-questions-the-definitive-guide-2026)). At Distyl, "the interviewer will not volunteer detail. Your grade comes from the questions you ask and the order you ask them in" ([techinterview.org](https://www.techinterview.org/post/3233477242/how-distyl-ai-hires-forward-deployed-engineers/)). Databricks advice: spend the first 5-15 minutes clarifying the goal before the technical design ([Exponent](https://www.tryexponent.com/guides/databricks-forward-deployed-engineer-interview)).
+
+**How I practice:** a pack of decomposition cases set in different industries (insurance claims, hospital bed flow, supplier delays, fraud queues, storm outages, aircraft maintenance and others). Each case opens with a vague request from a fictional executive. The interviewer side holds facts, such as volumes, audit findings and constraints, that come out only when I ask about them. A rubric scores each answer on clarifying questions, the users and decisions involved, the data objects, the joins and lineage, a two-week MVP, a success metric, risks, and rollout.
+
+### 2. Scoping something small that works
+
+Interviewers want the smallest valuable version, not the architecture diagram. "A common mistake is jumping to a perfect production architecture. FDE interviewers want you to scope a walking skeleton first, then iterate" ([Exponent](https://www.tryexponent.com/blog/forward-deployed-engineer-interview-the-definitive-2026-guide-fde)). techinterview.org's Palantir write-up says it shorter: "Working and small beats elaborate and stalled" ([techinterview.org](https://www.techinterview.org/post/3233476805/palantir-interview-process/)). The same page says the interviewer "will add a requirement partway through, on purpose, to see whether your design bends or breaks."
+
+**How I practice:** the same case pack. The rubric's two-week MVP element pushes me to name one thing I'd ship first and why, before I talk about anything else.
+
+### 3. Practical coding that survives new requirements
+
+FDE coding rounds look like work, not puzzles. Distyl's is described as parsing messy input, calling an LLM API, handling malformed output and assembling "a small working pipeline" ([techinterview.org](https://www.techinterview.org/post/3233477242/how-distyl-ai-hires-forward-deployed-engineers/)). At Anthropic, "each stage adds a requirement that forces you to refactor your earlier code" ([Exponent](https://www.tryexponent.com/guides/anthropic-forward-deployed-engineer-interview)). Palantir's online assessment can include a SQL query and an API task next to the coding challenge ([Exponent](https://www.tryexponent.com/guides/palantir-forward-deployed-engineer-interview)), and the Databricks technical screen samples SQL and data manipulation ([Exponent](https://www.tryexponent.com/guides/databricks-forward-deployed-engineer-interview)).
+
+**How I practice:** for SQL, a drill of auto-graded problems, many of them over a snapshot of my own job-postings data. Answers are graded on the rows they return, so a correct query written a different way still passes, and a set of deliberately wrong near-miss queries checks that the grader rejects them. For incremental coding I follow one piece of advice from the OpenAI guide: "Write quick test cases before each extension, and confirm they pass before you take on the next requirement" ([Exponent](https://www.tryexponent.com/guides/openai-forward-deployed-engineer-interview)).
+
+### 4. Debugging code and data you didn't write
+
+Scale's debugging round "hands you an unfamiliar codebase and asks you to locate and fix the defects breaking it," and candidates "often underestimate this round" ([Exponent](https://www.tryexponent.com/guides/scale-ai-forward-deployed-engineer-interview)). Palantir's re-engineering round is graded on "whether your debugging process is systematic rather than how fast you spot the first issue" ([Exponent](https://www.tryexponent.com/guides/palantir-forward-deployed-engineer-interview)).
+
+**How I practice:** a messy-data gauntlet of seeded incidents, one defect class each: mixed encodings, schema drift across monthly files, fuzzy duplicate entities, timezone and daylight-saving bugs, unit mismatch with currency rounding, late-arriving rows, personal data in free text that must be redacted, and a join that fans out and silently truncates. Each one starts from a vague customer ticket, has a time target, and is checked by a hidden validator against ground truth. Each one is designed so that a plausible naive fix fails the validator while the reference cleanup passes. That is the point: the obvious cleanup is usually the wrong one.
+
+### 5. Building with AI tools, and knowing when you're not allowed to
+
+AI-tool rules differ by company and by round. Palantir "prohibits AI use during its interviews" ([Exponent](https://www.tryexponent.com/guides/palantir-forward-deployed-engineer-interview)). At OpenAI, AI tools "are allowed in some OpenAI FDE coding interviews and prohibited in others" ([Exponent](https://www.tryexponent.com/guides/openai-forward-deployed-engineer-interview)). Anthropic's technical use-case screen centers on a Claude deployment scenario ([Exponent](https://www.tryexponent.com/guides/anthropic-forward-deployed-engineer-interview)), and Google's loop reportedly includes a "vibe coding" session against ambiguous requirements ([Exponent](https://www.tryexponent.com/guides/google-forward-deployed-engineer-interview)).
+
+**How I practice:** both ways, on purpose. I built timed Claude Code scenarios (an MCP server over SQLite, a tool-call debugging task, a cleanup audit and a headless-cost task). Each is graded twice: on the outcome, with hidden tests, and on the process, from the session transcript: did I state a plan before the first edit, run a test or check, and report what the session cost. The SQL drill runs the other way: reps with every AI window closed.
+
+### 6. Thinking in evals
+
+For AI-heavy FDE roles, "knowing how to measure whether an agent actually works matters as much as knowing how to build it" ([techinterview.org](https://www.techinterview.org/post/3233477236/forward-deployed-engineer-interview/)). At Distyl, candidates "who can talk about building an eval set, spot-checking against ground truth, and catching the failure cases that actually matter to the customer stand apart" ([techinterview.org](https://www.techinterview.org/post/3233477242/how-distyl-ai-hires-forward-deployed-engineers/)). The Pragmatic Engineer describes OpenAI FDE projects as having a validation phase built around evals made with user input and labeling ([Pragmatic Engineer](https://newsletter.pragmaticengineer.com/p/forward-deployed-engineers)).
+
+**How I practice:** every drill above has a hidden or frozen checker. Writing the checker teaches more than passing it. In a decomposition case I now say the success metric and how I'd test it before I describe any system.
+
+### 7. Motivation and ownership you can say plainly
+
+Recruiter screens filter harder than I expected. At Palantir, saying you want "interesting problems" or "strong compensation" is "close to disqualifying" ([techinterview.org](https://www.techinterview.org/post/3233476805/palantir-interview-process/)). Anthropic "invites genuine skepticism about its mission, so an honest, critical answer holds up better than enthusiasm" ([Exponent](https://www.tryexponent.com/guides/anthropic-forward-deployed-engineer-interview)). Several loops include a deep dive on one past project, defended decision by decision ([OpenAI](https://www.tryexponent.com/guides/openai-forward-deployed-engineer-interview), [Anthropic](https://www.tryexponent.com/guides/anthropic-forward-deployed-engineer-interview)).
+
+**How I practice:** I write each project story with "I" as the subject of every verb, then cut anything I can't defend under a follow-up question.
+
+## Failure modes
+
+Every one of these is named by at least one source:
+
+- **Jumping to a solution.** "The single most common rejection reason" in the decomposition round ([Exponent](https://www.tryexponent.com/blog/forward-deployed-engineer-interview-the-definitive-2026-guide-fde)).
+- **Pattern-matching on tools.** Reaching for RAG before understanding the work "signals they are pattern-matching on tools instead of understanding the work" ([techinterview.org](https://www.techinterview.org/post/3233477242/how-distyl-ai-hires-forward-deployed-engineers/)).
+- **Waiting to be narrowed.** At Anthropic, "waiting for the interviewer to narrow the problem reads as a weakness" ([Exponent](https://www.tryexponent.com/guides/anthropic-forward-deployed-engineer-interview)).
+- **Polishing one piece.** Doing it "while leaving the rest untouched" signals that you lack a complete plan ([Exponent](https://www.tryexponent.com/blog/how-to-answer-decomposition-interview-questions-the-definitive-guide-2026)).
+- **Going silent.** "Silence is interpreted as being stuck" ([Exponent](https://www.tryexponent.com/blog/forward-deployed-engineer-interview-the-definitive-2026-guide-fde)). Exponent's decomposition guide adds that talking for its own sake is just as bad ([Exponent](https://www.tryexponent.com/blog/how-to-answer-decomposition-interview-questions-the-definitive-guide-2026)).
+- **"We" instead of "I".** "FDE managers screen aggressively for engineers who can name their own contributions clearly" ([Exponent](https://www.tryexponent.com/blog/forward-deployed-engineer-interview-the-definitive-2026-guide-fde)).
+- **Random edits while debugging.** "Changing lines at random to see what sticks reads badly here" ([techinterview.org](https://www.techinterview.org/post/3233477236/forward-deployed-engineer-interview/)).
+- **Generic motivation.** Palantir "rejects technically strong candidates here when their motivation reads as generic" ([Exponent](https://www.tryexponent.com/guides/palantir-forward-deployed-engineer-interview)).
+- **Templated presentations.** One Labelbox interviewer said copied presentations get caught because "there's no voice behind it" ([Exponent](https://www.tryexponent.com/guides/labelbox-forward-deployed-engineer-interview)).
+- **Treating the late rounds as a formality.** At Databricks, strong candidates "are sometimes turned down at this stage despite positive earlier feedback" ([Exponent](https://www.tryexponent.com/guides/databricks-forward-deployed-engineer-interview)).
+
+## Resources
+
+The pages I used, all checked on 2026-11-05:
+
+- **The role:** [The Pragmatic Engineer, "What are Forward Deployed Engineers, and why are they so in demand?"](https://newsletter.pragmaticengineer.com/p/forward-deployed-engineers) and [a16z, "Trading Margin for Moat: Why the Forward Deployed Engineer Is the Hottest Job in Startups"](https://a16z.com/services-led-growth/).
+- **General loop guides:** [Exponent's FDE interview guide](https://www.tryexponent.com/blog/forward-deployed-engineer-interview-the-definitive-2026-guide-fde), [Exponent on decomposition questions](https://www.tryexponent.com/blog/how-to-answer-decomposition-interview-questions-the-definitive-guide-2026), [techinterview.org, "What the forward deployed engineer interview really tests"](https://www.techinterview.org/post/3233477236/forward-deployed-engineer-interview/) and [Educative, "The four interview rounds"](https://www.educative.io/courses/forward-deployed-engineer/the-four-interview-rounds) (mostly paywalled).
+- **Company guides:** [Palantir](https://www.tryexponent.com/guides/palantir-forward-deployed-engineer-interview), [Palantir (techinterview.org)](https://www.techinterview.org/post/3233476805/palantir-interview-process/), [Databricks](https://www.tryexponent.com/guides/databricks-forward-deployed-engineer-interview), [Distyl](https://www.techinterview.org/post/3233477242/how-distyl-ai-hires-forward-deployed-engineers/), [OpenAI](https://www.tryexponent.com/guides/openai-forward-deployed-engineer-interview), [Anthropic](https://www.tryexponent.com/guides/anthropic-forward-deployed-engineer-interview), [Google](https://www.tryexponent.com/guides/google-forward-deployed-engineer-interview), [Scale AI](https://www.tryexponent.com/guides/scale-ai-forward-deployed-engineer-interview) and [Labelbox](https://www.tryexponent.com/guides/labelbox-forward-deployed-engineer-interview).
+
+Two notes on using these. First, the sources disagree with each other in places. Exponent says Palantir's decomposition round needs "little or no code," while techinterview.org describes it as a CodePair pairing session. Durations differ by fifteen minutes between pages. And Exponent's general guide lists a separate 45-minute behavioral round for Palantir, while its Palantir guide says behavioral questions sit inside the other rounds. Second, most company guides come from one publisher, so they may share one methodology and its blind spots. Where a detail matters for an interview you actually have, ask the recruiter. Several of these pages say the same.

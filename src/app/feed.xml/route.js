@@ -1,9 +1,10 @@
 import { getPublishedCaseStudies } from "@/lib/caseStudies"
+import { getPublishedPosts } from "@/lib/posts"
 import { getBlogPosts } from "@/lib/contentful"
 import siteMetadata from "@/src/utils/siteMetaData"
 
 // Built once at build time. Drafts are never listed (getPublishedCaseStudies
-// filters them in every environment).
+// and getPublishedPosts filter them in every environment).
 export const dynamic = "force-static"
 
 const esc = (s = "") =>
@@ -24,6 +25,14 @@ export async function GET() {
     categories: ["Case study", ...post.tags],
   }))
 
+  const posts = getPublishedPosts().map((post) => ({
+    title: post.title,
+    url: `${site}${post.url}`,
+    description: post.description,
+    date: new Date(post.publishedAt),
+    categories: ["Post", ...post.tags],
+  }))
+
   const contentful = (await getBlogPosts())
     .filter((post) => post?.fields?.slug)
     .map((post) => ({
@@ -34,7 +43,7 @@ export async function GET() {
       categories: post.fields.tags || [],
     }))
 
-  const items = [...caseStudies, ...contentful].sort((a, b) => b.date - a.date)
+  const items = [...caseStudies, ...posts, ...contentful].sort((a, b) => b.date - a.date)
   const lastBuild = items.length ? items[0].date : new Date()
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

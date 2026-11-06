@@ -39,17 +39,19 @@ const blog = s
     }
   })
 
-// Case studies: content/case-studies/*.mdx
+// Case studies (content/case-studies/*.mdx) and posts (content/posts/*.mdx):
 // draft: true posts render under `next dev` and are dropped from the velite
 // output in production builds (see prepare below), so they never reach a
 // production page, the sitemap or the RSS feed.
 const includeDrafts =
   process.env.NODE_ENV !== 'production' || process.env.VELITE_INCLUDE_DRAFTS === '1'
 
-const caseStudy = s
+// Case studies and posts share one schema; only the slug namespace and the
+// URL prefix differ.
+const article = (collection, prefix) => s
   .object({
     title: s.string().max(140),
-    slug: s.slug('case-studies'),
+    slug: s.slug(collection),
     description: s.string().max(400),
     publishedAt: s.isodate(),
     updatedAt: s.isodate().optional(),
@@ -62,10 +64,15 @@ const caseStudy = s
   })
   .transform(data => ({
     ...data,
-    url: `/case-studies/${data.slug}`,
+    url: `/${prefix}/${data.slug}`,
     readingTime: Math.max(1, Math.ceil(data.metadata.readingTime)),
     wordCount: data.metadata.wordCount,
   }))
+
+const caseStudy = article('case-studies', 'case-studies')
+
+// Posts: content/posts/*.mdx (field guides and essays), same draft rules.
+const post = article('posts', 'posts')
 
 export default defineConfig({
   root: 'content',
@@ -80,10 +87,16 @@ export default defineConfig({
       pattern: 'case-studies/**/*.mdx',
       schema: caseStudy,
     },
+    posts: {
+      name: 'Post',
+      pattern: 'posts/**/*.mdx',
+      schema: post,
+    },
   },
   prepare: (data) => {
     if (!includeDrafts) {
       data.caseStudies = data.caseStudies.filter(post => !post.draft)
+      data.posts = data.posts.filter(post => !post.draft)
     }
   },
   output: {

@@ -2,6 +2,7 @@ import { getServerSideSitemap } from 'next-sitemap'
 import { blogs } from "@/.velite/generated"
 import { getBlogPosts } from "@/lib/contentful"
 import { getPublishedCaseStudies } from "@/lib/caseStudies"
+import { getPublishedPosts } from "@/lib/posts"
 import siteMetadata from "@/src/utils/siteMetaData"
 
 export const dynamic = 'force-dynamic'
@@ -26,6 +27,16 @@ export async function GET() {
       lastmod: new Date(post.updatedAt || post.publishedAt).toISOString(),
       changefreq: 'monthly',
       priority: 0.9,
+    })
+  }
+
+  // Published posts only (drafts are never listed)
+  for (const post of getPublishedPosts()) {
+    entries.push({
+      loc: `${siteMetadata.siteUrl}${post.url}`,
+      lastmod: new Date(post.updatedAt || post.publishedAt).toISOString(),
+      changefreq: 'monthly',
+      priority: 0.8,
     })
   }
 
