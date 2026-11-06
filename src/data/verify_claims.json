@@ -334,31 +334,6 @@
           "sha256": "de4c11e395449e32cfa266db4bcb91a5d03cfdea0c000ee4b863be77df8fb3ad"
         }
       ]
-    },
-    {
-      "id": "R.ledger_1998_2026.mean",
-      "claim": "+3.17R mean per trade (66,753 trades, 1998-2026)",
-      "commit": "a4087032",
-      "date": "2026-09-24",
-      "command": "cd ~/wt/pub01-engine && export PYTHONUTF8=1 DUCKDB_MEMORY_LIMIT=1GB && timeout 1200 /usr/bin/python3 -m bot.scripts.make_r_baseline --trades data/research/qm_trades.parquet --out ~/growth/out/PUB01/work/logs/R__baseline_full.json 2>&1 | tee ~/growth/out/PUB01/work/logs/R__1_make_r_baseline.log",
-      "inputs": [
-        {
-          "path": "breakouts-engine/data/research/qm_trades.parquet",
-          "sha256": "a56f572864cdae24166385c1631032d0ff0ff893842d45d6474d75fdc495bf8a"
-        },
-        {
-          "path": "breakouts-engine/bot/scripts/make_r_baseline.py",
-          "sha256": "eb5502a87685ceba90f19dcab05950da57318d4cc1b6d291e0beeeb52b6001c9"
-        },
-        {
-          "path": "breakouts-engine/bot/drift.py",
-          "sha256": "5555162bab545545b9bb54c076945919fb8e2b7aa3519dc2a389c19b48a2fc33"
-        },
-        {
-          "path": "breakouts-engine/bot/model/backtest_r_baseline.json",
-          "sha256": "6d6e0e71c6858208df0ed2f55f7812c18765c5e1b2c64be15ad9b7f36783417b"
-        }
-      ]
     }
   ]
 }
