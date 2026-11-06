@@ -47,7 +47,7 @@ test("validator accepts claim numbers cited in the same paragraph", () => {
 test("validator blocks unsupported, uncited, misattributed and forbidden numbers", () => {
   assert.ok(!V("The ledger has 66,753 trades.").ok, "no citation")
   assert.ok(!V("It had 458 signups [doc:site.breakouts_trade].").ok, "doc numbers are not licensed")
-  assert.ok(!V("Mean R was 3.17R [claim:trades.ledger_1998_2026].").ok, "3.17R")
+  assert.ok(!V("Mean R was 3.17R [claim:trades.ledger_1998_2026].").ok, "excluded full-ledger mean")
   assert.ok(!V("The ledger has 66,753 trades [claim:win_rate.ledger_1998_2026].").ok, "wrong claim")
   assert.ok(!V("It has 66,753 trades.\n\nSee [claim:trades.ledger_1998_2026].").ok, "claim cited in another paragraph")
   assert.ok(!V("CAGR was high [doc:site.breakouts_engine].").ok, "forbidden metric")

@@ -33,8 +33,8 @@ ordinary words. Signs are compared by absolute value, because "a drawdown of
 
 - **Claims:** the accepted claims in `src/data/verify_claims.json` (built from
   PUB01 `claims.json`), minus `content/ask/policy.json` → `excludeClaimIds`.
-  The +3.17R full-ledger mean is excluded, and 3.17R and CAGR are blocked
-  outright. The model cites claims by opaque refs (`[claim:c3]`), so it
+  The full-ledger mean R is excluded, and its value and the word CAGR are
+  blocked outright (`forbiddenPatterns`). The model cites claims by opaque refs (`[claim:c3]`), so it
   cannot read facts into the words inside an id.
 - **Site pages:** `content/ask/sources/*.md`, number-free summaries of the
   Experience, Projects, About, Verify, Contact and homepage copy.
