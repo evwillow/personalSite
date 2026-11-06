@@ -1,0 +1,333 @@
+{
+  "source": "scripts/build-ask-corpus.mjs",
+  "claims": [
+    {
+      "id": "trades.ledger_1998_2026",
+      "ref": "c1",
+      "text": "66,753 trades, 1998-2026, survivorship-free",
+      "kind": "backtest",
+      "commit": "a4087032",
+      "allowed": [
+        1998,
+        2026,
+        66753
+      ],
+      "caveat": "This is a backtest figure from the research ledger, not a live trading result.",
+      "url": "/verify"
+    },
+    {
+      "id": "win_rate.ledger_1998_2026",
+      "ref": "c2",
+      "text": "36.9% win rate across the full ledger",
+      "kind": "backtest",
+      "commit": "a4087032",
+      "allowed": [
+        36.9
+      ],
+      "caveat": "This is a backtest figure from the research ledger, not a live trading result.",
+      "url": "/verify"
+    },
+    {
+      "id": "R.ledger_1998_2026.median",
+      "ref": "c3",
+      "text": "a median trade of -1.05R",
+      "kind": "backtest",
+      "commit": "a4087032",
+      "allowed": [
+        1.05
+      ],
+      "caveat": "This is a backtest figure from the research ledger, not a live trading result.",
+      "url": "/verify"
+    },
+    {
+      "id": "R.holdout_2024_2026.mean",
+      "ref": "c4",
+      "text": "2024-2026 holdout mean R of 2.61, run once",
+      "kind": "backtest",
+      "commit": "a4087032",
+      "allowed": [
+        2.61,
+        2024,
+        2026
+      ],
+      "caveat": "This is a backtest figure from the research ledger, not a live trading result.",
+      "url": "/verify"
+    },
+    {
+      "id": "R.holdout_2024_2026.ci95_bootstrap",
+      "ref": "c5",
+      "text": "a 95% CI of [2.36, 2.87] on that holdout mean",
+      "kind": "backtest",
+      "commit": "a4087032",
+      "allowed": [
+        2.36,
+        2.87,
+        95
+      ],
+      "caveat": "This is a backtest figure from the research ledger, not a live trading result.",
+      "url": "/verify"
+    },
+    {
+      "id": "Sharpe.baseline_orb_portfolio_heldout",
+      "ref": "c6",
+      "text": "a 1.184 Sharpe, held-out 2018-2026 portfolio simulation",
+      "kind": "backtest",
+      "commit": "a4087032",
+      "allowed": [
+        1.184,
+        2018,
+        2026
+      ],
+      "caveat": "This is a backtest figure from the research ledger, not a live trading result.",
+      "url": "/verify"
+    },
+    {
+      "id": "Sharpe.baseline_orb_portfolio_insample",
+      "ref": "c7",
+      "text": "a 1.031 Sharpe, in-sample 2004-2017 portfolio simulation",
+      "kind": "backtest",
+      "commit": "a4087032",
+      "allowed": [
+        1.031,
+        2004,
+        2017
+      ],
+      "caveat": "This is a backtest figure from the research ledger, not a live trading result.",
+      "url": "/verify"
+    },
+    {
+      "id": "drawdown.portA_baseline_insample_2004_2017",
+      "ref": "c8",
+      "text": "-23.17% max drawdown, in-sample 2004-2017, 1,500-ticker universe",
+      "kind": "backtest",
+      "commit": "a4087032",
+      "allowed": [
+        23.17,
+        1500,
+        2004,
+        2017
+      ],
+      "caveat": "This is a backtest figure from the research ledger, not a live trading result.",
+      "url": "/verify"
+    },
+    {
+      "id": "drawdown.portA_baseline_heldout_2018_2026",
+      "ref": "c9",
+      "text": "-36.78% max drawdown, held-out 2018-2026",
+      "kind": "backtest",
+      "commit": "a4087032",
+      "allowed": [
+        36.78,
+        2018,
+        2026
+      ],
+      "caveat": "This is a backtest figure from the research ledger, not a live trading result.",
+      "url": "/verify"
+    },
+    {
+      "id": "tests.repo_collected_a4087032",
+      "ref": "c10",
+      "text": "742 tests collected across the engine repo (a4087032)",
+      "kind": "test_count",
+      "commit": "a4087032",
+      "allowed": [
+        742
+      ],
+      "caveat": "Test count collected at engine commit a4087032.",
+      "url": "/verify"
+    },
+    {
+      "id": "tests.bot_collected_a4087032",
+      "ref": "c11",
+      "text": "321 tests in the execution module (a4087032)",
+      "kind": "test_count",
+      "commit": "a4087032",
+      "allowed": [
+        321
+      ],
+      "caveat": "Test count collected at engine commit a4087032.",
+      "url": "/verify"
+    },
+    {
+      "id": "tests.research_collected_head",
+      "ref": "c12",
+      "text": "415 tests in the research module",
+      "kind": "test_count",
+      "commit": "a4087032",
+      "allowed": [
+        415
+      ],
+      "caveat": "Test count collected at engine commit a4087032.",
+      "url": "/verify"
+    }
+  ],
+  "excluded": [
+    {
+      "id": "R.ledger_1998_2026.mean",
+      "why": "policy.excludeClaimIds"
+    }
+  ],
+  "docs": [
+    {
+      "id": "site.breakouts_engine",
+      "title": "Breakouts Engine and the execution robot (Projects and Experience pages)",
+      "url": "/projects",
+      "kind": "site",
+      "text": "The Breakouts Engine is the quantitative research engine behind breakouts.trade. It implements a channel-breakout strategy as a single source of truth that research and execution share, so backtests and the live bot import the same strategy code through a parity bridge. A nightly scanner pipeline runs over a regenerable local market-data lake and serves chart data from object storage. The research code carries parity, look-ahead, survivorship and point-in-time test guards meant to keep results reproducible.\n\nEvan also built an execution robot for an Interactive Brokers account that has traded real money. The engineering he points to is the safety work around it: systemd units, a kill switch, an order gate and loss rails, broker-versus-journal reconciliation on a fixed short interval, and a heartbeat that names the running commit. This page makes no claim about the robot's live trading performance.\n\nThe engine produced a survivorship-free backtest ledger and a holdout period that was run once. Its published figures are the accepted claims on the /verify page; every one of them is a backtest or test-count figure, not a live trading result. The repository is private."
+    },
+    {
+      "id": "site.breakouts_trade",
+      "title": "breakouts.trade, the study tool (Experience and Projects pages)",
+      "url": "/experience",
+      "kind": "site",
+      "text": "Evan founded breakouts.trade and is its sole engineer and the only contributor to its repositories. It is a browser drill app that teaches a breakout stock-trading strategy on real charts, plus a daily scanner that runs on the same strategy code. It shipped to real users who sign up, activate and run practice drills.\n\nEngineering work on the app:\n- Reviewed every API route handler and the middleware, found a credentials path that accepted a password as proof of Google identity (a pre-auth account-takeover flaw), then fixed it and re-verified the fix.\n- Hand-wrote idempotent SQL migrations and row-level-security policies with no ORM.\n- Gated every pull request on type-check, lint, tests and build.\n- Replaced a stock-metadata cold path that fanned out storage reads and timed out on cold starts with one precomputed artifact, and added a test that proves the fan-out is gone.\n\nStack: Next.js, TypeScript, React, Python, PostgreSQL, Supabase, GitHub Actions. The repository is private; the live site is breakouts.trade."
+    },
+    {
+      "id": "site.contact",
+      "title": "Contact (Contact page)",
+      "url": "/contact",
+      "kind": "site",
+      "text": "The best way to reach Evan is through the /contact page on this site, which lists his email and LinkedIn. His public code is on GitHub at github.com/evwillow. His university email, evan_maus@berkeley.edu, is listed in his public GitHub profile README."
+    },
+    {
+      "id": "site.econ143",
+      "title": "Pre-registered quantile-regression study, Econ 143 (About and Projects pages)",
+      "url": "/about",
+      "kind": "site",
+      "text": "For UC Berkeley's Econ 143 (Econometrics: Advanced Methods), Evan ran a quantile-regression study of whether pre-breakout volume contraction predicts upper-tail returns on Qullamaggie-style momentum setups. He locked the hypothesis in a timestamped commit before the estimator ran, then reported the null as it came, with a bootstrap interval and a shuffled-label placebo. Code and write-up: github.com/evwillow/econ143-project."
+    },
+    {
+      "id": "site.education",
+      "title": "Education and coursework (About page)",
+      "url": "/about",
+      "kind": "site",
+      "text": "Evan studies at UC Berkeley for a dual Bachelor of Arts in Data Science and Economics, graduating in December.\n\nRelevant coursework: Data Structures (CS 61B), Structure and Interpretation of Computer Programs (CS 61A), Artificial Intelligence (CS 188), Principles and Techniques of Data Science (Data C100), Probability for Data Science (Data C140), Linear Algebra (Math 56), Econometrics (Econ 140), Econometrics: Advanced Methods (Econ 143), Behavioral Finance (UGBA 136F), and intermediate micro- and macroeconomics. In progress this fall: Data C102, Data 144, Stat 153, Econ 139 and Econ 134.\n\nCourse projects: in CS 61B, a three-person Java project where he wrote the procedural world generator, the main menu, the state management and the save-and-replay feature, with JUnit tests. In CS 188, course projects in Python and PyTorch on graph search, adversarial search with alpha-beta pruning, value iteration and Q-learning, Bayes-net and hidden-Markov inference with particle filtering, and PyTorch models including a recurrent language classifier and a hand-written causal self-attention block."
+    },
+    {
+      "id": "site.focus",
+      "title": "What Evan does and the roles he is preparing for (homepage and FDE field guide post)",
+      "url": "/",
+      "kind": "site",
+      "text": "Evan describes his work as deploying LLM features and automation into live operations for owners who are not engineers, and building the guardrails that keep them safe. He is preparing for forward deployed engineer (FDE) roles. He wrote a post, \"What FDE interviews test: notes from preparing\" (/posts/fde-field-guide), that collects public descriptions of FDE interview loops: the stages, the skills they keep testing, how he practices each one, and where candidates fail. The post says it is not insider knowledge and that every company claim links to its source.\n\nPlanned case studies on the homepage, not yet published: safety rails on a live trading robot (order gate, kill switch, loss rails, broker reconciliation, and the defects that got past them); jobwatch, a job-search pipeline that sweeps applicant-tracking boards, dedupes postings and tracks applications in one database; and a pre-registration instrument that locks the hypothesis, gates and analysis before a model run and refuses to run a spec edited after the lock."
+    },
+    {
+      "id": "site.incurra",
+      "title": "Incurra (Projects page, current work)",
+      "url": "/projects",
+      "kind": "site",
+      "text": "Incurra is Evan's current work: an AI product for commercial-auto claims reconciliation, built with Python, DuckDB, Parquet and the Anthropic API. It reads adjuster notes on open claims and flags the ones where a documented fact is not reflected in the carried reserve. It is a reconciliation tool rather than a prediction machine. The repository is private; the live site is incurra.ai."
+    },
+    {
+      "id": "site.leadership",
+      "title": "Leadership (Experience and About pages)",
+      "url": "/experience",
+      "kind": "site",
+      "text": "Evan started and led the Student Climate Action Team in Delaware, Ohio, as president: he coordinated strategy, events and community partnerships, grew the group through outreach, and built its website from scratch for events, announcements and volunteer sign-ups. He is an Eagle Scout and led a large volunteer crew on a community trail expansion project."
+    },
+    {
+      "id": "site.llm_energy",
+      "title": "LLM Energy Benchmark (Projects and Experience pages)",
+      "url": "/projects",
+      "kind": "site",
+      "text": "Evan initiated and built a measurement pipeline for the energy cost of LLM API usage. It ingests and cleans large conversation datasets, replays the extracted prompts against several hosted models, records power draw with CodeCarbon, and engineers many linguistic features per prompt.\n\nMeasurement scope: the CodeCarbon tracker runs on the local client during each remote API call, so it captures client-side power draw across the request window, not provider-side inference energy, which these APIs do not expose.\n\nThe result was null: no prompt characteristic predicted client-side energy. Request duration dominated the measurement, which is the expected behavior for a client-side tracker and explains the missing prompt-feature signal. The negative result runs against the project's original hypothesis, and he reports it as such. Code: github.com/evwillow/llm-energy-benchmark."
+    },
+    {
+      "id": "site.market_open_momentum",
+      "title": "Market Open Momentum (Projects page)",
+      "url": "/projects",
+      "kind": "site",
+      "text": "A deterministic, rule-based strategy that trades early-morning momentum divergence between leveraged ETFs. It opens equal-dollar positions in UPRO and SPXU at the market open, closes the losing side once a spread threshold resolves within a short evaluation window, and exits the winner on a configurable schedule (same-day close or overnight hold). There is no model fitting, so results are reproducible run to run. The backtest engine models slippage and tracks pattern-day-trading limits. Code: github.com/evwillow/marketOpenMomentum."
+    },
+    {
+      "id": "site.necotech",
+      "title": "necoTECH internship (Experience page)",
+      "url": "/experience",
+      "kind": "site",
+      "text": "Evan was a Data & Product Intern at necoTECH in Columbus, Ohio. He automated lead tracking in Python and cleaned proposal data, consolidating CRM, proposal and marketing workflows across teams; surveyed US federal contracts and funding applications with pandas; and worked directly with experienced mentors, including the CEO."
+    },
+    {
+      "id": "site.nonprofits",
+      "title": "Nonprofit websites (Experience and Projects pages)",
+      "url": "/experience",
+      "kind": "site",
+      "text": "Evan was the sole developer for two local environmental nonprofits in Ohio, North Central Ohio Pollinator Pathway and Sustainable Delaware Ohio. He decided the technical questions with owners who were not technical and delivered each site end to end: design, build, hosting and content. He handed both sites off, supported the owners for a few months afterwards, and both have run on their own since. The Pollinator Pathways site is a React application with keyword search and location and type filters for member groups, an interactive image gallery and a responsive Tailwind layout (github.com/evwillow/pollinatorPathwaysWebsite)."
+    },
+    {
+      "id": "site.skills",
+      "title": "Technical skills and languages (About page)",
+      "url": "/about",
+      "kind": "site",
+      "text": "Languages: Python, Java, C, JavaScript, SQL, HTML/CSS. Frameworks and libraries: React, Next.js, Node.js, Tailwind CSS, FastAPI, pandas, NumPy, TensorFlow, PyTorch, Recharts, JUnit. Tools and infrastructure: Linux, systemd, Git and GitHub, GitHub Actions, SSH, DigitalOcean, Supabase, PostgreSQL, DuckDB, Parquet. Spoken languages: English (native), Spanish (advanced, near-fluent), Chinese (conversational, actively studying)."
+    },
+    {
+      "id": "site.this_site",
+      "title": "evwillow.com and this Ask page (Projects page and /ask)",
+      "url": "/ask",
+      "kind": "site",
+      "text": "evwillow.com is a Next.js App Router portfolio and blog. Posts are authored as local MDX or in Contentful and rendered through a shared pipeline, with JSON-LD structured data and a generated sitemap (github.com/evwillow/personalSite).\n\nThis Ask page answers questions about Evan's work only from an allowlisted set of sources: the site pages, his public GitHub READMEs and the accepted claims on /verify. Every answer cites its sources. A plain-code validator checks each answer after it is generated and blocks it if it states a number that does not match a cited accepted claim. The server route has a per-IP rate limit and a daily dollar cap; when the cap is reached the page pauses until the next day. Analytics record only a question category and a hash of the question, never its text."
+    },
+    {
+      "id": "site.verify",
+      "title": "How I verify results (/verify page)",
+      "url": "/verify",
+      "kind": "site",
+      "text": "Every number Evan publishes about the trading research is meant to be re-derivable from a command, an input file and a commit. A number is published only after it clears four rungs in order. First, the claim, stated with its scope (which ledger, which years, how many trades). Second, the source command that produces the value, run at a recorded commit. Third, the sha256 hash of every input file the command read, so a changed input is detectable. Fourth, an independent rerun from a clean checkout by a separate process that must give the same value.\n\nThe /verify page lists the accepted numbers with commit and input hash, and keeps a retraction log of earlier values he withdrew after re-deriving them. The raw ledger is not published, so reproducing a value needs access from Evan; the commands, commits and hashes are in the site repository."
+    },
+    {
+      "id": "readme.llm-energy-benchmark",
+      "title": "llm-energy-benchmark README (GitHub) (excerpt)",
+      "url": "https://github.com/evwillow/llm-energy-benchmark",
+      "kind": "readme",
+      "droppedLines": 0,
+      "text": "# Measuring Prompt Energy in LLMs\n\nA comprehensive research toolkit for analyzing energy consumption patterns across different Large Language Models (LLMs). This project measures and compares the energy efficiency of various AI models when processing different types of prompts.\n\n## Overview\n\nThis research project provides tools to:\n- Download and process large conversation datasets\n- Extract and clean prompts from conversations\n- Measure energy consumption of different LLM models\n- Perform feature engineering and exploratory analysis\n- Conduct statistical analysis and generate insights\n\n## Project Structure\n\n## Quick Start\n\n### [n]. Setup Environment\n\n### [n]. Configure API Keys\n\nCreate a `.env` file with your API credentials:\n\n### [n]. Run the Pipeline\n\n**Step [n]: Data Collection**\n\n**Step [n]: Data Cleaning**\n\n**Step [n]: Energy Measurement**\n\n**Step [n]: Analysis (Coming Soon)**\n\n## Detailed Usage\n\n### Data Collection (`[n]_data_collection.ipynb`)\n\nThis notebook downloads the LMSYS Chat [n]M dataset:\n\n- **Source**: Hugging Face `lmsys/lmsys-chat-[n]m` dataset\n- **Output**: `data/raw_conversations.jsonl` - Raw conversation data\n- **Features**:\n  - Streams data to avoid memory issues\n  - Progress tracking with visual indicators\n  - Configurable sample size and parameters\n\n**Key Configuration**:\n\n### Data Cleaning (`[n]_data_cleaning.ipynb`)\n\nThis notebook extracts and cleans user prompts from conversation data:\n\n- **Input**: `data/raw_conversations.jsonl` - Raw conversation data\n- **Output**: `data/clean_prompts.jsonl` - Cleaned prompts with metadata\n- **Features**:\n  - Filters for English conversations only\n  - Validates prompt quality (length, uniqueness, content)\n  - Generates prompt statistics and visualizations\n\n**Key Configuration**:\n\n### Energy Measurement (`[n]_energy_measurement.ipynb`)\n\nThis notebook measures energy consumption across different LLM models:\n\n- **Supported Models**: OpenAI GPT-[n]o-mini, Groq Llama-[n]-[n]b, Mistral Large\n- **Metrics Tracked**:\n  - Energy consumption (Wh)\n  - Processing time and speed\n  - Token usage and efficiency\n  - Response quality metrics\n\n**Key Features**:\n- Incremental processing with resume capability\n- Real-time progress tracking\n- Automatic error handling and retry logic\n- Batch result saving\n\n### Feature Engineering (`[n]_feature_engineering.ipynb`)\n\nThis notebook creates comprehensive linguistic and semantic features from prompt text:\n\n**Text Complexity Features:**\n- `syntactic_tree_depth` - Maximum depth of syntactic parse tree\n- `clause_count` - Number of clause markers and conjunctions\n- `flesch_kincaid_grade` - Readability grade level\n- `gunning_fog_index` - Text complexity index\n- `smog_index` - Simplified Measure of Gobbledygook\n\n**Lexical Features:**\n- `avg_word_frequency` - Average frequency of words in English\n- `lexical_diversity` - Diversity of vocabulary (sqrt normalization)\n- `type_token_ratio` - Ratio of unique words to total words\n- `vocabulary_richness` - Richness of vocabulary usage\n\n**Semantic Features:**\n- `named_entity_density` - Density of named entities (persons, places, organizations)\n- `semantic_category_diversity` - Diversity of part-of-speech categories\n\n**Sentiment Features:**\n- `sentiment_polarity` - Overall sentiment score ([n] to [n])\n- `sentiment_intensity` - Intensity of sentiment expression\n\n**Information Content:**\n- `information_density` - Ratio of content words to total words\n- `avg_sentence_length_prompt` - Average words per sentence\n\n**Topic Keyword Density ([n] categories):**\n- `tech_ai_density` - Technology and AI-related keywords\n- `business_finance_density` - Business and finance keywords\n- `health_medical_density` - Health and medical keywords\n- `education_learning_density` - Education and learning keywords\n- `science_research_density` - Science and research keywords\n- `social_relationships_density` - Social and relationship keywords\n- `entertainment_culture_density` - Entertainment and culture keywords\n- `travel_lifestyle_density` - Travel and lifestyle keywords\n\n**Concept Density ([n] categories):**\n- `abstract_thinking_density` - Abstract and philosophical concepts\n- `problem_solving_density` - Problem-solving and analytical concepts\n- `communication_density` - Communication and language concepts\n- `emotional_psychological_density` - Emotional and psychological concepts\n- `decision_making_density` - Decision-making and choice concepts\n- `time_change_density` - Time, change, and temporal concepts\n\n**Output**: `energy_features_dataset.jsonl` - Dataset with all engineered features\n\n### Analysis Notebooks (Coming Soon)\n\n- **Exploratory Data Analysis** (`[n]_exploratory_data_analysis.ipynb`): Visualize patterns and relationships\n- **Statistical Analysis** (`[n]_statistical_analysis.ipynb`): Conduct hypothesis tests and statistical modeling\n\n## Configuration Options\n\n### Model Configuration\n\nThe energy measurement supports multiple models with different configurations:\n\n### Data Processing Options\n\n## Output Data Format\n\n### Prompts Data (`clean_prompts.jsonl`)\n\n### Energy Data (`energy_measurements.jsonl`)\n\n### Feature Engineering Data (`energy_features_dataset.jsonl`)\n\n## Key Metrics Explained\n\n- **Energy Consumption (Wh)**: Total energy used per request\n- **Duration**: Total processing time in seconds\n- **Time to First Token**: Latency before response starts\n- **Tokens per Second**: Processing throughput\n- **Energy per Token**: Efficiency metric (lower is better)\n- **Energy per Character**: Character-level efficiency\n\n## Troubleshooting\n\n### Common Issues\n\n**API Rate Limits**\n- The system automatically handles rate limits with retry logic\n- Consider adjusting processing speed for different APIs\n\n**Memory Issues with Large Datasets**\n- The system processes data incrementally to avoid memory issues\n- Large conversation files are processed line-by-line\n\n**Incomplete Processing**\n- The system tracks progress and can resume from interruptions\n- Check `processed` status in `clean_prompts.jsonl` to see completion"
+    },
+    {
+      "id": "readme.marketOpenMomentum",
+      "title": "marketOpenMomentum README (GitHub) (excerpt)",
+      "url": "https://github.com/evwillow/marketOpenMomentum",
+      "kind": "readme",
+      "droppedLines": 3,
+      "text": "# UPRO/SPXU Morning-Momentum Strategy\n\nA deterministic, rule-based trading strategy that exploits early-morning momentum divergence between leveraged ETFs. The strategy enters simultaneous positions in UPRO ([n] bull) and SPXU ([n] bear) at market open, then closes the losing side after a [n]-minute evaluation window.\n\n## Strategy Overview\n\n### Core Mechanism\n\nThis is a **duel strategy** where two opposing leveraged ETFs compete for dominance in the first [n] minutes of trading. The strategy captures directional momentum while hedging initial market uncertainty.\n\n**Daily Workflow:**\n\n[n]. **Morning Cleanup ([n]:[n])** - Close any overnight positions from previous day\n[n]. **PDT Gate Check** - Verify Pattern Day Trading limits allow new positions\n[n]. **Duel Entry ([n]:[n])** - Buy equal dollar amounts of UPRO and SPXU\n[n]. **Winner Detection ([n]:[n]-[n]:[n])** - Monitor [n]-minute window for [n] spread\n[n]. **Close Loser** - Sell underperforming ETF when winner emerges\n[n]. **Close Winner** - Exit remaining position at next day open OR same day close (configurable)\n\n### Key Features\n\n- **Deterministic execution** - No machine learning, fully rule-based\n- **PDT-aware** - Tracks rolling [n]-day pattern day trade limits\n- **Configurable exit modes** - Switch between overnight hold or same-day close\n- **Backtested [n]-present** - Historical simulation with realistic slippage\n- **SPX proxy simulation** - Uses SPX data to simulate UPRO/SPXU behavior ([n]/[n] leverage)\n\n## Project Structure\n\n## Configuration\n\nAll strategy parameters are centralized in `config.py`:\n\n**Position Sizing:**\n- `POSITION_SIZE_PCT` - Fraction of cash to allocate (default: [n])\n\n**Winner Detection:**\n- `SPREAD_THRESHOLD` - Minimum spread to declare winner (default: [n] = [n])\n- Winner window is fixed at [n] minutes ([n]:[n]-[n]:[n])\n\n**Exit Modes:**\n- `EXIT_MODE = \"next_open\"` - Hold winner overnight, exit at next day [n]:[n] ([n] day trade)\n- `EXIT_MODE = \"same_close\"` - Exit winner at [n]:[n] same day ([n] day trades)\n\n**PDT Rules:**\n- `USE_PDT_LIMITS` - Enable/disable PDT tracking (default: True)\n- `PDT_THRESHOLD_EQUITY` - Equity level where PDT rules apply (default: $[n])\n- `PDT_MAX_TRADES` - Max day trades in rolling [n] business days (default: [n])\n\n**Trading Costs:**\n- `SLIPPAGE_BPS` - Slippage per trade in basis points (default: [n] bps)\n\n**Backtest Parameters:**\n- `START_CAPITAL` - Starting equity for simulation (default: $[n])\n- `START_YEAR` - Beginning year for backtest (default: [n])\n- `UPRO_LEVERAGE` / `SPXU_LEVERAGE` - Leverage multipliers ([n] / [n])\n\n## Installation\n\n### Requirements\n\n- Python [n]+\n- Jupyter Notebook/Lab\n- Internet connection for initial SPX data download\n\n### Setup\n\n## Usage\n\n### [n]. Run Notebooks in Sequence\n\nExecute notebooks in order to generate data and run backtest:\n\n**Notebook Workflow:**\n\n[n]. **[n]_environment.ipynb** - Load strategy configuration and verify setup\n[n]. **[n]_feature_engineering.ipynb** - Download SPX data, simulate UPRO/SPXU, filter to regular hours\n[n]. **[n]_model_training.ipynb** - Placeholder (strategy is rule-based, no training needed)\n[n]. **[n]_backtest.ipynb** - Run complete backtest with equity curves and performance metrics\n[n]. **[n]_diagnostics.ipynb** - Validate data quality, PDT logic, and determinism\n\n### [n]. Initial Data Download\n\nOn first run, `[n]_feature_engineering.ipynb` will:\n- Download SPX/USD [n]-minute data from HistData.com ([n]-present, parallel downloads)\n- Save as year-based CSV files (`prices_2010.csv`, `prices_2011.csv`, etc.)\n- Cache ZIP files in `data/histdata_cache/` for faster re-downloads\n- Simulate UPRO/SPXU from SPX data using [n]/[n] leverage\n- Filter to regular market hours ([n]:[n]-[n]:[n] ET)\n\n**Note:** Initial download uses parallel workers for speed. Subsequent runs use cached files.\n\n### [n]. Analyze Results\n\nAfter running `[n]_backtest.ipynb`, review:\n- **Equity curve** - Visual performance over time\n- **Trade log** - Complete record of all entries/exits (saved to `data/trade_log.csv`)\n- **Trade breakdown** - P&L by role (entry, cleanup, loser, winner)\n\n### [n]. Validate Determinism\n\nRun `[n]_diagnostics.ipynb` to verify:\n- No NaN values or duplicate timestamps\n- UPRO/SPXU data properly aligned\n- Winner window timestamps exist for all trading days\n- PDT tracker correctly enforces limits\n- Backtest produces identical results on re-run (regression test)\n\n## Data Management\n\n### SPX Data Source\n\nHistorical SPX/USD data comes from HistData.com:\n- Free [n]-minute OHLCV bars\n- Available from [n] onwards (some years may have limited data)\n- Saved as year-based CSV files to keep file sizes manageable\n- Parallel downloads for faster initial setup\n\n### Data Files (Excluded from Git)\n\nLarge data files are excluded via `.gitignore`:\n- `data/prices_*.csv` - Year-based SPX price files (~[n]-[n] MB each)\n- `data/upro_prices.csv` - Simulated UPRO prices\n- `data/spxu_prices.csv` - Simulated SPXU prices\n- `data/equity_curve.csv` - Backtest equity curve\n- `data/trade_log.csv` - Trade history\n- `data/histdata_cache/*.zip` - Cached downloads\n\n**To regenerate:** Simply delete files and re-run notebooks.\n\n## Performance Metrics\n\nThe backtest calculates:\n\n- **Total Return** - Cumulative percentage gain/loss\n- **Sharpe Ratio** - Risk-adjusted returns (annualized)\n- **Max Drawdown** - Largest peak-to-trough decline\n- **Win Rate** - Percentage of profitable bars\n\n## Testing\n\n### Automated Validation\n\nRun `[n]_diagnostics.ipynb` to execute:\n- Data quality checks (no NaNs, duplicates, alignment)\n- Timestamp validation ([n]:[n]-[n]:[n] window exists)\n- PDT tracker unit tests\n- Determinism regression tests (identical results on re-run)\n\n### Manual Testing\n\nTest configuration changes by modifying `config.py` and re-running backtest:\n\n## Export Notebooks to PDF\n\nGenerate PDF documentation of all notebooks:\n\nPDFs are saved to `notebook_pdfs/` directory with execution results included.\n\n## Architecture Notes"
+    },
+    {
+      "id": "readme.econ143-project",
+      "title": "econ143-project README (GitHub)",
+      "url": "https://github.com/evwillow/econ143-project",
+      "kind": "readme",
+      "droppedLines": 0,
+      "text": "# EC143 Final Project\n\nPre-registered quantile-regression test of whether Qullamaggie-style volume contraction during a stock's consolidation base raises the upper tail of [n]-day forward returns more than it raises the median, after controlling for FF3+UMD factor returns, sector fixed effects, and year fixed effects.\n\n**Deliverable:** [`writeup.ipynb`](writeup.ipynb) at the repo root. Open it and run all cells — every figure, table, and number regenerates from the four committed parquets in `data/`.\n\n**Pre-registered hypothesis:** `writeup.ipynb` §[n] (locked [n]-[n]-[n], before any QR fits ran).\n\n## Setup\n\nPython ≥ [n] required.\n\n## Data\n\nOnly four parquets are committed under `data/`, one per analysis-stage output:\n\n- `m3_setups_with_residuals.parquet` — main analysis panel ([n] setup-rows × M1+M2+M3 columns)\n- `m4_results.parquet` — OLS + QR coefficient table on the training window\n- `m5_oos_results.parquet` — expanding-window walk-forward summary\n- `m6_bootstrap.parquet` — stationary block bootstrap draws (real + placebo)\n\n`data/raw/` is gitignored — it sources Polygon daily bars from a separate `breakoutStudyTool` pipeline and is not redistributable. Intermediate stage parquets, the FF3+UMD factor panel, the SPY cache, and the yfinance ticker-type cache are also omitted from the committed tree; they regenerate from upstream sources on a full pipeline re-run (M3/M2 download Ken French and SPY automatically; M1's yfinance ticker-type cache is repopulated by `src/_fetch_ticker_types.py` and `src/_fetch_ticker_adr_fields.py`).\n\n## Reproduction\n\nTo verify only the writeup: open `writeup.ipynb` and `Run All`. It loads the four committed parquets and regenerates every output inline.\n\nTo re-run the full pipeline from scratch: execute the modules in order. Each writes its outputs to `data/` and emits a per-stage validation report to `reports/` as a side effect (`reports/` is gitignored).\n\n[n]. `python src/m0_audit.py` — survivorship + bad-bar audit. Writes `data/m0_audit_summary.json`.\n[n]. `python src/m1_universe.py` — Qullamaggie consolidation-breakout detector. Writes `data/m1_setups.parquet`.\n[n]. `python src/m2_features.py` — per-setup features (vol contraction, ADR, RS-vs-SPY, sector). Writes `data/m2_setups_with_features.parquet` and (if absent) caches `data/spy_daily.parquet`.\n[n]. `python src/m3_factors.py` — FF3+UMD factor panel + [n]-day-forward residualization on [n]–[n] training. Writes `data/ff3_umd_daily.parquet`, `data/m3_setups_with_residuals.parquet`.\n[n]. `python src/m4_estimation.py` — OLS + QR(τ ∈ {[n], [n], [n], [n], [n]}) on training. Writes `data/m4_results.parquet`.\n[n]. `python src/m5_walkforward.py` — expanding-window OOS sign-consistency check, [n]–[n]. Writes `data/m5_oos_results.parquet`.\n[n]. `python src/m6_bootstrap.py` — stationary block bootstrap CI + placebo (~[n] min). Writes `data/m6_bootstrap.parquet`."
+    },
+    {
+      "id": "readme.stockData",
+      "title": "stockData README (GitHub)",
+      "url": "https://github.com/evwillow/stockData",
+      "kind": "readme",
+      "droppedLines": 0,
+      "text": "# Stock Data Analysis and Visualization\n\nThis project is a Python-based tool for fetching, analyzing, and visualizing stock data. It uses popular libraries like `yfinance`, `pandas`, and `matplotlib` to generate comprehensive financial insights and comparisons, making it a great project for showcasing data analysis and visualization skills.\n\n## Features\n\n- **Stock Data Fetching**: Retrieves historical stock prices, financials, float shares, and sector data.\n  ![Stock Data Fetching](stockData2.gif)\n- **Comprehensive Visualization**: Candlestick charts, volume, EPS, revenue, and sector comparisons.\n   ![Comprehensive Visualization](stockData1.gif)\n- **Error Handling**: Graceful fallback for missing financial or sector data.\n- **Sector Comparison**: Compare stock performance against its sector index.\n\n## Technologies Used\n\n- **Python [n]+**\n- **yfinance** for stock data\n- **pandas** for data manipulation\n- **matplotlib** and **mplfinance** for plotting\n- **datetime** for handling dates\n\n## Installation\n\n[n]. Clone the repository:\n\n   ```bash\n   git clone https://github.com/evanmaus/stock-data-analysis.git\n   cd stock-data-analysis"
+    },
+    {
+      "id": "readme.pollinatorPathwaysWebsite",
+      "title": "pollinatorPathwaysWebsite README (GitHub)",
+      "url": "https://github.com/evwillow/pollinatorPathwaysWebsite",
+      "kind": "readme",
+      "droppedLines": 0,
+      "text": "# Pollinator Pathways Website\n\n## Description\n\nThe **Pollinator Pathways Website** is a React-based application designed for an environmental organization. It features a gallery of images, a search and filter system for discovering groups, and a responsive design. This project demonstrates skills in React, state management, and modern web development.\n\n![Pollinator Pathways Overview](pollinatorPathwaysWebsite.gif)\n\n## Features\n\n- **Search Functionality**: Search for groups with a keyword search bar.\n- **Dynamic Filtering**: Filter groups by location and type.\n- **Interactive Gallery**: View and rearrange images in a responsive gallery.\n- **Responsive Design**: Optimized for various screen sizes using Tailwind CSS.\n\n## Technologies Used\n\n- **React**: For building the UI and managing state.\n- **React Router**: For navigation between pages.\n- **Tailwind CSS**: For styling and responsive design.\n- **JavaScript**: For dynamic content updates and user interactions.\n\n## Project Structure\n\n- **`src/`**: Contains source code.\n  - **`components/`**: Includes `Navbar`, `Footer`, and page components (`Home`, `About`, `Projects`, etc.).\n  - **`scripts/`**: Manages functionality, e.g., `groups.jsx` for filtering.\n  - **`assets/`**: Static assets like images.\n\n## Installation\n\n[n]. Clone the repository:\n   ```bash\n   git clone https://github.com/evanmaus/pollinator-pathways-website.git"
+    },
+    {
+      "id": "readme.selfSolvingMaze",
+      "title": "selfSolvingMaze README (GitHub)",
+      "url": "https://github.com/evwillow/selfSolvingMaze",
+      "kind": "readme",
+      "droppedLines": 0,
+      "text": "# Maze Solver\n\nThis script utilizes a recursive algorithm to navigate and solve mazes represented in a CSV file format. The maze solver finds the path from the start to the goal, visualizing the process in real-time.\n\n![Maze Solver Visualization](selfSolvingMaze.gif)\n\n## Features\n\n- **Recursive Algorithm**: Uses a depth-first search approach to explore and solve mazes.\n- **Real-Time Visualization**: Displays the maze and the path taken using colored symbols.\n- **Maze Representation**: Reads mazes from a CSV file, where `[n]` represents an open cell, `[n]` represents walls, `A` is the starting point, and `B` is the goal.\n\n## Technologies Used\n\n- **Python [n]** for scripting\n- **CSV** for maze input\n- **OS** and **Sys** for terminal operations\n- **Time** for controlling the animation speed\n\n## Installation\n\n[n]. Clone the repository:\n\n   ```bash\n   git clone https://github.com/evanmaus/maze-solver.git\n   cd maze-solver"
+    },
+    {
+      "id": "readme.evwillow",
+      "title": "GitHub profile README",
+      "url": "https://github.com/evwillow/evwillow",
+      "kind": "readme",
+      "droppedLines": 0,
+      "text": "# Evan Maus\nUC Berkeley — Economics & Data Science, Dec [n]. I build trading systems, data pipelines, and\ntools that measure what models actually cost.\n### Building\n- **[Incurra](https://incurra.ai)** — AI for commercial-auto claims reconciliation. Reads\n  adjuster notes on open claims and flags the ones where a documented fact isn't reflected in the\n  carried reserve.\n- **[breakouts.trade](https://breakouts.trade)** — a study tool for breakout trading, built on a\n  systematic channel-breakout engine with a live Interactive Brokers execution bot.\n- **[Market Open Momentum](https://github.com/evwillow/marketOpenMomentum)** — deterministic\n  intraday momentum strategy on leveraged ETFs, with a backtest engine and reproducibility\n  diagnostics.\n- **[LLM Energy Benchmark](https://github.com/evwillow/llm-energy-benchmark)** — measurement\n  pipeline over [n] LLM API calls. Reported a null result rather than the efficiency finding\n  the numbers appeared to support.\n### Contact\n[evwillow.com](https://evwillow.com) · [LinkedIn](https://linkedin.com/in/evwillow) ·\nevan_maus@berkeley.edu"
+    }
+  ]
+}
