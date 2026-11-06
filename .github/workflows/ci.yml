@@ -82,14 +82,15 @@ jobs:
             --max-retries 2
             --timeout 20
             --accept 200,204,206,429,999
-            --format markdown
-            --output lychee-report.md
             http://localhost:3001/
             http://localhost:3001/about
             http://localhost:3001/blog
             http://localhost:3001/contact
             http://localhost:3001/experience
             http://localhost:3001/projects
+          # lychee-action v2 rejects --output/--format in args; they go here.
+          format: markdown
+          output: lychee-report.md
           fail: true
       - name: Upload link report
         if: always()
