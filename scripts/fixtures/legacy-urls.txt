@@ -1,0 +1,17 @@
+# URLs listed by https://evwillow.com/sitemap.xml (-> sitemap-0.xml) and
+# https://evwillow.com/server-sitemap.xml on 2026-11-05 (15 unique paths).
+/
+/about
+/blog
+/contact
+/experience
+/projects
+/algorithmic-trading
+/hello-world
+/interleaved-learning
+/learning-and-feedback
+/mental-prep
+/optimal-workflow
+/optimizing-accountability
+/optimizing-feedback
+/short-term-goal-setting

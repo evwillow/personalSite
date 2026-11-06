@@ -91,6 +91,9 @@ export const metadata = {
   },
   alternates: {
     canonical: "./",
+    types: {
+      "application/rss+xml": `${siteMetadata.siteUrl}/feed.xml`,
+    },
   },
   verification: {
     google: siteMetadata.googleSiteVerification,

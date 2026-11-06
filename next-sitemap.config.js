@@ -11,6 +11,7 @@ const PRIORITY = {
   "/projects": { priority: 0.8, changefreq: "monthly" },
   "/contact": { priority: 0.5, changefreq: "yearly" },
   "/blog": { priority: 0.6, changefreq: "weekly" },
+  "/case-studies": { priority: 0.7, changefreq: "monthly" },
 };
 
 module.exports = {
@@ -26,12 +27,15 @@ module.exports = {
   },
   exclude: [
     "/server-sitemap.xml",
+    "/feed.xml",
     "/api/*",
     "/_next/*",
     "/404",
     "/500",
     "/opengraph-image*",
     "/twitter-image*",
+    "/*/opengraph-image*",
+    "/*/*/opengraph-image*",
   ],
   outDir: "./public",
   autoLastmod: true,

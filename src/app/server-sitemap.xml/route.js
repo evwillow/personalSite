@@ -1,6 +1,7 @@
 import { getServerSideSitemap } from 'next-sitemap'
 import { blogs } from "@/.velite/generated"
 import { getBlogPosts } from "@/lib/contentful"
+import { getPublishedCaseStudies } from "@/lib/caseStudies"
 import siteMetadata from "@/src/utils/siteMetaData"
 
 export const dynamic = 'force-dynamic'
@@ -17,6 +18,16 @@ export async function GET() {
   const entries = blogs
     .filter((blog) => blog.isPublished !== false && blog.slug)
     .map((blog) => toEntry(blog.slug, blog.updatedAt || blog.publishedAt))
+
+  // Published case studies only (drafts are never listed)
+  for (const post of getPublishedCaseStudies()) {
+    entries.push({
+      loc: `${siteMetadata.siteUrl}${post.url}`,
+      lastmod: new Date(post.updatedAt || post.publishedAt).toISOString(),
+      changefreq: 'monthly',
+      priority: 0.9,
+    })
+  }
 
   // Contentful posts are optional: without credentials, or if the API fails,
   // the sitemap still answers 200 with the posts we do have.

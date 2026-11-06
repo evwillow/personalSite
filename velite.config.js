@@ -39,6 +39,34 @@ const blog = s
     }
   })
 
+// Case studies: content/case-studies/*.mdx
+// draft: true posts render under `next dev` and are dropped from the velite
+// output in production builds (see prepare below), so they never reach a
+// production page, the sitemap or the RSS feed.
+const includeDrafts =
+  process.env.NODE_ENV !== 'production' || process.env.VELITE_INCLUDE_DRAFTS === '1'
+
+const caseStudy = s
+  .object({
+    title: s.string().max(140),
+    slug: s.slug('case-studies'),
+    description: s.string().max(400),
+    publishedAt: s.isodate(),
+    updatedAt: s.isodate().optional(),
+    draft: s.boolean().default(false),
+    author: s.string().default('Evan Maus'),
+    tags: s.array(s.string()).default([]),
+    metadata: s.metadata(),
+    toc: s.toc(),
+    body: s.mdx(),
+  })
+  .transform(data => ({
+    ...data,
+    url: `/case-studies/${data.slug}`,
+    readingTime: Math.max(1, Math.ceil(data.metadata.readingTime)),
+    wordCount: data.metadata.wordCount,
+  }))
+
 export default defineConfig({
   root: 'content',
   collections: {
@@ -47,6 +75,16 @@ export default defineConfig({
       pattern: 'blogs/**/*.mdx',
       schema: blog,
     },
+    caseStudies: {
+      name: 'CaseStudy',
+      pattern: 'case-studies/**/*.mdx',
+      schema: caseStudy,
+    },
+  },
+  prepare: (data) => {
+    if (!includeDrafts) {
+      data.caseStudies = data.caseStudies.filter(post => !post.draft)
+    }
   },
   output: {
     data: '.velite/generated',
