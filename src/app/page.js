@@ -1,16 +1,14 @@
-import { blogs } from "@/.velite/generated"
-import { getBlogPosts } from "@/lib/contentful"
-import { samplePosts } from "@/lib/samplePosts"
-import Featured from "@/src/components/Home/Featured"
-import Recent from "@/src/components/Home/Recent"
+import Link from "next/link"
+import Hero from "@/src/components/Home/Hero"
+import CaseStudies from "@/src/components/Home/CaseStudies"
+import { HERO_LINES } from "@/src/components/Home/heroCopy"
 import siteMetadata from "@/src/utils/siteMetaData"
 import WebSiteSchema from "@/src/components/SEO/WebSiteSchema"
-import BlogSchema from "@/src/components/SEO/BlogSchema"
 import Script from "next/script"
 
 export const metadata = {
   title: siteMetadata.title,
-  description: siteMetadata.description,
+  description: HERO_LINES[0],
   keywords: siteMetadata.keywords,
   alternates: {
     canonical: siteMetadata.siteUrl,
@@ -20,94 +18,52 @@ export const metadata = {
   },
 }
 
-export default async function Home() {
-  try {
-    const posts = await getBlogPosts()
-    
-    // Use sample posts only in development (localhost) when no real posts exist
-    const isLocalhost = process.env.NODE_ENV === 'development'
-    const postsToDisplay = (posts.length === 0 && isLocalhost) ? samplePosts : posts
-    
-    const allPosts = [...blogs, ...postsToDisplay]
-
-    const websiteSchema = {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
+// Person JSON-LD is emitted site-wide by SEO/PersonSchema in layout.js, so it is not repeated here.
+export default function Home() {
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    url: siteMetadata.siteUrl,
+    name: siteMetadata.title,
+    description: siteMetadata.description,
+    author: {
+      "@type": "Person",
+      name: siteMetadata.author,
       url: siteMetadata.siteUrl,
-      name: siteMetadata.title,
-      description: siteMetadata.description,
-      author: {
-        "@type": "Person",
-        name: siteMetadata.author,
-        url: siteMetadata.siteUrl,
-        sameAs: [
-          siteMetadata.linkedin,
-          siteMetadata.twitter
-        ]
-      },
-      publisher: {
-        "@type": "Person",
-        name: siteMetadata.author,
-        url: siteMetadata.siteUrl,
-        logo: {
-          "@type": "ImageObject",
-          url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
-        }
-      },
-      inLanguage: siteMetadata.language,
-      copyrightYear: new Date().getFullYear()
-    }
-
-    const blogSchema = {
-      "@context": "https://schema.org",
-      "@type": "Blog",
+      sameAs: [
+        siteMetadata.linkedin,
+        siteMetadata.twitter
+      ]
+    },
+    publisher: {
+      "@type": "Person",
+      name: siteMetadata.author,
       url: siteMetadata.siteUrl,
-      name: siteMetadata.title,
-      description: siteMetadata.description,
-      author: {
-        "@type": "Person",
-        name: siteMetadata.author,
-        url: siteMetadata.siteUrl,
-        sameAs: [
-          siteMetadata.linkedin,
-          siteMetadata.twitter
-        ]
-      },
-      blogPost: allPosts.map(post => ({
-        "@type": "BlogPosting",
-        headline: post.title || post.fields?.title,
-        description: post.description || post.fields?.description,
-        url: `${siteMetadata.siteUrl}/${post.slug || post.fields?.slug}`,
-        datePublished: new Date(post.publishedAt || post.sys?.createdAt).toISOString(),
-        dateModified: new Date(post.updatedAt || post.sys?.updatedAt).toISOString(),
-        author: {
-          "@type": "Person",
-          name: post.author || post.fields?.author || siteMetadata.author
-        },
-        isAccessibleForFree: true
-      }))
-    }
-
-    return (
-      <main className="flex flex-col items-center">
-        <Script id="schema-website" type="application/ld+json">
-          {JSON.stringify(websiteSchema)}
-        </Script>
-        <Script id="schema-blog" type="application/ld+json">
-          {JSON.stringify(blogSchema)}
-        </Script>
-        <WebSiteSchema />
-        <BlogSchema posts={postsToDisplay} />
-        <Featured posts={postsToDisplay} />
-        <Recent posts={postsToDisplay} />
-      </main>
-    )
-  } catch (error) {
-    console.error("Error fetching blog posts in Home component:", error)
-    return (
-      <main className="flex flex-col items-center">
-        <p>Unable to fetch blog posts. Please try again later.</p>
-      </main>
-    )
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteMetadata.siteUrl}${siteMetadata.siteLogo}`,
+      }
+    },
+    inLanguage: siteMetadata.language,
+    copyrightYear: new Date().getFullYear()
   }
+
+  return (
+    <main className="flex flex-col items-center">
+      <Script id="schema-website" type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </Script>
+      <WebSiteSchema />
+      <Hero />
+      <CaseStudies />
+      <section className="w-full px-5 sm:px-10 md:px-24 lg:px-32 mb-16">
+        <p className="max-w-6xl mx-auto text-lg text-dark/80 dark:text-light/80">
+          New post:{" "}
+          <Link href="/posts/fde-field-guide" className="font-semibold underline hover:text-accent">What FDE interviews test</Link>.
+          Older writing, including the 2025 productivity posts, now lives on the{" "}
+          <Link href="/blog" className="font-semibold underline hover:text-accent">blog</Link>.
+        </p>
+      </section>
+    </main>
+  )
 }
