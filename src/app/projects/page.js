@@ -11,13 +11,13 @@ export const metadata = {
 export default function Projects() {
   const sections = [
     {
-      heading: "Current Work",
+      heading: "Recent Work",
       projects: [
         {
           title: "Incurra",
           subtitle: "Python, DuckDB, Parquet, Anthropic API",
           description:
-            "An AI product for commercial-auto claims reconciliation. It reads adjuster notes on open claims and flags the ones where a documented fact is not reflected in the carried reserve. It is a reconciliation tool rather than a prediction machine.",
+            "An LLM tool for commercial-auto claims, built July to August 2026. On synthetic claim data, it flagged facts in adjuster notes that the carried reserve did not reflect. I closed it in August 2026, having written its kill rules before the build.",
           link: "https://incurra.ai",
           linkText: "View Live Site",
           privateRepo: true,
@@ -32,11 +32,11 @@ export default function Projects() {
           title: "Breakouts Engine",
           subtitle: "Python, pandas, IBKR API, Supabase",
           description:
-            "The quantitative engine behind breakouts.trade: a channel-breakout strategy implemented as a single source of truth shared by research and execution, a nightly scanner pipeline over a local market-data lake, and a live Interactive Brokers trading robot that imports the same strategy code through a parity bridge.",
+            "The quantitative engine behind breakouts.trade: a channel-breakout engine gated on a QQQ regime filter, a nightly data pipeline, and an Interactive Brokers trading robot that traded real money from June to October 2026.",
           highlights: [
-            "Implemented the strategy as a shared source of truth so backtests and the live bot cannot drift apart",
-            "Built a nightly scanner pipeline over a regenerable local market-data lake, serving chart data from object storage",
-            "Wrote parity, lookahead, survivorship, and point-in-time test guards to keep research reproducible",
+            "Asserted the research and live detector geometry bit-equal by test, and fuzzed the live exit machine over 4,000 random daily bar sequences",
+            "Ingested Polygon.io daily bars nightly into a partitioned Parquet lake on DuckDB, with delisted names back to 1998",
+            "Ran the robot under systemd with a kill switch and five-minute broker reconciliation, and withdrew its backtest after an audit found a same-bar lookahead",
           ],
           privateRepo: true,
           tags: ["Python", "pandas", "Trading", "Backtesting", "IBKR", "Research"],
@@ -45,11 +45,10 @@ export default function Projects() {
           title: "Market Open Momentum",
           subtitle: "Python, pandas, Jupyter",
           description:
-            "A deterministic, rule-based strategy that trades early-morning momentum divergence between leveraged ETFs. It opens equal-dollar positions in UPRO and SPXU at the market open, closes the losing side once a spread threshold resolves within a five-minute evaluation window, and exits the winner on a configurable schedule.",
+            "A deterministic open-momentum backtest of a long and short index ETF pair traded at the market open. I shelved the strategy on its own evidence.",
           highlights: [
-            "Fully rule-based execution with no model fitting, so results are reproducible run to run",
-            "Backtest engine with realistic slippage and pattern-day-trading limit tracking",
-            "Configurable exit modes for same-day close versus overnight hold",
+            "Held identical on every re-run under regression tests",
+            "Tracks the pattern-day-trading limit",
           ],
           link: "https://github.com/evwillow/marketOpenMomentum",
           linkText: "View on GitHub",
@@ -59,7 +58,7 @@ export default function Projects() {
           title: "Volume Contraction & Breakout Returns (EC143)",
           subtitle: "Econometrics coursework project",
           description:
-            "Quantile-regression study testing whether pre-breakout volume contraction predicts upper-tail returns on Qullamaggie-style momentum setups. UC Berkeley EC143 final project.",
+            "Pre-registered quantile-regression study testing whether pre-breakout volume contraction predicts upper-tail returns on 5,286 breakout setups. The hypothesis was locked before the run, and the null it produced is reported with its 95% bootstrap interval. UC Berkeley EC143 final project.",
           link: "https://github.com/evwillow/econ143-project",
           linkText: "View on GitHub",
           tags: ["Econometrics", "Quantile Regression", "Python", "Market Microstructure", "Research"],
@@ -93,12 +92,12 @@ export default function Projects() {
           title: "breakouts.trade Study Tool",
           subtitle: "Next.js, TypeScript, React, Python, PostgreSQL",
           description:
-            "A browser drill app that teaches a breakout stock-trading strategy on real charts, with a daily scanner on the same strategy code. Shipped to real use: 458 signups, ~240 activated users, 10,203 practice drills.",
+            "A browser drill app that teaches a breakout stock-trading strategy on real charts, with a daily scanner on the same strategy code. Shipped to real use: 458 signups, ~240 activated users, over 7,500 practice drills by other users.",
           highlights: [
-            "Drill and scanner on one strategy code: 458 signups, ~240 activated users, 10,203 practice drills",
-            "Hand-written SQL migrations and row-level-security policies with no ORM, and a quota gate that fails closed",
-            "A June 2026 review of all 67 API route handlers found and fixed a pre-auth account-takeover flaw, then re-verified it",
-            "Type-check, lint, tests and build on every pull request; a cold-path fix cut ~18,000 storage reads to one precomputed artifact",
+            "Drill and scanner on one strategy code: 458 signups, ~240 activated users, over 7,500 practice drills by other users",
+            "23 SQL migrations with no ORM",
+            "A static review of 67 route handlers found a pre-auth account-takeover flaw, which was fixed and re-verified",
+            "Type-check, lint, tests and build run on every pull request",
           ],
           link: "https://breakouts.trade",
           linkText: "View Live Site",
