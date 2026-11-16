@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export const metadata = {
   title: "Experience | Evan Maus",
-  description: `${siteMetadata.author}'s professional experience as a founder and full-stack engineer: breakouts.trade, a live trading robot, LLM energy research, and two nonprofit sites.`,
+  description: `${siteMetadata.author}'s professional experience as a founder and full-stack engineer: breakouts.trade and its trading robot, LLM energy research, and two nonprofit sites.`,
   keywords: "Evan Maus experience, full stack developer, founder, quantitative research, Next.js developer, Berkeley student experience",
 }
 
@@ -15,14 +15,13 @@ export default function Experience() {
       company: "breakouts.trade",
       location: "Berkeley, CA",
       period: "Feb 2025 – Present",
-      description: "Founder and sole engineer of breakouts.trade: a browser drill app and daily scanner for a breakout trading strategy, and the Python research engine and live execution robot behind it, all as the repositories' only contributor.",
+      description: "Founder and sole engineer of breakouts.trade, a stock-breakout practice app and automated trading system, as the repositories' only contributor.",
       achievements: [
-        "Built a browser drill app for breakout patterns and a daily scanner on the same strategy code: 458 signups, ~240 activated users, 10,203 practice drills",
-        "Reviewed all 67 API route handlers and middleware in June 2026, found a credentials path that accepted a password as proof of Google identity, and fixed and re-verified it",
-        "Hand-wrote 22 idempotent SQL migrations and 13 row-level-security policies with no ORM, and gated every pull request on type-check, lint, tests and build",
-        "Replaced a stock-metadata cold path that fanned out ~18,000 storage reads and timed out on every cold start with one precomputed artifact, and added a test that proves the fan-out is gone",
-        "Shipped an Interactive Brokers robot that has traded real money since June 2026: systemd units, a kill switch, broker-versus-journal reconciliation every five minutes and a heartbeat that names the running commit",
-        "Backtested 66,753 trades, 1998–2026, survivorship-free, and ran the 2024–2026 holdout once at mean R = 2.61"
+        "Built a browser drill app for breakout patterns and a daily scanner on the same strategy code: 458 signups, ~240 activated users, over 7,500 practice drills by other users",
+        "Wrote 23 SQL migrations with no ORM, ran type-check, lint, tests and build on every pull request, and fixed and re-verified a pre-auth account-takeover flaw from a static review of 67 route handlers",
+        "Shipped an LLM trade breakdown in June 2026, later cut to one premium-gated sentence per setup, at temperature 0, with schema-validated JSON and a deterministic server fallback on four failure modes",
+        "Shipped an Interactive Brokers robot that traded real money from June to October 2026 under systemd, with a kill switch and five-minute broker reconciliation, and shut it off when a minute replay exposed a backtest lookahead",
+        "Found server-to-server cron jobs failing silently for three days, made the failure loud, wrote a stopgap, and traced the 403s to Cloudflare Bot Fight Mode"
       ],
       technologies: ["Next.js", "TypeScript", "React", "Python", "PostgreSQL", "Supabase", "GitHub Actions", "systemd"]
     },
@@ -45,13 +44,12 @@ export default function Experience() {
       company: "North Central Ohio Pollinator Pathway & Sustainable Delaware Ohio",
       location: "Columbus, OH",
       period: "Dec 2023 – Jul 2024",
-      description: "Sole developer for two local environmental nonprofits, deciding the technical questions with owners who were not technical, and delivering each site end to end: design, build, hosting and content.",
+      description: "Built websites for two environmental nonprofits as the sole developer.",
       achievements: [
-        "Sole developer for two local environmental organizations, deciding the technical questions with non-technical owners",
-        "Delivered each site end to end: design, build, hosting and content",
+        "Built both sites alone and made the technical calls with owners who were not technical",
         "Handed both sites off in May 2024, supported the owners through July, and both have run on their own since"
       ],
-      technologies: ["React", "React Router", "Tailwind CSS"]
+      technologies: []
     },
     {
       title: "Data & Product Intern",
@@ -61,8 +59,7 @@ export default function Experience() {
       description: "Worked as a Data & Product Intern focused on identifying and solving real business problems through scripting, internal tools, and process improvement.",
       achievements: [
         "Automated lead tracking in Python and cleaned proposal data, consolidating CRM, proposal and marketing workflows across three teams",
-        "Surveyed several hundred US federal contracts and funding applications with pandas",
-        "Worked directly with experienced mentors, including the CEO"
+        "Surveyed several hundred US federal contracts and funding applications with pandas"
       ],
       technologies: ["Python", "Pandas", "Data Analysis", "Process Automation", "CRM"]
     },
@@ -74,14 +71,12 @@ export default function Experience() {
       company: "Student Climate Action Team",
       location: "Delaware, OH",
       period: "Oct 2022 – Sep 2023",
-      description: "Led a student-run environmental group, coordinating strategy, events, and community partnerships. Started the organization and grew it to 20 active members through outreach and leadership.",
+      description: "Founded a student-run environmental group and grew it to 20 members.",
       achievements: [
-        "Led a student-run environmental group, coordinating strategy, events, and community partnerships",
-        "Started the organization and grew it to 20 active members through outreach and leadership",
-        "Built the website from scratch to centralize events, announcements, and volunteer sign-ups",
-        "Eagle Scout: led 100 volunteers on a community trail expansion project"
+        "Founded the organization and grew it to 20 members",
+        "Eagle Scout: led 100 volunteers on a community trail expansion (Oct 2023)"
       ],
-      technologies: ["React", "Web Development", "Community Organizing", "Leadership"]
+      technologies: ["Community Organizing", "Leadership"]
     }
   ]
 
@@ -97,7 +92,7 @@ export default function Experience() {
           </h1>
           <div className="h-1 w-20 bg-accent mb-8"></div>
           <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed">
-            Full-stack engineering experience building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. Production software with 458 signups and a trading robot on a real-money account, built end to end as a solo founder.
+            Full-stack engineering experience building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. Software with 458 signups and a trading robot that traded real money from June to October 2026, built end to end as the only contributor.
           </p>
         </section>
 
@@ -321,7 +316,7 @@ export default function Experience() {
             Let&apos;s Work Together
           </h2>
           <p className="text-lg md:text-xl text-dark/80 dark:text-light/80 mb-8 max-w-3xl mx-auto leading-relaxed">
-            I&apos;m actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. I have built and run a production product end to end, from the web app to the live execution service behind it.
+            I&apos;m actively seeking opportunities in full-stack engineering, AI/ML research, and production software development. I have built and run a product end to end, from the web app to the trading robot behind it.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a

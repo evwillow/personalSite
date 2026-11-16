@@ -20,7 +20,7 @@ export default function About() {
               </h1>
               <div className="h-1 w-20 bg-accent mb-8"></div>
               <p className="text-xl md:text-2xl text-dark/80 dark:text-light/80 leading-relaxed mb-8 md:mb-0">
-                I&apos;m <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a dual Bachelor of Arts in Data Science & Economics, graduating December 2026. I&apos;m a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I founded breakouts.trade, shipped it to 458 signups, and run the trading robot behind it on a real-money account.
+                I&apos;m <span className="font-semibold text-dark dark:text-light">Evan Maus</span>, a student at UC Berkeley pursuing a dual Bachelor of Arts in Economics and Data Science, expected December 2026. I&apos;m a full-stack engineer building fast, reliable applications with TypeScript, Next.js, Python, and PostgreSQL. I founded breakouts.trade, shipped it to 458 signups, and ran the trading robot behind it on a real-money account from June to October 2026.
               </p>
             </div>
             <div className="flex-shrink-0 mx-auto md:mx-0">
@@ -48,11 +48,11 @@ export default function About() {
                   University of California, Berkeley
                 </h3>
                 <p className="text-lg text-dark/70 dark:text-light/70 mt-2">
-                  Dual B.A. Data Science & Economics
+                  Dual B.A., Economics and Data Science
                 </p>
               </div>
               <div className="text-lg text-dark/60 dark:text-light/60 mt-4 md:mt-0">
-                Graduating: December 2026
+                Expected: December 2026
               </div>
             </div>
             
@@ -215,10 +215,8 @@ export default function About() {
                 </span>
               </div>
               <ul className="list-disc list-inside text-dark/80 dark:text-light/80 space-y-2">
-                <li>Led a student-run environmental group, coordinating strategy, events, and community partnerships</li>
-                <li>Started the organization and grew it to 20 active members through outreach and leadership</li>
-                <li>Built the website from scratch to centralize events, announcements, and volunteer sign-ups</li>
-                <li>Eagle Scout: led 100 volunteers on a community trail expansion project</li>
+                <li>Founded the organization and grew it to 20 members</li>
+                <li>Eagle Scout: led 100 volunteers on a community trail expansion (Oct 2023)</li>
               </ul>
             </div>
 

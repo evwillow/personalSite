@@ -3,8 +3,8 @@ import Link from "next/link"
 // A card links only when its page exists; otherwise it renders as "coming soon" with no link.
 const CASE_STUDIES = [
   {
-    title: "Safety rails on a live trading robot",
-    blurb: "The order gate, kill switch, loss rails and broker reconciliation around a real-money robot, and the defects that got past them.",
+    title: "Safety rails on a real-money trading robot",
+    blurb: "The kill switch and five-minute broker reconciliation around a robot that traded real money from June to October 2026, and the minute replay that exposed a backtest lookahead and shut it off.",
     href: null,
   },
   {
