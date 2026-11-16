@@ -36,7 +36,7 @@ export default function Projects() {
           highlights: [
             "Asserted the research and live detector geometry bit-equal by test, and fuzzed the live exit machine over 4,000 random daily bar sequences",
             "Ingested Polygon.io daily bars nightly into a partitioned Parquet lake on DuckDB, with delisted names back to 1998",
-            "Ran the robot under systemd with a kill switch and five-minute broker reconciliation, and shut it off when a minute replay exposed a backtest lookahead",
+            "Ran the robot under systemd with a kill switch and five-minute broker reconciliation, and withdrew its backtest after an audit found a same-bar lookahead",
           ],
           privateRepo: true,
           tags: ["Python", "pandas", "Trading", "Backtesting", "IBKR", "Research"],

@@ -129,7 +129,7 @@ export default function Verify() {
             marked retract after re-deriving it; the claims are the earlier statements that did not hold.
           </p>
           {retractions.length === 0 ? (
-            <p className="italic text-dark/70 dark:text-light/70">Nothing has been retracted yet.</p>
+            <p className="italic text-dark/70 dark:text-light/70">No row is listed here. The backtest figures this page used to show were withdrawn in November 2026, after an audit found a same-bar lookahead in the backtest.</p>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full text-sm table-fixed" data-testid="retraction-table">

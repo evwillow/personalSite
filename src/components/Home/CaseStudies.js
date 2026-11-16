@@ -4,7 +4,7 @@ import Link from "next/link"
 const CASE_STUDIES = [
   {
     title: "Safety rails on a real-money trading robot",
-    blurb: "The kill switch and five-minute broker reconciliation around a robot that traded real money from June to October 2026, and the minute replay that exposed a backtest lookahead and shut it off.",
+    blurb: "The kill switch and five-minute broker reconciliation around a robot that traded real money from June to October 2026, and the audit that found a same-bar lookahead in its backtest.",
     href: null,
   },
   {

@@ -20,7 +20,7 @@ export default function Experience() {
         "Built a browser drill app for breakout patterns and a daily scanner on the same strategy code: 458 signups, ~240 activated users, over 7,500 practice drills by other users",
         "Wrote 23 SQL migrations with no ORM, ran type-check, lint, tests and build on every pull request, and fixed and re-verified a pre-auth account-takeover flaw from a static review of 67 route handlers",
         "Shipped an LLM trade breakdown in June 2026, later cut to one premium-gated sentence per setup, at temperature 0, with schema-validated JSON and a deterministic server fallback on four failure modes",
-        "Shipped an Interactive Brokers robot that traded real money from June to October 2026 under systemd, with a kill switch and five-minute broker reconciliation, and shut it off when a minute replay exposed a backtest lookahead",
+        "Shipped an Interactive Brokers robot that traded real money from June to October 2026 under systemd, with a kill switch and five-minute broker reconciliation, and withdrew its backtest after an audit found a same-bar lookahead",
         "Found server-to-server cron jobs failing silently for three days, made the failure loud, wrote a stopgap, and traced the 403s to Cloudflare Bot Fight Mode"
       ],
       technologies: ["Next.js", "TypeScript", "React", "Python", "PostgreSQL", "Supabase", "GitHub Actions", "systemd"]
